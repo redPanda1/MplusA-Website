@@ -6,6 +6,7 @@ export const team = [
       srcSet: 'https://assets.maccarianagency.com/the-front/photos/people/kate-segelson@2x.jpg 2x',
     },
     authorName: 'Graciela Bergner',
+    linkedin: 'https://www.linkedin.com/in/simonhopkins1/'
   },
   {
     title: 'Yoda of Gaming',
@@ -14,6 +15,7 @@ export const team = [
       srcSet: 'https://assets.maccarianagency.com/the-front/photos/people/alex-johnson@2x.jpg 2x',
     },
     authorName: 'Bruce Hack',
+    linkedin: 'https://www.linkedin.com/in/simonhopkins1/'
   },
   {
     title: 'Marketing Wiz',
