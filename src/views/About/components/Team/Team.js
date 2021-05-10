@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import {
@@ -72,35 +73,43 @@ const Team = props => {
         subtitle="M+A team members have diverse and extensive business experience as senior corporate leaders, early stage entrepreneurs and investments professionals across different industries."
       />
       <Grid container spacing={isMd ? 2 : 1}>
-        {data.map((item, index) => (
-          <Grid item xs={6} sm={6} md={4} key={index} 
-          data-aos-delay="500"
-          data-aos-once="false"
-          data-aos-easing="ease-in-sine"
-          data-aos="fade-up">
-            <CardBase className={classes.cardBase} liftUp>
-              <ListItem disableGutters className={classes.listItem}>
-                <ListItemAvatar className={classes.listItemAvatar}>
-                  <Avatar {...item.authorPhoto} className={classes.avatar} />
-                </ListItemAvatar>
-                <ListItemText
-                  className={classes.listItemText}
-                  primary={item.authorName}
-                  secondary={item.title}
-                  primaryTypographyProps={{
-                    className: classes.title,
-                    variant: 'h6',
-                    align: isMd ? 'left' : 'center',
-                  }}
-                  secondaryTypographyProps={{
-                    color: 'textPrimary',
-                    align: isMd ? 'left' : 'center',
-                  }}
-                />
-              </ListItem>
-            </CardBase>
-          </Grid>
-        ))}
+        {data.map((item, index) => {
+          console.log(item.linkedin)
+          return (
+            <Grid item xs={6} sm={6} md={4} key={index}
+              data-aos-delay="500"
+              data-aos-once="false"
+              data-aos-easing="ease-in-sine"
+              data-aos="fade-up">
+              <a href={item.linkedin}>
+                <CardBase className={classes.cardBase} liftUp>
+                  <ListItem disableGutters className={classes.listItem}>
+                    <ListItemAvatar className={classes.listItemAvatar}>
+                      <Avatar {...item.authorPhoto} className={classes.avatar} />
+                    </ListItemAvatar>
+                    <ListItemText
+                      className={classes.listItemText}
+                      primary={item.authorName}
+                      secondary={item.title}
+                      primaryTypographyProps={{
+                        className: classes.title,
+                        variant: 'h6',
+                        align: isMd ? 'left' : 'center',
+                      }}
+                      secondaryTypographyProps={{
+                        color: 'textPrimary',
+                        align: isMd ? 'left' : 'center',
+                      }}
+                    />
+                  </ListItem>
+                </CardBase>
+
+              </a>
+
+
+            </Grid>
+          )
+        })}
       </Grid>
     </div>
   );
