@@ -22,8 +22,12 @@ const Story = props => {
   });
 
   const subTitle = (<Typography>
-    <p>We are a team of individual angel investors who have come together to advise, coach and invest in underrepresented founders. M+A’s  purpose is to level the early-stage investment playing field by helping founders from diverse walks of life pitch their business propositions to early stage investors, access funding and capture the full potential of their start-ups.</p>
-    <p>At M+A we work collaboratively in identifying investment opportunities and supporting founders through the fundraising process and subsequent execution, while making individual investment decisions in each funding opportunity.</p>
+    <p>
+    Mentors+Angels is a group of individuals who are dedicated to helping under-represented founders fully capture the future of their start-ups.
+    The team has deep business experience as senior corporate leaders, entrepreneurs and investment professionals. We make individual angel investments in early-stage companies.
+    We work collectively as a team to identify opportunities and help coach founders to success. In terms of investing, we make individual investment decisions, as well as to bring opportunities to our investor communities.
+    We provide operating mentorship to founders from early business stages, through funding pitches and investment, and into growth phases. 
+    </p>
   </Typography>)
 
 
