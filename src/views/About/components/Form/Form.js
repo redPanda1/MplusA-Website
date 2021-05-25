@@ -37,7 +37,7 @@ const Form = props => {
   });
   const subTitle = (<Typography>
     <p>We want to work with the most dynamic, far-sighted and passionate early-stage companies. </p>
-    <p>We hold office-hours style meetings with candidte companies to assess their suitability, as well as provide advice.</p>
+    <p>We hold office-hours style meetings with candidate companies to assess their needs, as well as provide advice.</p>
     <p>If you think that you may qualify, please get in touch and we will get back to you within a few days:</p>
   </Typography>)
 
@@ -54,7 +54,7 @@ const Form = props => {
         align={isMd ? 'center' : 'left'}
       />
       <div className={classes.form}>
-        <Grid container spacing={isMd ? 4 : 2}>
+        <Grid container spacing={isMd ? 2 : 1}>
           <Grid item xs={12} data-aos="fade-up">
             <Typography
               variant="subtitle1"
@@ -106,7 +106,6 @@ const Form = props => {
               type="text"
             />
           </Grid>
-
           <Grid item xs={12} data-aos="fade-up">
             <Typography
               variant="subtitle1"
@@ -124,7 +123,6 @@ const Form = props => {
               rows={4}
             />
           </Grid>
-
           <Grid item xs={12} data-aos="fade-up">
             <Typography
               variant="subtitle1"
@@ -141,8 +139,6 @@ const Form = props => {
               type="url"
             />
           </Grid>
-
-
           <Grid item container justify="center" xs={12}>
             <Button
               variant="contained"
