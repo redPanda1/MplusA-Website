@@ -10,6 +10,9 @@ const useStyles = makeStyles(() => ({
   image: {
     maxWidth: 420,
   },
+  paragraph: {
+    marginTop: '1rem'
+  }
 }));
 
 const Story = props => {
@@ -24,10 +27,15 @@ const Story = props => {
   const subTitle = (<Typography>
     <p>
     Mentors+Angels is a group of individuals who are dedicated to helping under-represented founders fully capture the future of their start-ups.
-    The team has deep business experience as senior corporate leaders, entrepreneurs and investment professionals. We make individual angel investments in early-stage companies.
-    We work collectively as a team to identify opportunities and help coach founders to success. In terms of investing, we make individual investment decisions, as well as to bring opportunities to our investor communities.
-    We provide operating mentorship to founders from early business stages, through funding pitches and investment, and into growth phases. 
+    The team has deep business experience as senior corporate leaders, entrepreneurs and investment professionals. 
     </p>
+    <p className={classes.paragraph}>
+    We work collectively as a team to identify opportunities and help coach founders to success. 
+    </p>
+    <p className={classes.paragraph}>
+    We make individual angel investments in early-stage companies, as well as bring opportunities to our investor communities.
+    </p>
+
   </Typography>)
 
 

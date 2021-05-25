@@ -66,6 +66,14 @@ export const team = [
     authorName: 'Taher Baderkhan',
   },
   {
+    title: 'A Classical Angel',
+    authorPhoto: {
+      src: 'https://assets.maccarianagency.com/the-front/photos/people/alex-johnson.jpg',
+      srcSet: 'https://assets.maccarianagency.com/the-front/photos/people/alex-johnson@2x.jpg 2x',
+    },
+    authorName: 'Eugene Carr',
+  },
+  {
     title: 'Website Worker',
     authorPhoto: {
       src: 'https://assets.maccarianagency.com/the-front/photos/people/alex-johnson.jpg',

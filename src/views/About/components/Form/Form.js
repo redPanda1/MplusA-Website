@@ -36,8 +36,9 @@ const Form = props => {
     defaultMatches: true,
   });
   const subTitle = (<Typography>
-    <p>We want to work with the most dynamic, far-sighted and passionate early stage companies. </p>
-    <p>If you think that you may qualify, get in touch:</p>
+    <p>We want to work with the most dynamic, far-sighted and passionate early-stage companies. </p>
+    <p>We hold office-hours style meetings with candidte companies to assess their suitability, as well as provide advice.</p>
+    <p>If you think that you may qualify, please get in touch and we will get back to you within a few days:</p>
   </Typography>)
 
   return (

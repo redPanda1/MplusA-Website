@@ -70,7 +70,7 @@ const Team = props => {
     <div className={className} {...rest}>
       <SectionHeader
         title="Meet our team"
-        subtitle="M+A team members have diverse and extensive business experience as senior corporate leaders, early stage entrepreneurs and investments professionals across different industries."
+        subtitle="M+A team members have diverse and extensive business experience. We are advisors and board members in early-stage companies, public corporations and non-profits across many different industries."
       />
       <Grid container spacing={isMd ? 2 : 1}>
         {data.map((item, index) => {

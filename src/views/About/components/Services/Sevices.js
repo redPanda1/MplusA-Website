@@ -26,17 +26,17 @@ const data = [
       'Work with entrepreneurs to strengthen their pitches for early-stage investors. Provide input on business proposition, product/service, raise/valuation and financials.  Review pitch deck and provide feedback on presentation and supporting materials.',
   },
   {
-    icon: 'fas fa-handshake',
-    title: 'Advise',
-    subtitle:
-      'Provide advice and on-going business guidance in portfolio companies. We are advisors and board members in a number of early-stage companies, public companies and non-profits. We leverage our vertical industry expertise to help on strategy, team and execution.',
-  },
-  {
     icon: 'fas fa-hand-holding-usd',
     title: 'Invest',
     subtitle:
-      "Make angel investments through several angel groups as well as independently. We are associated, amongst other angel investment and mentoring groups, with NY Angels, Harvard Angels, Astia Angels , Broad Street Angels and 1863.",
+      "Make angel investments through several Angel groups as well as independently. We are associated, amongst other angel investment and mentoring groups, with NY Angels, Harvard Business Angels of New York, Astia Angels , Broad Street Angels and 1863.",
   },
+  {
+    icon: 'fas fa-handshake',
+    title: 'Advise',
+    subtitle:
+      'Provide advice and on-going business guidance to portfolio companies. We leverage our vertical industry expertise and business contacts to help with strategy, team and execution.',
+  }
 ];
 const Services = ({ className, ...rest }) => {
   const classes = useStyles();
