@@ -61,6 +61,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   listItemText: {
+    cursor:'pointer',
     flex: '0 0 auto',
     marginRight: theme.spacing(2),
     whiteSpace: 'nowrap',
@@ -125,8 +126,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Topbar = ({ themeMode, themeToggler, onSidebarOpen, pages, className, ...rest }) => {
-  console.log(themeMode)
+const Topbar = ({ onSidebarOpen, pages, className, scrollTo, ...rest }) => {
   const classes = useStyles();
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -177,91 +177,37 @@ const Topbar = ({ themeMode, themeToggler, onSidebarOpen, pages, className, ...r
     );
   };
 
-  const LandingPages = () => {
-    const { services, apps, web } = landings.children;
-    return (
-      <div className={classes.menu}>
-        <div className={classes.menuItem}>
-          <MenuGroup item={services} />
-          <MenuGroup item={apps} />
-        </div>
-        <div className={classes.menuItem}>
-          <MenuGroup item={web} />
-        </div>
-      </div>
-    );
-  };
-
-  const SupportedPages = () => {
-    const {
-      career,
-      helpCenter,
-      company,
-      contact,
-      blog,
-      portfolio,
-    } = supportedPages.children;
-    return (
-      <div className={classes.menu}>
-        <div className={classes.menuItem}>
-          <MenuGroup item={career} />
-          <MenuGroup item={helpCenter} />
-        </div>
-        <div className={classes.menuItem}>
-          <MenuGroup item={company} />
-          <MenuGroup item={contact} />
-        </div>
-        <div className={classes.menuItem}>
-          <MenuGroup item={blog} />
-          <MenuGroup item={portfolio} />
-        </div>
-      </div>
-    );
-  };
-
-  const AccountPages = () => {
-    const { settings, signup, signin, password, error } = account.children;
-    return (
-      <div className={classes.menu}>
-        <div className={classes.menuItem}>
-          <MenuGroup item={settings} />
-        </div>
-        <div className={classes.menuItem}>
-          <MenuGroup item={signup} />
-          <MenuGroup item={signin} />
-        </div>
-        <div className={classes.menuItem}>
-          <MenuGroup item={password} />
-          <MenuGroup item={error} />
-        </div>
-      </div>
-    );
-  };
-
-  const renderPages = id => {
-    if (id === 'landing-pages') {
-      return <LandingPages />;
-    }
-    if (id === 'supported-pages') {
-      return <SupportedPages />;
-    }
-    if (id === 'account') {
-      return <AccountPages />;
-    }
-  };
-
   return (
     <div className={classes.topBar}>
     <Toolbar disableGutters className={classes.toolbar} {...rest}>
       <div className={classes.flexGrow} />
       <List disablePadding className={classes.navigationContainer}>
+          <ListItem>
+            <Typography variant="body1" color="textSecondary" 
+                className={clsx(classes.listItemText, 'menu-item')}
+                onClick={()=>scrollTo("about")}>
+                  About
+            </Typography>
+          </ListItem>
+          <ListItem>
+          <Typography variant="body1" color="textSecondary" 
+                className={clsx(classes.listItemText, 'menu-item')}
+                onClick={()=>scrollTo("services")}>
+                  What We do
+            </Typography>
+          </ListItem>
+          <ListItem>
+          <Typography variant="body1" color="textSecondary" 
+                className={clsx(classes.listItemText, 'menu-item')}
+                onClick={()=>scrollTo("team")}>
+                  Team
+            </Typography>
+          </ListItem>
           <ListItem className={clsx(classes.listItem, 'menu-item--no-dropdown')}>
             <Button
               color="secondary"
               variant="outlined"
-              component="a"
-              href="/documentation"
-            >
+              onClick={()=>scrollTo("contact")}>
               Contact
             </Button>
           </ListItem>
@@ -275,8 +221,6 @@ Topbar.propTypes = {
   className: PropTypes.string,
   onSidebarOpen: PropTypes.func,
   pages: PropTypes.object.isRequired,
-  themeToggler: PropTypes.func.isRequired,
-  themeMode: PropTypes.string.isRequired,
 };
 
 export default Topbar;

@@ -49,14 +49,14 @@ const Story = props => {
       >
         <Grid
           item
-          container
           alignItems="center"
           justify="flex-start"
           xs={12}
           md={6}
-          data-aos-delay="500"
-          data-aos={'fade-right'}
-        >
+          data-aos='fade-right'
+          data-aos-delay="600"
+          data-aos-once="false"
+          data-aos-easing="ease-in-sine">
           <div>
             <SectionHeader
               title="Mentors+Angels"
@@ -77,9 +77,10 @@ const Story = props => {
           alignItems="center"
           xs={12}
           md={6}
-          data-aos={'fade-left'}
-          data-aos-delay="500"
-        >
+          data-aos='fade-left'
+          data-aos-delay="600"
+          data-aos-once="false"
+          data-aos-easing="ease-in-sine">
           <Image
             src={cowork}
             alt="Our story"

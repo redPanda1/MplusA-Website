@@ -56,7 +56,6 @@ export default function WithLayout({ component: Component, layout: Layout, ...re
 
   return (
     <ThemeProvider theme={getTheme(themeMode)}>
-      {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
       <CssBaseline />
       <Paper elevation={0}>
         <Layout themeMode={themeMode} themeToggler={themeToggler}>

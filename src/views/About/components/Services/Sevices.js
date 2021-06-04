@@ -29,7 +29,7 @@ const data = [
     icon: 'fas fa-hand-holding-usd',
     title: 'Invest',
     subtitle:
-      "Make angel investments through several Angel groups as well as independently. We are associated, amongst other angel investment and mentoring groups, with NY Angels, Harvard Business Angels of New York, Astia Angels , Broad Street Angels and 1863.",
+      "Make angel investments through several Angel groups as well as independently. We are associated, amongst other angel investment and mentoring groups, with New York Angels, Harvard Business School Angels, Astia Angels , Broad Street Angels and 1863.",
   },
   {
     icon: 'fas fa-handshake',
@@ -66,8 +66,12 @@ const Services = ({ className, ...rest }) => {
       <Section className={classes.noPaddingTop}>
         <Grid container spacing={isMd ? 4 : 2}>
           {data.map((item, index) => (
-            <Grid key={index} item xs={12} sm={4} data-aos={'fade-up'}>
-              <DescriptionListIcon
+            <Grid key={index} item xs={12} sm={4} 
+            data-aos-delay="600"
+            data-aos-once="false"
+            data-aos-easing="ease-in-sine"
+            data-aos="fade-up">
+            <DescriptionListIcon
                 title={item.title}
                 subtitle={item.subtitle}
                 icon={

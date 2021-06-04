@@ -1,6 +1,7 @@
-import React, {useRef} from 'react';
+import React, { useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Section, SectionAlternate } from 'components/organisms';
+import Button from '@material-ui/core/Button';
 import {
   Contact,
   Services,
@@ -10,7 +11,7 @@ import {
   Team,
   WhoWeAre,
 } from './components';
-import { Link, animateScroll as scroll } from "react-scroll";
+import { Link, animateScroll, Element, scroller } from "react-scroll";
 
 import { team, companies, mapData, gallery } from './data';
 
@@ -22,35 +23,51 @@ const useStyles = makeStyles(theme => ({
   sectionNoPaddingTop: {
     paddingTop: 0,
   },
-  sectionPartners: {
-    boxShadow: '0 5px 20px 0 rgba(90, 202, 157, 0.05)',
-    '& .section-alternate__content': {
-      paddingTop: theme.spacing(5),
-      paddingBottom: theme.spacing(5),
-    },
-  },
 }));
 
 const About = () => {
   const classes = useStyles();
-  const refAbout = React.createRef()
-  const refContact = React.createRef()
+
+  const scrollToTop = () => {
+    console.log("Get Here")
+    animateScroll.scrollToTop()
+  }
+  const scrollToTeam = (ele) => {
+    console.log("Get Here2")
+    scroller.scrollTo(ele, {
+      duration: 1000,
+      delay: 100,
+      smooth: true,
+      offset: 50
+    })
+  }
 
   return (
     <div className={classes.root}>
       <Hero />
-      <Section ref={refAbout}>
-        <Story />
-      </Section>
-      <SectionAlternate  title={"who"} className={classes.sectionNoPaddingTop}>
-        <Services />
-      </SectionAlternate>
-      <Section title={"team"}>
-        <Team data={team} />
-      </Section>
-      <SectionAlternate  ref={refContact}>
-        <Form />
-      </SectionAlternate>
+      <Element name={"about"}>
+        <Section>
+          <Story />
+        </Section>
+      </Element>
+      <Element name={"services"}>
+        <SectionAlternate className={classes.sectionNoPaddingTop}>
+          <Services />
+        </SectionAlternate>
+      </Element>
+      <Element name={"team"}>
+        <Section>
+          <Team data={team} />
+        </Section>
+      </Element>
+      <Element name={"contact"}>
+        <SectionAlternate>
+          <Form />
+        </SectionAlternate>
+      </Element>
+      <Button variant="contained" onClick={scrollToTop}>To the top!</Button>
+      <Button variant="contained" onClick={() => scrollToTeam("team")}>To the team!</Button>
+
     </div>
   );
 };

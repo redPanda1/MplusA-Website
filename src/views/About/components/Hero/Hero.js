@@ -7,6 +7,8 @@ import { SectionHeader } from 'components/molecules';
 import { Section } from 'components/organisms';
 import heroPhoto from 'assets/images/NY.jpg'
 import logo from 'assets/images/logo_inv.png'
+import { Grid, Typography } from '@material-ui/core';
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -40,6 +42,11 @@ const useStyles = makeStyles(theme => ({
   imageLogo: {
     maxWidth: 250,
   },
+  heroTitle: {
+    color: "#ffffffcc",
+    fontWeight: 'bold',
+    marginLeft: theme.spacing(4)
+  }
 
 }));
 
@@ -58,27 +65,27 @@ const Hero = props => {
         }}
       />
       <Section className={classes.section}>
-        {/* <SectionHeader
-          title="Mentors+Angels"
-          subtitle="Investing for Diversity"
-          align="left"
-          data-aos="fade-up"
-          disableGutter
-          titleProps={{
-            className: clsx(classes.title, classes.textWhite),
-            variant: 'h3',
-          }}
-          subtitleProps={{
-            className: classes.textWhite,
-          }}
-        /> */}
-      <div data-aos="fade-up">
-      <Image
+      <Grid container direction="row" justify="flex-start" alignItems="center" 
+        data-aos="fade-up"
+        data-aos-delay="300"
+        data-aos-duration="800"
+        data-aos-once="false"
+        data-aos-easing="ease-in-sine">
+        <Grid item>
+        <Image
             src={logo}
             alt="M+A Logo"
             className={classes.imageLogo}
           />        
-        </div>                
+        </Grid>
+        <Grid item>         
+           <Typography
+           variant={'h4'}
+           className={classes.heroTitle}>
+          Investing In Under-Represented Founders
+          </Typography>
+        </Grid>
+      </Grid>                
 
       </Section>
     </div>

@@ -88,7 +88,7 @@ const Team = props => {
                       <Avatar {...item.authorPhoto} className={classes.avatar} />
                     </ListItemAvatar>
                     <ListItemText
-                      className={classes.listItemText}
+                      // className={classes.listItemText}
                       primary={item.authorName}
                       secondary={item.title}
                       primaryTypographyProps={{

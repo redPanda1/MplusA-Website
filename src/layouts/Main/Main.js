@@ -4,10 +4,28 @@ import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { useMediaQuery, Divider } from '@material-ui/core';
 import { Topbar, Footer, Sidebar } from './components';
+import Button from '@material-ui/core/Button';
+import {
+  Contact,
+  Services,
+  Hero,
+  Form,
+  Story,
+  Team,
+  WhoWeAre,
+} from 'views/About/components';
+import { animateScroll, Element, scroller } from "react-scroll";
+import { team } from 'views/About/data';
+import { Section, SectionAlternate } from 'components/organisms';
+
+
 
 const useStyles = makeStyles(theme => ({
   root: {
     height: '100%',
+  },
+  sectionNoPaddingTop: {
+    paddingTop: 0,
   },
 }));
 
@@ -20,297 +38,33 @@ const Main = ({ children, themeToggler, themeMode }) => {
   });
 
   const pages = {
-    landings: {
-      title: 'Landings',
-      id: 'landing-pages',
-      children: {
-        services: {
-          groupTitle: 'Services',
-          pages: [
-            {
-              title: 'Coworking',
-              href: '/coworking',
-            },
-            {
-              title: 'Rental',
-              href: '/rental',
-            },
-            {
-              title: 'Job Listing',
-              href: '/job-listing',
-            },
-            {
-              title: 'E-Learning',
-              href: '/e-learning',
-            },
-            {
-              title: 'E-commerce',
-              href: '/e-commerce',
-            },
-            {
-              title: 'Expo',
-              href: '/expo',
-            },
-          ],
-        },
-        apps: {
-          groupTitle: 'Apps',
-          pages: [
-            {
-              title: 'Desktop App',
-              href: '/desktop-app',
-            },
-            {
-              title: 'Mobile App',
-              href: '/mobile-app',
-            },
-          ],
-        },
-        web: {
-          groupTitle: 'Web',
-          pages: [
-            {
-              title: 'Marketing',
-              href: '/',
-            },
-            {
-              title: 'Overview',
-              href: '/home',
-            },
-            {
-              title: 'Basic',
-              href: '/web-basic',
-            },
-            {
-              title: 'Service',
-              href: '/service',
-            },
-            {
-              title: 'Startup',
-              href: '/startup',
-            },
-            {
-              title: 'Enterprise',
-              href: '/enterprise',
-            },
-            {
-              title: 'Cloud Hosting',
-              href: '/cloud-hosting',
-            },
-            {
-              title: 'Agency',
-              href: '/agency',
-            },
-            {
-              title: 'Design Company',
-              href: '/design-company',
-            },
-            {
-              title: 'Logistics',
-              href: '/logistics',
-            },
-          ],
-        },
-      },
-    },
-    pages: {
-      title: 'Pages',
-      id: 'supported-pages',
-      children: {
-        career: {
-          groupTitle: 'Career',
-          pages: [
-            {
-              title: 'Lising',
-              href: '/career-listing',
-            },
-            {
-              title: 'Lising Minimal',
-              href: '/career-listing-minimal',
-            },
-            {
-              title: 'Opening',
-              href: '/career-opening',
-            },
-          ],
-        },
-        helpCenter: {
-          groupTitle: 'Help center',
-          pages: [
-            {
-              title: 'Overview',
-              href: '/help-center',
-            },
-            {
-              title: 'Article',
-              href: '/help-center-article',
-            },
-          ],
-        },
         company: {
           groupTitle: 'Company',
           pages: [
             {
               title: 'About',
               href: '/about',
-            },
-            {
-              title: 'About (Cover)',
-              href: '/about-side-cover',
-            },
-            {
-              title: 'Pricing',
-              href: '/pricing',
-            },
-            {
-              title: 'Terms',
-              href: '/company-terms',
-            },
+            }
           ],
-        },
-        contact: {
-          groupTitle: 'Contact',
-          pages: [
-            {
-              title: 'Reach View',
-              href: '/contact-page',
-            },
-            {
-              title: 'Sidebar Map',
-              href: '/contact-sidebar-map',
-            },
-            {
-              title: 'Cover',
-              href: '/contact-page-cover',
-            },
-          ],
-        },
-        blog: {
-          groupTitle: 'Blog',
-          pages: [
-            {
-              title: 'Newsroom',
-              href: '/blog-newsroom',
-            },
-            {
-              title: 'Reach View',
-              href: '/blog-reach-view',
-            },
-            {
-              title: 'Search',
-              href: '/blog-search',
-            },
-            {
-              title: 'Article',
-              href: '/blog-article',
-            },
-          ],
-        },
-        portfolio: {
-          groupTitle: 'Portfolio',
-          pages: [
-            {
-              title: 'Basic',
-              href: '/portfolio-page',
-            },
-            {
-              title: 'Masonry',
-              href: '/portfolio-masonry',
-            },
-            {
-              title: 'Grid View',
-              href: '/portfolio-grid',
-            },
-            {
-              title: 'Parallax Effect',
-              href: '/agency',
-            },
-          ],
-        },
-      },
-    },
-    account: {
-      title: 'Account',
-      id: 'account',
-      children: {
-        settings: {
-          groupTitle: 'Settings',
-          pages: [
-            {
-              title: 'General',
-              href: '/account/?pid=general',
-            },
-            {
-              title: 'Security',
-              href: '/account/?pid=security',
-            },
-            {
-              title: 'Notifications',
-              href: '/account/?pid=notifications',
-            },
-            {
-              title: 'Billing',
-              href: '/account/?pid=billing',
-            },
-          ],
-        },
-        signup: {
-          groupTitle: 'Sign up',
-          pages: [
-            {
-              title: 'Simple',
-              href: '/signup-simple',
-            },
-            {
-              title: 'Cover',
-              href: '/signup-cover',
-            },
-          ],
-        },
-        signin: {
-          groupTitle: 'Sign in',
-          pages: [
-            {
-              title: 'Simple',
-              href: '/signin-simple',
-            },
-            {
-              title: 'Cover',
-              href: '/signin-cover',
-            },
-          ],
-        },
-        password: {
-          groupTitle: 'Password reset',
-          pages: [
-            {
-              title: 'Simple',
-              href: '/password-reset-simple',
-            },
-            {
-              title: 'Cover',
-              href: '/password-reset-cover',
-            },
-          ],
-        },
-        error: {
-          groupTitle: 'Error',
-          pages: [
-            {
-              title: 'Simple',
-              href: '/not-found',
-            },
-            {
-              title: 'Cover',
-              href: '/not-found-cover',
-            },
-          ],
-        },
-      },
-    },
+        }
   };
 
   const [openSidebar, setOpenSidebar] = useState(false);
+
+  const scrollTo = (ele) => {
+    console.log("Get Here - scroll")
+    if (ele === "top") {
+      animateScroll.scrollToTop()
+    } else {
+      scroller.scrollTo(ele, {
+        duration: 1000,
+        delay: 100,
+        smooth: true,
+        offset: 50
+      })  
+    }
+  }
+
 
   const handleSidebarOpen = () => {
     setOpenSidebar(true);
@@ -328,7 +82,7 @@ const Main = ({ children, themeToggler, themeMode }) => {
         [classes.root]: true,
       })}
     >
-      <Topbar onSidebarOpen={handleSidebarOpen} pages={pages} themeMode={"dark"} themeToggler={themeToggler} />
+      <Topbar onSidebarOpen={handleSidebarOpen} pages={pages} scrollTo={scrollTo}/>
       <Sidebar
         onClose={handleSidebarClose}
         open={open}
@@ -337,9 +91,29 @@ const Main = ({ children, themeToggler, themeMode }) => {
       />
       <main>
         <Divider />
-        {children}
+        <Hero />
+      <Element name={"about"}>
+        <Section>
+          <Story />
+        </Section>
+      </Element>
+      <Element name={"services"}>
+        <SectionAlternate className={classes.sectionNoPaddingTop}>
+          <Services />
+        </SectionAlternate>
+      </Element>
+      <Element name={"team"}>
+        <Section>
+          <Team data={team} />
+        </Section>
+      </Element>
+      <Element name={"contact"}>
+        <SectionAlternate>
+          <Form />
+        </SectionAlternate>
+      </Element>
       </main>
-      <Footer pages={pages} />
+      <Footer pages={pages} scrollTo={scrollTo} />
     </div>
   );
 };

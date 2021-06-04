@@ -83,6 +83,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   menuGroupTitle: {
+    cursor:'pointer',
     textTransform: 'uppercase',
     color: 'white',
   },
@@ -95,97 +96,9 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Footer = props => {
-  const { pages, className, ...rest } = props;
+  const { pages, className, scrollTo, ...rest } = props;
 
   const classes = useStyles();
-
-  const landings = pages.landings;
-  const supportedPages = pages.pages;
-  const account = pages.account;
-
-  const MenuGroup = props => {
-    const { item } = props;
-    return (
-      <List disablePadding className={classes.menuItem}>
-        <ListItem disableGutters className={classes.menuGroupItem}>
-          <Typography variant="body2" className={classes.menuGroupTitle}>
-            {item.groupTitle}
-          </Typography>
-        </ListItem>
-        {item.pages.map((page, i) => (
-          <ListItem disableGutters key={i} className={classes.menuGroupItem}>
-            <Typography
-              variant="body2"
-              component={'a'}
-              href={page.href}
-              className={clsx(classes.navLink, 'submenu-item')}
-            >
-              {page.title}
-            </Typography>
-          </ListItem>
-        ))}
-      </List>
-    );
-  };
-
-  const LandingPages = () => {
-    const { services, apps, web } = landings.children;
-    return (
-      <div className={classes.menu}>
-        <div>
-          <MenuGroup item={services} />
-          <MenuGroup item={apps} />
-        </div>
-        <div>
-          <MenuGroup item={web} />
-        </div>
-      </div>
-    );
-  };
-
-  const SupportedPages = () => {
-    const {
-      career,
-      helpCenter,
-      company,
-      contact,
-      blog,
-      portfolio,
-    } = supportedPages.children;
-    return (
-      <div className={classes.menu}>
-        <div>
-          <MenuGroup item={career} />
-          <MenuGroup item={helpCenter} />
-        </div>
-        <div>
-          <MenuGroup item={company} />
-          <MenuGroup item={contact} />
-        </div>
-        <div>
-          <MenuGroup item={blog} />
-          <MenuGroup item={portfolio} />
-        </div>
-      </div>
-    );
-  };
-
-  const AccountPages = () => {
-    const { settings, signup, signin, password, error } = account.children;
-    return (
-      <div className={classes.menu}>
-        <div>
-          <MenuGroup item={settings} />
-          <MenuGroup item={signup} />
-        </div>
-        <div>
-          <MenuGroup item={signin} />
-          <MenuGroup item={password} />
-          <MenuGroup item={error} />
-        </div>
-      </div>
-    );
-  };
 
   return (
     <div {...rest} className={clsx(classes.root, className)}>
@@ -195,7 +108,7 @@ const Footer = props => {
             <List disablePadding>
               <ListItem disableGutters className={classes.logoContainerItem}>
                 <div className={classes.logoContainer}>
-                  <a href="/" title="thefront">
+                  <a onClick={() => scrollTo('top')} title="logo">
                     <Image
                       className={classes.logoImage}
                       src={logo}
@@ -217,16 +130,19 @@ const Footer = props => {
           </Grid>
           <Grid container item xs={12} md={10} direction="column" alignItems="flex-start" justify="space-around">
             <Grid container direction="row" justify="space-between">
-              <Typography variant="body2" className={classes.menuGroupTitle}>
+              <Typography variant="body2" className={classes.menuGroupTitle} onClick={()=>scrollTo('top')}>
                 Home
                 </Typography>
-              <Typography variant="body2" className={classes.menuGroupTitle}>
+                <Typography variant="body2" className={classes.menuGroupTitle} onClick={()=>scrollTo('about')}>
                 About
                 </Typography>
-              <Typography variant="body2" className={classes.menuGroupTitle}>
+                <Typography variant="body2" className={classes.menuGroupTitle} onClick={()=>scrollTo('services')}>
+                What we Do
+                </Typography>
+                <Typography variant="body2" className={classes.menuGroupTitle} onClick={()=>scrollTo('team')}>
                 Team
                 </Typography>
-              <Typography variant="body2" className={classes.menuGroupTitle}>
+                <Typography variant="body2" className={classes.menuGroupTitle} onClick={()=>scrollTo('contact')}>
                 Contact
                 </Typography>
             </Grid>
@@ -235,7 +151,6 @@ const Footer = props => {
                 </Typography>
           </Grid>
         </Grid>
-
 
       </div>
     </div>
