@@ -1,6 +1,6 @@
 export const team = [
   {
-    title: 'Thee Energizer Bunny',
+    title: 'The Energizer Bunny',
     authorPhoto: {  
       src: 'https://mentorsplusangels-data.s3.amazonaws.com/images/GracielaBW.jpg'
     },
@@ -72,7 +72,7 @@ export const team = [
     authorName: 'Eugene Carr',
   },
   {
-    title: 'From Enterprise IT To Latent Developer',
+    title: 'From Enterprise IT To Frustrated Developer',
     authorPhoto: {
       src: 'https://mentorsplusangels-data.s3.amazonaws.com/images/SimonBW.jpg'
     },
