@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useTheme, makeStyles } from '@material-ui/core/styles';
-import { useMediaQuery, Grid, Typography, colors } from '@material-ui/core';
+import { useMediaQuery, Grid, colors } from '@material-ui/core';
 import { IconAlternate, SectionHeader } from 'components/molecules';
 import { DescriptionListIcon, Section } from 'components/organisms';
 
@@ -45,12 +45,6 @@ const Services = ({ className, ...rest }) => {
     defaultMatches: true,
   });
    
-  const title = (
-    <Typography variant="h4" component="span" className={classes.fontWeight900}>
-      What We Do
-    </Typography>
-  );
-
   return (
     <div className={className} {...rest}>
       <Section narrow className={classes.noPaddingBottom}>

@@ -12,7 +12,6 @@ import {
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import logo from 'assets/images/logo_inv.png'
-import { Scroll } from "react-scroll"
 
 import { Image } from 'components/atoms';
 
@@ -107,15 +106,13 @@ const Footer = props => {
           <Grid item xs={12} md={2}>
             <List disablePadding>
               <ListItem disableGutters className={classes.logoContainerItem}>
-                <div className={classes.logoContainer}>
-                  <a onClick={() => scrollTo('top')} title="logo">
+                <div className={classes.logoContainer} onClick={() => scrollTo('top')}>
                     <Image
                       className={classes.logoImage}
                       src={logo}
                       alt="M+A Logo"
                       lazy={false}
                     />
-                  </a>
                 </div>
               </ListItem>
               <ListItem disableGutters>

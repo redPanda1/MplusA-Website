@@ -4,15 +4,12 @@ import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { useMediaQuery, Divider } from '@material-ui/core';
 import { Topbar, Footer, Sidebar } from './components';
-import Button from '@material-ui/core/Button';
 import {
-  Contact,
   Services,
   Hero,
   Form,
   Story,
   Team,
-  WhoWeAre,
 } from 'views/About/components';
 import { animateScroll, Element, scroller } from "react-scroll";
 import { team } from 'views/About/data';
@@ -52,7 +49,6 @@ const Main = ({ children, themeToggler, themeMode }) => {
   const [openSidebar, setOpenSidebar] = useState(false);
 
   const scrollTo = (ele) => {
-    console.log("Get Here - scroll")
     if (ele === "top") {
       animateScroll.scrollToTop()
     } else {

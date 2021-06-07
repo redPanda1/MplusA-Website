@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import {
@@ -74,7 +73,6 @@ const Team = props => {
       />
       <Grid container spacing={isMd ? 2 : 1}>
         {data.map((item, index) => {
-          console.log(item.linkedin)
           return (
             <Grid item xs={6} sm={6} md={4} key={index}
               data-aos-delay="500"

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import WithLayout from './WithLayout';
-import { Main as MainLayout, Minimal as MinimalLayout, DocsLayout } from './layouts';
+import { Main as MainLayout, Minimal as MinimalLayout } from './layouts';
 import { About as AboutView, NotFoundCover as NotFoundCoverView} from './views'
 
 const Routes = () => (

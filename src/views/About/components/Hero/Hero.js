@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { Image } from 'components/atoms';
-import { SectionHeader } from 'components/molecules';
 import { Section } from 'components/organisms';
 import heroPhoto from 'assets/images/NY.jpg'
 import logo from 'assets/images/logo_inv.png'

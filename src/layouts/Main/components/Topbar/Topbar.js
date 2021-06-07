@@ -1,23 +1,14 @@
-import React, { useState } from 'react';
-import {Link} from 'react-router-dom'
+import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Toolbar,
-  Hidden,
   List,
   ListItem,
-  ListItemIcon,
-  Popover,
   Typography,
-  IconButton,
   Button,
 } from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MenuIcon from '@material-ui/icons/Menu';
-import { Image } from 'components/atoms';
-import logo from 'assets/images/logo_inv.png'
 
 const useStyles = makeStyles(theme => ({
   topBar: {
@@ -129,53 +120,6 @@ const useStyles = makeStyles(theme => ({
 const Topbar = ({ onSidebarOpen, pages, className, scrollTo, ...rest }) => {
   const classes = useStyles();
 
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [openedPopoverId, setOpenedPopoverId] = useState(null);
-
-  const handleClick = (event, popoverId) => {
-    setAnchorEl(event.target);
-    setOpenedPopoverId(popoverId);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-    setOpenedPopoverId(null);
-  };
-
-  const landings = pages.landings;
-  const supportedPages = pages.pages;
-  const account = pages.account;
-
-  const MenuGroup = props => {
-    const { item } = props;
-    return (
-      <List disablePadding>
-        <ListItem disableGutters>
-          <Typography
-            variant="body2"
-            color="primary"
-            className={classes.menuGroupTitle}
-          >
-            {item.groupTitle}
-          </Typography>
-        </ListItem>
-        {item.pages.map((page, i) => (
-          <ListItem disableGutters key={i} className={classes.menuGroupItem}>
-            <Typography
-              variant="body1"
-              component={'a'}
-              href={page.href}
-              className={clsx(classes.navLink, 'submenu-item')}
-              color="textSecondary"
-              onClick={handleClose}
-            >
-              {page.title}
-            </Typography>
-          </ListItem>
-        ))}
-      </List>
-    );
-  };
 
   return (
     <div className={classes.topBar}>

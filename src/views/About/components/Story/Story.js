@@ -4,7 +4,8 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { useMediaQuery, Grid, Typography } from '@material-ui/core';
 import { Image } from 'components/atoms';
 import { SectionHeader } from 'components/molecules';
-import cowork from 'assets/images/cowork.png'
+// import multiTask from 'assets/images/multiTask.jpg'
+import rock from 'assets/images/rock.jpg'
 
 const useStyles = makeStyles(() => ({
   image: {
@@ -35,7 +36,6 @@ const Story = props => {
     <p className={classes.paragraph}>
     We make individual angel investments in early-stage companies, as well as bring opportunities to our investor communities.
     </p>
-
   </Typography>)
 
 
@@ -49,8 +49,8 @@ const Story = props => {
       >
         <Grid
           item
-          alignItems="center"
-          justify="flex-start"
+          // alignItems="center"
+          // justify="flex-start"
           xs={12}
           md={6}
           data-aos='fade-right'
@@ -72,9 +72,8 @@ const Story = props => {
         </Grid>
         <Grid
           item
-          container
-          justify={isMd ? 'flex-end' : 'flex-start'}
-          alignItems="center"
+          // justify={isMd ? 'flex-end' : 'flex-start'}
+          // alignItems="center"
           xs={12}
           md={6}
           data-aos='fade-left'
@@ -82,7 +81,7 @@ const Story = props => {
           data-aos-once="false"
           data-aos-easing="ease-in-sine">
           <Image
-            src={cowork}
+            src={rock}
             alt="Our story"
             className={classes.image}
           />

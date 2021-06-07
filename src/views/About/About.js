@@ -1,19 +1,16 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Section, SectionAlternate } from 'components/organisms';
 import Button from '@material-ui/core/Button';
 import {
-  Contact,
   Services,
   Hero,
   Form,
   Story,
   Team,
-  WhoWeAre,
 } from './components';
-import { Link, animateScroll, Element, scroller } from "react-scroll";
-
-import { team, companies, mapData, gallery } from './data';
+import { animateScroll, Element, scroller } from "react-scroll";
+import { team } from './data';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -29,11 +26,9 @@ const About = () => {
   const classes = useStyles();
 
   const scrollToTop = () => {
-    console.log("Get Here")
     animateScroll.scrollToTop()
   }
   const scrollToTeam = (ele) => {
-    console.log("Get Here2")
     scroller.scrollTo(ele, {
       duration: 1000,
       delay: 100,
