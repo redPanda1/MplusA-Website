@@ -1,6 +1,6 @@
 export const team = [
   {
-    title: 'The Energizer Bunny',
+    title: 'The Energizer',
     authorPhoto: {  
       src: 'https://mentorsplusangels-data.s3.amazonaws.com/images/GracielaBW.jpg'
     },
@@ -32,12 +32,12 @@ export const team = [
     authorName: 'Michael Costa',
   },
   {
-    title: 'Life Science Guru',
+    title: 'Healthcare Guru',
     authorPhoto: {
       src: 'https://mentorsplusangels-data.s3.amazonaws.com/images/VijayBW.jpg'
     },
     linkedin: 'https://www.linkedin.com/in/vijay-aggarwal-bb11711',
-    authorName: 'Vijay Argaawal',
+    authorName: 'Vijay Aggarwal',
   },
   {
     title: 'Championing Female Founders',
@@ -48,7 +48,7 @@ export const team = [
     authorName: 'Kristen Dickey',
   },
   {
-    title: 'The Connected One',
+    title: 'Financials & Investments Nerd',
     authorPhoto: {
       src: 'https://mentorsplusangels-data.s3.amazonaws.com/images/SamirBW.jpg'
     },
