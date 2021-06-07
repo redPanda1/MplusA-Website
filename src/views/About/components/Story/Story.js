@@ -34,7 +34,7 @@ const Story = props => {
     We work collectively as a team to identify opportunities and help coach founders to success. 
     </p>
     <p className={classes.paragraph}>
-    We make individual angel investments in early-stage companies, as well as bring opportunities to our investor communities.
+    We make individual investments in early stage companies and also bring opportunities to our investor communities.
     </p>
   </Typography>)
 
