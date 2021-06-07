@@ -1,6 +1,6 @@
 export const team = [
   {
-    title: 'Energizer Bunny who Keeps Us Going',
+    title: 'Thee Energizer Bunny',
     authorPhoto: {  
       src: 'https://mentorsplusangels-data.s3.amazonaws.com/images/GracielaBW.jpg'
     },
