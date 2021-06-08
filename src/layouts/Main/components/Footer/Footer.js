@@ -4,13 +4,10 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Typography,
-  IconButton,
   Grid,
   List,
   ListItem,
 } from '@material-ui/core';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import TwitterIcon from '@material-ui/icons/Twitter';
 import logo from 'assets/images/logo_inv.png'
 
 import { Image } from 'components/atoms';
@@ -82,7 +79,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   menuGroupTitle: {
-    cursor:'pointer',
+    cursor: 'pointer',
     textTransform: 'uppercase',
     color: 'white',
   },
@@ -107,45 +104,37 @@ const Footer = props => {
             <List disablePadding>
               <ListItem disableGutters className={classes.logoContainerItem}>
                 <div className={classes.logoContainer} onClick={() => scrollTo('top')}>
-                    <Image
-                      className={classes.logoImage}
-                      src={logo}
-                      alt="M+A Logo"
-                      lazy={false}
-                    />
+                  <Image
+                    className={classes.logoImage}
+                    src={logo}
+                    alt="M+A Logo"
+                    lazy={false}
+                  />
                 </div>
-              </ListItem>
-              <ListItem disableGutters>
-                <IconButton className={classes.socialIcon}>
-                  <LinkedInIcon className={classes.icon} />
-                </IconButton>
-                <IconButton className={classes.socialIcon}>
-                  <TwitterIcon className={classes.icon} />
-                </IconButton>
               </ListItem>
             </List>
           </Grid>
           <Grid container item xs={12} md={10} direction="column" alignItems="flex-start" justify="space-around">
             <Grid container direction="row" justify="space-between">
-              <Typography variant="body2" className={classes.menuGroupTitle} onClick={()=>scrollTo('top')}>
+              <Typography variant="body2" className={classes.menuGroupTitle} onClick={() => scrollTo('top')}>
                 Home
                 </Typography>
-                <Typography variant="body2" className={classes.menuGroupTitle} onClick={()=>scrollTo('about')}>
+              <Typography variant="body2" className={classes.menuGroupTitle} onClick={() => scrollTo('about')}>
                 About
                 </Typography>
-                <Typography variant="body2" className={classes.menuGroupTitle} onClick={()=>scrollTo('services')}>
+              <Typography variant="body2" className={classes.menuGroupTitle} onClick={() => scrollTo('services')}>
                 What we Do
                 </Typography>
-                <Typography variant="body2" className={classes.menuGroupTitle} onClick={()=>scrollTo('team')}>
+              <Typography variant="body2" className={classes.menuGroupTitle} onClick={() => scrollTo('team')}>
                 Team
                 </Typography>
-                <Typography variant="body2" className={classes.menuGroupTitle} onClick={()=>scrollTo('contact')}>
+              <Typography variant="body2" className={classes.menuGroupTitle} onClick={() => scrollTo('contact')}>
                 Contact
                 </Typography>
             </Grid>
             <Typography variant="body2" className={classes.navLink}>
               Copyright © 2021 Mentors+Angels - All Rights Reserved
-                </Typography>
+            </Typography>
           </Grid>
         </Grid>
 
