@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Section, SectionAlternate } from 'components/organisms';
-import Button from '@material-ui/core/Button';
 import {
   Services,
   Hero,
@@ -9,7 +8,7 @@ import {
   Story,
   Team,
 } from './components';
-import { animateScroll, Element, scroller } from "react-scroll";
+import { Element } from "react-scroll";
 import { team } from './data';
 
 const useStyles = makeStyles(theme => ({
@@ -24,18 +23,6 @@ const useStyles = makeStyles(theme => ({
 
 const About = () => {
   const classes = useStyles();
-
-  const scrollToTop = () => {
-    animateScroll.scrollToTop()
-  }
-  const scrollToTeam = (ele) => {
-    scroller.scrollTo(ele, {
-      duration: 1000,
-      delay: 100,
-      smooth: true,
-      offset: 50
-    })
-  }
 
   return (
     <div className={classes.root}>
@@ -60,9 +47,6 @@ const About = () => {
           <Form />
         </SectionAlternate>
       </Element>
-      <Button variant="contained" onClick={scrollToTop}>To the top!</Button>
-      <Button variant="contained" onClick={() => scrollToTeam("team")}>To the team!</Button>
-
     </div>
   );
 };
