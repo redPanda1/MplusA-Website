@@ -5,6 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { DropzoneDialog } from 'material-ui-dropzone';
+import validate from 'validate.js';
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -22,6 +24,21 @@ const BasicsForm = ({formData, updateData}) => {
     const { email = "" } = formData
     const { company = "" } = formData
     const { files = [] } = formData
+
+
+    const emailChangeHandler = (emailValue) => {
+        console.log(emailValue)
+        const emailCheck = validate.single(emailValue, {presence: true, email: true})
+        console.log(emailCheck)
+        if (emailCheck) {
+            setEmailHelper(emailCheck[0])
+            updateData({'email': emailValue, 'dataError': true})
+        } else {
+            setEmailHelper("")
+            updateData({'email': emailValue, 'dataError': false})
+        }
+    }
+
 
     return (
         <React.Fragment>
@@ -62,8 +79,10 @@ const BasicsForm = ({formData, updateData}) => {
             <Grid item xs={12}>
                 <TextField
                     required
+                    error={!!emailHelper}
+                    helperText={emailHelper}
                     value={email}
-                    onChange={(e) => {updateData({'email': e.target.value})}}
+                    onChange={(e) => {emailChangeHandler(e.target.value)}}
                     id="email"
                     name="email"
                     label="Email"
@@ -85,10 +104,10 @@ const BasicsForm = ({formData, updateData}) => {
                 />
             </Grid>
             <Typography variant="h6" className={classes.question}>
-                Please upload your deck and/or video
+                Please upload your deck or video
             </Typography>
             <Typography>
-                (video, pdf or pptx files less than 10MB/file only)
+                (video, pdf or pptx files less than 20MB)
             </Typography>
             <Grid
                 container
@@ -123,10 +142,10 @@ const BasicsForm = ({formData, updateData}) => {
                 acceptedFiles={['video/*', 'application/pdf', 'application/vnd.ms-powerpoint', 'application/vnd.openxmlformats-officedocument.presentationml.presentation']}
                 initialFiles = {files}
                 cancelButtonText={"cancel"}
-                dialogTitle={"You may upload 1 or 2 files (pdf, ppt or video) each less than 10Mb"}
+                dialogTitle={"You may upload 1 file (pdf, ppt or video) less than 20Mb"}
                 submitButtonText={"add"}
-                filesLimit={2}
-                maxFileSize={10000000}
+                filesLimit={1}
+                maxFileSize={20000000}
                 open={open}
                 onClose={() => setOpen(false)}
                 onSave={(files) => {
