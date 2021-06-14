@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Typography, TextField, IconButton } from '@material-ui/core';
+import { Grid, Typography, TextField, IconButton, CircularProgress } from '@material-ui/core';
 import { SectionHeader } from 'components/molecules';
 import GetAppIcon from '@material-ui/icons/GetApp';
+import { ColorLensOutlined } from '@material-ui/icons';
+import Link from '@material-ui/core/Link';
 
+const DOMAIN = "https://aq2orp2ct9.execute-api.us-east-1.amazonaws.com/"
 
 
 const useStyles = makeStyles(theme => ({
@@ -13,11 +17,96 @@ const useStyles = makeStyles(theme => ({
     },
     answers: { paddingRight: theme.spacing(2), paddingLeft: theme.spacing(2) },
     answer: { marginTop: theme.spacing(2) },
-    downloadButton: {display: 'flex', justifyContent: 'center'}
+    downloadButton: { display: 'flex', justifyContent: 'center' },
+    spinner: { paddingTop: theme.spacing(2), display: 'flex', justifyContent: 'center' },
+    error: { color: "red" }
 }));
 
 const ReviewSubmission = () => {
     const classes = useStyles();
+    const { id } = useParams()
+    const [submissionData, setSubmissionData] = useState({});
+    const [spinner, setSpinner] = useState(false);
+    const [error, setError] = useState();
+
+    let fileUrl = ""
+    let fileName = ""
+    if (submissionData.files) {
+        if (submissionData.files.length > 0) {
+            fileUrl = submissionData.files[0]
+            fileName = fileUrl.split( '/' ).pop()
+        }
+    }
+    let name = ""
+    if (submissionData.givenName) {
+        name += submissionData.givenName
+        name += " "
+    }
+    if (submissionData.familyName) {
+        name += submissionData.familyName
+    }
+    const { email = "" } = submissionData
+    const { company = "" } = submissionData
+    const { problem = "" } = submissionData
+    const { customer = "" } = submissionData
+    const { technology = "" } = submissionData
+    const { solution = "" } = submissionData
+    const { progress = "" } = submissionData
+    const { reason = "" } = submissionData
+    const { mentorship = "" } = submissionData
+
+
+
+
+
+    console.log(id)
+
+
+    // Do once on page load -> Get Submission Data
+    useEffect(() => {
+        console.log("Start: Test API")
+        setSpinner(true)
+
+        getSubmission(id)
+            .then((response) => {
+                console.log("Return from call - status 200")
+                console.log(response)
+                setSpinner(false)
+                if (!response.success) {
+                    const message = `An error has occured: ${response.errorMessage}`
+                    throw new Error(message)
+                }
+                console.log("Submission retrieved OK")
+                console.log(response)
+                setSubmissionData(response.data)
+            })
+            .catch((error) => {
+                setSpinner(false)
+                setError(error.message)
+                console.log(error)
+            })
+
+    }, []);
+
+
+    const getSubmission = async (submissionID) => {
+        console.log("Start: getSubmissionAPI")
+        const url = `${DOMAIN}web/submission?id=${submissionID}`
+        const headers = new Headers();
+        headers.append('Content-Type', 'application/json')
+        const getResponse = await fetch(url, { method: 'GET', headers: headers })
+
+        console.log(`getSubmission returns`)
+        if (!getResponse.ok) {
+            console.log("ERROR: status")
+            const message = `An error has occured: ${getResponse.status}`
+            throw new Error(message)
+        }
+
+        console.log(`No Error - parsing JSON`)
+        return getResponse.json();
+
+    }
 
     const handleClick = () => {
         window.history.back();
@@ -29,7 +118,7 @@ const ReviewSubmission = () => {
                 <Grid item xs={12} md={4}>
                     <SectionHeader
                         label="Review Submission"
-                        title="Company Name"
+                        title={company}
                         titleProps={{
                             variant: 'h3',
                         }}
@@ -43,25 +132,25 @@ const ReviewSubmission = () => {
                 <Grid item xs={12} md={8}>
                     <Grid container direction="column" justify="flex-start" alignItems="center" className={classes.answers}>
                         <TextField className={classes.answer}
-                            value={"Name Person"}
+                            value={name}
                             label="Name"
                             variant="outlined"
                             fullWidth />
                         <TextField className={classes.answer}
-                            value={"email"}
+                            value={email}
                             label="Email"
                             variant="outlined"
                             fullWidth />
                         <Grid container direction="row" justify="space-between" alignItems="center" className={classes.answer}>
                             <Grid item xs={11}>
-                                <TextField 
-                                    value={"file name"}
+                                <TextField
+                                    value={fileName}
                                     label="Deck/Video"
                                     variant="outlined"
                                     fullWidth />
                             </Grid>
                             <Grid item xs={1} className={classes.downloadButton}>
-                                <IconButton>
+                                <IconButton component={Link} href={fileUrl}>
                                     <GetAppIcon />
                                 </IconButton>
 
@@ -69,37 +158,43 @@ const ReviewSubmission = () => {
 
                         </Grid>
                         <TextField className={classes.answer}
-                            value={"problem"}
+                            value={problem}
                             label="Problem"
                             variant="outlined"
                             multiline
                             fullWidth />
                         <TextField className={classes.answer}
-                            value={"solution"}
+                            value={solution}
                             label="Solution"
                             variant="outlined"
                             multiline
                             fullWidth />
                         <TextField className={classes.answer}
-                            value={"customer"}
+                            value={customer}
                             label="Customer"
                             variant="outlined"
                             multiline
                             fullWidth />
                         <TextField className={classes.answer}
-                            value={"technology"}
+                            value={technology}
                             label="Technology"
                             variant="outlined"
                             multiline
                             fullWidth />
                         <TextField className={classes.answer}
-                            value={"why"}
+                            value={progress}
+                            label="Progress"
+                            variant="outlined"
+                            multiline
+                            fullWidth />
+                        <TextField className={classes.answer}
+                            value={reason}
                             label="Why"
                             variant="outlined"
                             multiline
                             fullWidth />
                         <TextField className={classes.answer}
-                            value={"mentorship"}
+                            value={mentorship}
                             label="Mentorship"
                             variant="outlined"
                             multiline
@@ -107,6 +202,17 @@ const ReviewSubmission = () => {
                     </Grid>
                 </Grid>
             </Grid>
+            {spinner ? (<div className={classes.spinner}>
+                <CircularProgress />
+            </div>) : null}
+            {error && (
+                <Typography variant="h5">
+                    <span className={error}>
+                        {error}
+                    </span>
+                </Typography>
+            )}
+
         </div>
     );
 };
