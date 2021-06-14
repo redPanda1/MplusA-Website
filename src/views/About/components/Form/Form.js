@@ -6,15 +6,18 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import {
     useMediaQuery,
-    Grid,
     Typography,
-    TextField,
     Button,
 } from '@material-ui/core';
 import { SectionHeader } from 'components/molecules';
 import BasicsForm from './BasicsForm'
 import BusinessForm from './BusinessForm'
 import ChallengesForm from './ChallengesForm'
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Backdrop from '@material-ui/core/Backdrop';
+
+
+const DOMAIN = "https://aq2orp2ct9.execute-api.us-east-1.amazonaws.com/"
 
 
 const useStyles = makeStyles(theme => ({
@@ -43,7 +46,12 @@ const useStyles = makeStyles(theme => ({
         marginTop: theme.spacing(3),
         marginLeft: theme.spacing(1),
     },
-    question: { marginTop: theme.spacing(4) }
+    question: { marginTop: theme.spacing(4) },
+    backdrop: {
+        zIndex: theme.zIndex.drawer + 1,
+        color: '#fff',
+    },
+    textError: { color: "red" },
 }));
 
 const steps = ['Basics', 'Business', 'Challenges'];
@@ -59,30 +67,116 @@ const Form = props => {
 
     const [activeStep, setActiveStep] = useState(0);
     const [formData, setFormData] = useState({});
+    const [error, setError] = useState(false);
+    const [spinner, setSpinner] = useState(false);
+
 
     const updateData = (data) => {
         const updatedFormData = { ...formData, ...data }
         setFormData(updatedFormData)
     }
 
+    // Work out next step for the form
     const getStepContent = (step) => {
         switch (step) {
             case 0:
-                return <BasicsForm formData={formData} updateData={updateData}/>;
+                return <BasicsForm formData={formData} updateData={updateData} />;
             case 1:
-                return <BusinessForm formData={formData} updateData={updateData}/>;
+                return <BusinessForm formData={formData} updateData={updateData} />;
             case 2:
-                return <ChallengesForm formData={formData} updateData={updateData}/>;
+                return <ChallengesForm formData={formData} updateData={updateData} />;
             default:
                 throw new Error('Unknown step');
         }
     }
-    
+
+    const submitData = () => {
+        console.log("Start: Test API")
+        setSpinner(true)
+
+        const companyName = formData.company.replaceAll(" ", "")
+        const path = `uploads/${companyName}`
+
+        uploadFiles({ files: formData.files, path })
+            .then((response1) => {
+                if (!response1.success) {
+                    const message = `An error has occured: ${response1.errorMessage = "File upload error"}`
+                    throw new Error(message)
+                }
+                console.log("Files loaded OK")
+                console.log(response1)
+                let uploadData = { ...formData, files: [response1.fileName] }
+                delete uploadData.dataError
+                console.log(uploadData)
+                return uploadSubmissionAPI({ data: uploadData })
+            })
+            .then((response2) => {
+                setSpinner(false)
+                console.log("Submission created OK")
+                console.log(response2)
+            })
+            .catch((error) => {
+                setSpinner(false)
+                setError(true)
+                console.log(error)
+            })
+
+    }
+
+    const uploadFiles = ({ files, path }) => {
+        console.log("Start: Upload files")
+        // We are only uploading one file for now
+        return uploadFileAPI(files[0], path)
+    }
+
+    const uploadFileAPI = async (file, path) => {
+        console.log("Start: uploadFileAPI")
+
+        const fileName = file.name.replaceAll(" ", "")
+        const url = `${DOMAIN}file?path=${path}&name=${fileName}`
+        const headers = new Headers();
+        headers.append('Content-Type', file.type)
+        console.log(`Call Upload File API: ${url}`)
+        const upload1 = await fetch(url, { method: 'POST', headers: headers, body: file })
+
+        console.log(`uploadFile returns`)
+        if (!upload1.ok) {
+            console.log("ERROR: status")
+            const message = `An error has occured: ${upload1.status}`
+            throw new Error(message)
+        }
+
+        console.log(`No Error - parsing JSON`)
+        return upload1.json();
+
+    }
+
+    const uploadSubmissionAPI = async ({ data }) => {
+        console.log("Start: Test API")
+
+        const url = `${DOMAIN}web/submission`
+        const headers = new Headers();
+        headers.append('Content-Type', "application/json")
+        console.log(`Call Create Submission API: ${url}`)
+
+        const submissionAPI = await fetch(url, { method: 'POST', headers: headers, body: JSON.stringify(data) })
+
+        if (!submissionAPI.ok) {
+            console.log("ERROR: status")
+            const message = `An error has occured: ${submissionAPI.status}`
+            throw new Error(message)
+        }
+
+        console.log(`No Error - parsing JSON`)
+        return submissionAPI.json();
+    }
+
     const handleNext = () => {
         // Check for submission
         if (activeStep === steps.length - 1) {
             console.log("Submit data - call API")
             console.log(formData)
+            submitData()
         }
         setActiveStep(activeStep + 1);
     };
@@ -98,8 +192,9 @@ const Form = props => {
                 const { familyName = "" } = formData
                 const { email = "" } = formData
                 const { company = "" } = formData
-                const { files = [] } = formData            
-                if (givenName.length >0 && familyName.length >0 && email.length >0 && company.length >0 && files.length >0) {
+                const { dataError = false } = formData
+                const { files = [] } = formData
+                if (givenName.length > 0 && familyName.length > 0 && email.length > 0 && company.length > 0 && files.length > 0 && !dataError) {
                     return false
                 }
                 return true
@@ -107,16 +202,15 @@ const Form = props => {
                 const { problem = "" } = formData
                 const { solution = "" } = formData
                 const { customer = "" } = formData
-                const { technology = "" } = formData
                 const { progress = "" } = formData
-                if (problem.length >0 && solution.length >0 && customer.length >0 && technology.length >0 && progress.length >0) {
+                if (problem.length > 0 && solution.length > 0 && customer.length > 0 && progress.length > 0) {
                     return false
                 }
                 return true
             case 2:
                 const { reason = "" } = formData
                 const { mentorship = "" } = formData
-                if (reason.length >0 && mentorship.length >0) {
+                if (reason.length > 0 && mentorship.length > 0) {
                     return false
                 }
                 return true
@@ -130,7 +224,7 @@ const Form = props => {
     const subTitle = (<Typography>
         <p>We want to work with the most dynamic, far-sighted and passionate under-represented founders.</p>
         <p>We hold office-hours style meetings with candidate companies to assess their needs, as well as provide advice.</p>
-        <p>If you think that you may qualify, please get in touch and we will get back to you within a few days:</p>
+        <p>If you think that you may qualify, please get in touch and we will get back to you within 72 hours:</p>
     </Typography>)
 
     return (
@@ -156,14 +250,25 @@ const Form = props => {
                 <React.Fragment>
                     {activeStep === steps.length ? (
                         <React.Fragment>
-                            <div className={classes.question}>
-                                <Typography variant="h5" gutterBottom>
-                                    Thank you for your submission.
-                             </Typography>
-                                <Typography variant="subtitle1">
-                                    We will be in touch within the next 72 hours.
-                            </Typography>
-                            </div>
+                            {!spinner && (
+                                <div>
+                                    <Typography variant="h5" gutterBottom>
+                                        Thank you for your submission.
+                                   </Typography>
+                                    {error ? (
+                                        <Typography variant="h5" className={classes.textError}>
+                                            Unfortunately but there was an error uploading your submission.
+                                            We're sorry for the inconvenience - please try again.
+                                        </Typography>
+                                    )
+                                        :
+                                        (
+                                            <Typography variant="subtitle1">
+                                                We will be in touch within the next 72 hours.
+                                            </Typography>
+                                        )}
+                                </div>
+                            )}
                         </React.Fragment>
                     ) : (
                         <React.Fragment>
@@ -189,6 +294,10 @@ const Form = props => {
                 </React.Fragment>
 
             </div>
+            <Backdrop className={classes.backdrop} open={spinner} >
+                <CircularProgress color="inherit" />
+            </Backdrop>
+
         </div>
     );
 };
