@@ -14,7 +14,7 @@ const Routes = () => (
             />
         )}
         />
-        <Route path="/submission/:id" render={matchProps => (
+        <Route path="/submission/:id" render={matchProps => ( 
             <WithLayout
                 {...matchProps}
                 component={ReviewSubmissionView}
