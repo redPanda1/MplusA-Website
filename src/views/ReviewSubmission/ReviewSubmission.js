@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Typography, TextField, IconButton, CircularProgress } from '@material-ui/core';
+import { Grid, Typography, TextField, IconButton, CircularProgress, Button } from '@material-ui/core';
 import { SectionHeader } from 'components/molecules';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import { ColorLensOutlined } from '@material-ui/icons';
 import Link from '@material-ui/core/Link';
+import Rating from '@material-ui/lab/Rating';
+import Box from '@material-ui/core/Box';
 
 const DOMAIN = "https://aq2orp2ct9.execute-api.us-east-1.amazonaws.com/"
-
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -19,7 +20,11 @@ const useStyles = makeStyles(theme => ({
     answer: { marginTop: theme.spacing(2) },
     downloadButton: { display: 'flex', justifyContent: 'center' },
     spinner: { paddingTop: theme.spacing(2), display: 'flex', justifyContent: 'center' },
-    error: { color: "red" }
+    error: { color: "red" },
+    endOfPage: {paddingBottom: theme.spacing(8), 
+                paddingTop: theme.spacing(4),
+                marginRight: theme.spacing(2),
+                marginLeft: theme.spacing(2)}
 }));
 
 const ReviewSubmission = () => {
@@ -28,13 +33,14 @@ const ReviewSubmission = () => {
     const [submissionData, setSubmissionData] = useState({});
     const [spinner, setSpinner] = useState(false);
     const [error, setError] = useState();
+    const [rating, setRating] = useState(0);
 
     let fileUrl = ""
     let fileName = ""
     if (submissionData.files) {
         if (submissionData.files.length > 0) {
             fileUrl = submissionData.files[0]
-            fileName = fileUrl.split( '/' ).pop()
+            fileName = fileUrl.split('/').pop()
         }
     }
     let name = ""
@@ -54,13 +60,6 @@ const ReviewSubmission = () => {
     const { progress = "" } = submissionData
     const { reason = "" } = submissionData
     const { mentorship = "" } = submissionData
-
-
-
-
-
-    console.log(id)
-
 
     // Do once on page load -> Get Submission Data
     useEffect(() => {
@@ -212,6 +211,37 @@ const ReviewSubmission = () => {
                     </span>
                 </Typography>
             )}
+
+            <Grid container direction="row" justify="space-between" alignItems="flex-end" className={classes.endOfPage}>
+                <Grid item xs={12} md={3}>
+                    <TextField className={classes.answer}
+                        label="Name"
+                        fullWidth />
+                </Grid>
+                <Grid item xs={12} md={2}>
+                    <Box borderColor="transparent">
+                        <Typography component="legend">Rate</Typography>
+                        <Rating
+                            name="rating"
+                            value={rating}
+                            onChange={(event, rating) => {
+                                setRating(rating);
+                            }}
+                        />
+                    </Box>                
+                    </Grid>
+                <Grid item xs={12} md={6}>
+                    <TextField className={classes.answer}
+                        label="Comments"
+                        multiline
+                        fullWidth />
+                </Grid>
+                <Grid item xs={12} md={1} >
+                    <Button variant="contained" color="primary">
+                        Rate
+                    </Button>
+                </Grid>
+            </Grid>
 
         </div>
     );
