@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography, TextField, IconButton, CircularProgress, Button } from '@material-ui/core';
 import { SectionHeader } from 'components/molecules';
 import GetAppIcon from '@material-ui/icons/GetApp';
-import { ColorLensOutlined } from '@material-ui/icons';
 import Link from '@material-ui/core/Link';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
@@ -85,7 +84,7 @@ const ReviewSubmission = () => {
                 console.log(error)
             })
 
-    }, []);
+    }, [id]);
 
 
     const getSubmission = async (submissionID) => {
@@ -106,10 +105,6 @@ const ReviewSubmission = () => {
         return getResponse.json();
 
     }
-
-    const handleClick = () => {
-        window.history.back();
-    };
 
     return (
         <div className={classes.root}>

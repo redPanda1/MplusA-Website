@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     overflow: 'hidden',
   },
   image: {
-    minHeight: 400,
+    minHeight: 300,
     objectFit: 'cover',
     [theme.breakpoints.down('sm')]: {
       width: 'auto',
@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
     position: 'absolute',
     top: '12%',
     left: '50%',
-    transform: 'translate(-50%, -50%)',
+    transform: 'translate(-50%, -40%)',
     paddingTop: 0,
     paddingBottom: 0,
   },

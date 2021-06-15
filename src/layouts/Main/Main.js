@@ -30,9 +30,9 @@ const Main = ({ children, themeToggler, themeMode }) => {
   const classes = useStyles();
 
   const theme = useTheme();
-  const isMd = useMediaQuery(theme.breakpoints.up('md'), {
-    defaultMatches: true,
-  });
+  // const isMd = useMediaQuery(theme.breakpoints.up('md'), {
+  //   defaultMatches: true,
+  // });
 
   const pages = {
         company: {
@@ -46,7 +46,7 @@ const Main = ({ children, themeToggler, themeMode }) => {
         }
   };
 
-  const [openSidebar, setOpenSidebar] = useState(false);
+  // const [openSidebar, setOpenSidebar] = useState(false);
 
   const scrollTo = (ele) => {
     if (ele === "top") {
@@ -62,29 +62,24 @@ const Main = ({ children, themeToggler, themeMode }) => {
   }
 
 
-  const handleSidebarOpen = () => {
-    setOpenSidebar(true);
-  };
+  // const handleSidebarOpen = () => {
+  //   setOpenSidebar(true);
+  // };
 
-  const handleSidebarClose = () => {
-    setOpenSidebar(false);
-  };
+  // const handleSidebarClose = () => {
+  //   setOpenSidebar(false);
+  // };
 
-  const open = isMd ? false : openSidebar;
+  // const open = isMd ? false : openSidebar;
 
   return (
-    <div
-      className={clsx({
-        [classes.root]: true,
-      })}
-    >
-      <Topbar onSidebarOpen={handleSidebarOpen} pages={pages} scrollTo={scrollTo}/>
-      <Sidebar
-        onClose={handleSidebarClose}
-        open={open}
-        variant="temporary"
-        pages={pages}
-      />
+    // <div
+    //   className={clsx({
+    //     [classes.root]: true,
+    //   })}
+    // >
+      <div>
+      <Topbar pages={pages} scrollTo={scrollTo}/>
       <main>
         <Divider />
         <Hero />

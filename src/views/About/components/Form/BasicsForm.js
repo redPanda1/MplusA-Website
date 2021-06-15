@@ -115,11 +115,11 @@ const BasicsForm = ({formData, updateData}) => {
                 alignItems="center"
             >                <Grid item xs={9}>
                     <TextField
-                        value={files.length === 0 ? "" : (`${files.length} files(s) selected`)}
+                        value={files.length === 0 ? "" : (`${files.length} file selected`)}
                         required
                         id="files"
-                        name="files"
-                        label="Files chosen"
+                        name="file"
+                        label="File chosen"
                         fullWidth
                         disabled="true"
                     />
@@ -130,13 +130,11 @@ const BasicsForm = ({formData, updateData}) => {
                         <Button variant="contained" color="primary" onClick={() => {
                             console.log(files)
                             setOpen(true)}}>
-                            Add Files
+                            Add File
                  </Button>
                     </div>
                 </Grid>
             </Grid>
-
-
 
             <DropzoneDialog
                 acceptedFiles={['video/*', 'application/pdf', 'application/vnd.ms-powerpoint', 'application/vnd.openxmlformats-officedocument.presentationml.presentation']}
