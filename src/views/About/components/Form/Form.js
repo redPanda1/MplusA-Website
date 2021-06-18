@@ -297,7 +297,6 @@ const Form = props => {
             <Backdrop className={classes.backdrop} open={spinner} >
                 <CircularProgress color="inherit" />
             </Backdrop>
-
         </div>
     );
 };

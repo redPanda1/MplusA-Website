@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { useMediaQuery, Divider } from '@material-ui/core';
-import { Topbar, Footer, Sidebar } from './components';
+import { makeStyles } from '@material-ui/core/styles';
+import { Divider } from '@material-ui/core';
+import { Topbar, Footer } from './components';
 import {
   Services,
   Hero,
@@ -29,11 +28,6 @@ const useStyles = makeStyles(theme => ({
 const Main = ({ children, themeToggler, themeMode }) => {
   const classes = useStyles();
 
-  const theme = useTheme();
-  // const isMd = useMediaQuery(theme.breakpoints.up('md'), {
-  //   defaultMatches: true,
-  // });
-
   const pages = {
         company: {
           groupTitle: 'Company',
@@ -45,8 +39,6 @@ const Main = ({ children, themeToggler, themeMode }) => {
           ],
         }
   };
-
-  // const [openSidebar, setOpenSidebar] = useState(false);
 
   const scrollTo = (ele) => {
     if (ele === "top") {
@@ -61,23 +53,7 @@ const Main = ({ children, themeToggler, themeMode }) => {
     }
   }
 
-
-  // const handleSidebarOpen = () => {
-  //   setOpenSidebar(true);
-  // };
-
-  // const handleSidebarClose = () => {
-  //   setOpenSidebar(false);
-  // };
-
-  // const open = isMd ? false : openSidebar;
-
   return (
-    // <div
-    //   className={clsx({
-    //     [classes.root]: true,
-    //   })}
-    // >
       <div>
       <Topbar pages={pages} scrollTo={scrollTo}/>
       <main>
