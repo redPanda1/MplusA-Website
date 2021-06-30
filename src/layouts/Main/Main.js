@@ -15,7 +15,6 @@ import { team } from 'views/About/data';
 import { Section, SectionAlternate } from 'components/organisms';
 
 
-
 const useStyles = makeStyles(theme => ({
   root: {
     height: '100%',
@@ -39,8 +38,6 @@ const Main = ({ children, themeToggler, themeMode }) => {
         }
   };
 
-  // const [openSidebar, setOpenSidebar] = useState(false);
-
   const scrollTo = (ele) => {
     if (ele === "top") {
       animateScroll.scrollToTop()
@@ -54,23 +51,7 @@ const Main = ({ children, themeToggler, themeMode }) => {
     }
   }
 
-
-  // const handleSidebarOpen = () => {
-  //   setOpenSidebar(true);
-  // };
-
-  // const handleSidebarClose = () => {
-  //   setOpenSidebar(false);
-  // };
-
-  // const open = isMd ? false : openSidebar;
-
   return (
-    // <div
-    //   className={clsx({
-    //     [classes.root]: true,
-    //   })}
-    // >
       <div>
       <Topbar pages={pages} scrollTo={scrollTo}/>
       <main>

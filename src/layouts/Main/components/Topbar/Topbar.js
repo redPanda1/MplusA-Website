@@ -152,7 +152,7 @@ const Topbar = ({ onSidebarOpen, pages, className, scrollTo, ...rest }) => {
               color="secondary"
               variant="outlined"
               onClick={()=>scrollTo("contact")}>
-              Contact
+              Apply
             </Button>
           </ListItem>
         </List>
