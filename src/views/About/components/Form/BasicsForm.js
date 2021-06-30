@@ -176,10 +176,10 @@ const BasicsForm = ({formData, updateData}) => {
                 acceptedFiles={['video/*', 'application/pdf', 'application/vnd.ms-powerpoint', 'application/vnd.openxmlformats-officedocument.presentationml.presentation']}
                 initialFiles = {files}
                 cancelButtonText={"cancel"}
-                dialogTitle={"You may upload 1 file (pdf, ppt or video) less than 20Mb"}
+                dialogTitle={"You may upload 1 file (pdf, ppt or video) less than 10Mb"}
                 submitButtonText={"add"}
                 filesLimit={1}
-                maxFileSize={20000000}
+                maxFileSize={10000000}
                 open={open}
                 onClose={() => setOpen(false)}
                 onSave={(files) => {

@@ -94,7 +94,8 @@ const Form = props => {
         console.log("Start: Test API")
         setSpinner(true)
 
-        const companyName = formData.company.replaceAll(" ", "")
+        let companyName = formData.company.replace(/[&\/\\#,+()$~%.'"@:*?<>{}]/g, '')
+        companyName = companyName.replaceAll(" ", "-")
         const path = `uploads/${companyName}`
 
         uploadFiles({ files: formData.files, path })
@@ -219,8 +220,6 @@ const Form = props => {
                 throw new Error('Unknown step');
         }
     }
-
-
 
     const subTitle = (<Typography>
         <p>We want to work with the most dynamic, far-sighted and passionate under-represented founders.</p>
