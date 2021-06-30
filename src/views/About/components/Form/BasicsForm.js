@@ -19,10 +19,12 @@ const BasicsForm = ({formData, updateData}) => {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
     const [emailHelper, setEmailHelper] = useState('');
+    const [urlHelper, setUrlHelper] = useState('');
     const { givenName = "" } = formData
     const { familyName = "" } = formData
     const { email = "" } = formData
     const { company = "" } = formData
+    const { website = "" } = formData
     const { files = [] } = formData
 
 
@@ -39,12 +41,28 @@ const BasicsForm = ({formData, updateData}) => {
         }
     }
 
+    const urlChangeHandler = (urlValue) => {
+        if (urlValue.length === 0) {
+            setUrlHelper("")
+            updateData({'website': "", 'dataError': false})
+            return
+        }
+        const checkUrl = validate({website: urlValue}, {website: {url: true}});
+        if (checkUrl) {
+            setUrlHelper(checkUrl.website)
+            updateData({'website': urlValue, 'dataError': true})
+        } else {
+            setUrlHelper("")
+            updateData({'website': urlValue, 'dataError': false})
+        }
+    }
+
 
     return (
         <React.Fragment>
             <div className={classes.question}>
                 <Typography variant="h6" >
-                    Please tell us you name
+                    Please tell us your name
                 </Typography>
             </div>
             <Grid container spacing={3}>
@@ -86,6 +104,7 @@ const BasicsForm = ({formData, updateData}) => {
                     id="email"
                     name="email"
                     label="Email"
+                    type="email"
                     fullWidth
                 />
             </Grid>
@@ -100,6 +119,23 @@ const BasicsForm = ({formData, updateData}) => {
                     id="company"
                     name="company name"
                     label="Company Name"
+                    fullWidth
+                />
+            </Grid>
+            <Typography variant="h6" className={classes.question}>
+                If you have a website, please let us know
+            </Typography>
+            <Grid item xs={12}>
+                <TextField
+                    value={website}
+                    error={!!urlHelper}
+                    helperText={urlHelper}
+                    onChange={(e) => {urlChangeHandler(e.target.value)}}
+                    id="website"
+                    name="website"
+                    label="Website"
+                    placeholder="https://example.com"
+                    type="url"
                     fullWidth
                 />
             </Grid>

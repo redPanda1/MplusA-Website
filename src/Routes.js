@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import WithLayout from './WithLayout';
 import { Main as MainLayout, Minimal as MinimalLayout } from './layouts';
 import { About as AboutView, NotFoundCover as NotFoundCoverView, ReviewSubmission as ReviewSubmissionView} from './views'
+import { Troubleshoot as TroubleshootView} from './views'
 
 const Routes = () => (
     <Switch>
@@ -27,6 +28,15 @@ const Routes = () => (
                 <WithLayout
                     {...matchProps}
                     component={NotFoundCoverView}
+                    layout={MinimalLayout}
+                />
+            )}
+        />
+        <Route exact path="/troubleshoot"
+            render={matchProps => (
+                <WithLayout
+                    {...matchProps}
+                    component={TroubleshootView}
                     layout={MinimalLayout}
                 />
             )}

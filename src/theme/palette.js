@@ -9,6 +9,7 @@ export const light = {
     "main": "#3f51b5",
     "light": "rgb(71, 145, 219)",
     "dark": "rgb(17, 82, 147)",
+    "background": "#000044",
     "contrastText": "#fff"
   },
   "secondary": {

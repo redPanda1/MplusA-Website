@@ -67,7 +67,7 @@ const Form = props => {
 
     const [activeStep, setActiveStep] = useState(0);
     const [formData, setFormData] = useState({});
-    const [error, setError] = useState(false);
+    const [error, setError] = useState("");
     const [spinner, setSpinner] = useState(false);
 
 
@@ -116,9 +116,10 @@ const Form = props => {
                 console.log(response2)
             })
             .catch((error) => {
-                setSpinner(false)
-                setError(true)
+                console.log("Catch - Error")
                 console.log(error)
+                setSpinner(false)
+                setError(error.message)
             })
 
     }
@@ -147,7 +148,7 @@ const Form = props => {
         }
 
         console.log(`No Error - parsing JSON`)
-        return upload1.json();
+        return await upload1.json();
 
     }
 
@@ -168,7 +169,7 @@ const Form = props => {
         }
 
         console.log(`No Error - parsing JSON`)
-        return submissionAPI.json();
+        return await submissionAPI.json();
     }
 
     const handleNext = () => {
@@ -254,12 +255,17 @@ const Form = props => {
                                 <div>
                                     <Typography variant="h5" gutterBottom>
                                         Thank you for your submission.
-                                   </Typography>
-                                    {error ? (
-                                        <Typography variant="h5" className={classes.textError}>
-                                            Unfortunately but there was an error uploading your submission.
-                                            We're sorry for the inconvenience - please try again.
-                                        </Typography>
+                                    </Typography>
+                                    {error.length > 0 ? (
+                                        <div>
+                                            <Typography variant="h5" className={classes.textError}>
+                                                <p>We apologize but there was an error uploading your submission.</p>
+                                                <p>Error: {error}</p>
+                                            </Typography>
+                                            <Typography className={classes.textError}>
+                                                <p>If this problem persists please contact simon.hopkins@mac.com</p>
+                                            </Typography>
+                                        </div>
                                     )
                                         :
                                         (

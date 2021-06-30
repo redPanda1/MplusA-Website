@@ -9,6 +9,9 @@ const getTheme = mode => responsiveFontSizes(
     },
     typography: {
       fontFamily: 'Lato',
+      button: {
+        textTransform: 'none'
+      },
     },
     zIndex: {
       appBar: 1200,
