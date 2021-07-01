@@ -47,6 +47,9 @@ const BasicsForm = ({formData, updateData}) => {
             updateData({'website': "", 'dataError': false})
             return
         }
+        if (urlValue.substring(0,3) === "www") {
+            urlValue = "https://" + urlValue
+        }
         const checkUrl = validate({website: urlValue}, {website: {url: true}});
         if (checkUrl) {
             setUrlHelper(checkUrl.website)
