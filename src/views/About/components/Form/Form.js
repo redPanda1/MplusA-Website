@@ -19,7 +19,6 @@ import Backdrop from '@material-ui/core/Backdrop';
 
 const DOMAIN = "https://aq2orp2ct9.execute-api.us-east-1.amazonaws.com/"
 
-
 const useStyles = makeStyles(theme => ({
     form: {
         maxWidth: 550,
@@ -70,7 +69,6 @@ const Form = props => {
     const [error, setError] = useState("");
     const [spinner, setSpinner] = useState(false);
 
-
     const updateData = (data) => {
         const updatedFormData = { ...formData, ...data }
         setFormData(updatedFormData)
@@ -91,71 +89,129 @@ const Form = props => {
     }
 
     const submitData = () => {
-        console.log("Start: Test API")
         setSpinner(true)
-
         let companyName = formData.company.replace(/[&\/\\#,+()$~%.'"@:*?<>{}]/g, '')
         companyName = companyName.replaceAll(" ", "-")
         const path = `uploads/${companyName}`
 
-        uploadFiles({ files: formData.files, path })
-            .then((response1) => {
-                if (!response1.success) {
-                    const message = `An error has occured: ${response1.errorMessage = "File upload error"}`
-                    throw new Error(message)
-                }
-                console.log("Files loaded OK")
-                console.log(response1)
-                let uploadData = { ...formData, files: [response1.fileName] }
-                delete uploadData.dataError
-                console.log(uploadData)
-                return uploadSubmissionAPI({ data: uploadData })
-            })
-            .then((response2) => {
-                setSpinner(false)
-                console.log("Submission created OK")
-                console.log(response2)
-            })
-            .catch((error) => {
-                console.log("Catch - Error")
-                console.log(error)
-                setSpinner(false)
-                setError(error.message)
-            })
+        // Steps:
+        // 1. Prepare Form Data
+        // 2. Get s3 upload URLs
+        // 3. Upload files
+        // 4. Upload Submission
+        console.log("<<<< Prepare Form Data")
+        //  First check for null/empty values & remove control fields (i.e. dataError)
+        let uploadData = Object.fromEntries(Object.entries(formData).filter(([k, v]) => {
+            if (k === "dataError") return false
+            if (v === null ) return false
+            if (typeof v === 'string' && v.length === 0) return false
+            return true
+        }));
+        console.log(uploadData)
 
+        console.log("<<<< Getting URLs")
+        getUploadUrls({ files: formData.files, path })
+        .then((fileURLs) => {
+            console.log(fileURLs)
+            console.log("<<<< Uploading Files")
+            return uploadFiles({files: formData.files, fileURLs })
+        })
+        .then((s3Locations) => {
+            console.log("<<<< Creating Submission")
+            // Update with s3 file locations
+            console.log(s3Locations)
+            uploadData.files = s3Locations 
+            console.log(uploadData)
+            return uploadSubmissionAPI({ data: uploadData })
+        })
+        .then((response) => {
+            console.log("<<<< All Done: Submission created OK")
+            setSpinner(false)
+            console.log(response)
+        })
+        .catch((error) => {
+            console.log("<<<< Catch - Error")
+            console.log(error)
+            setSpinner(false)
+            setError(error.message)
+        })
     }
 
-    const uploadFiles = ({ files, path }) => {
-        console.log("Start: Upload files")
-        // We are only uploading one file for now
-        return uploadFileAPI(files[0], path)
-    }
-
-    const uploadFileAPI = async (file, path) => {
-        console.log("Start: uploadFileAPI")
-
-        const fileName = file.name.replaceAll(" ", "")
-        const url = `${DOMAIN}file?path=${path}&name=${fileName}`
-        const headers = new Headers();
-        headers.append('Content-Type', file.type)
-        console.log(`Call Upload File API: ${url}`)
-        const upload1 = await fetch(url, { method: 'POST', headers: headers, body: file })
-
-        console.log(`uploadFile returns`)
-        if (!upload1.ok) {
-            console.log("ERROR: status")
-            const message = `An error has occured: ${upload1.status}`
-            throw new Error(message)
+    // Call API to get pre-signed URLs to upload files to s3
+    const getUploadUrls = async ({ files, path }) => {
+        let urlArray = []
+        for (const file of files) {
+            const fileName = file.name.replaceAll(" ", "")
+            const url = `${DOMAIN}file/geturl?path=${path}&name=${fileName}&mimeType=${file.type}`
+            const headers = new Headers();
+            headers.append('Content-Type', file.type)
+            console.log(`Call Get URL API: ${url}`)
+            const getURL = await fetch(url, { method: 'GET', headers: headers })
+            if (!getURL.ok) {
+                console.log("ERROR: status")
+                const message = `An error has occured: ${getURL.status}`
+                throw new Error(message)
+            }
+    
+            const responseJson = await getURL.json();
+            console.log(responseJson)
+            if (!responseJson.success || !responseJson.data) {
+                const message = `An error has occured: ${responseJson.errorMessage || "Failed to get URL"}`
+                throw new Error(message)
+            }
+            urlArray.push(responseJson.data.url)
         }
-
-        console.log(`No Error - parsing JSON`)
-        return await upload1.json();
-
+        return urlArray
     }
 
-    const uploadSubmissionAPI = async ({ data }) => {
-        console.log("Start: Test API")
+    // *** DEPRICATED IN FAVOR OF PRE-SIGNED UPLOAD
+    // const uploadFileAPI = async (file, path) => {
+    //     console.log("Start: uploadFileAPI")
 
+    //     const fileName = file.name.replaceAll(" ", "")
+    //     const url = `${DOMAIN}file?path=${path}&name=${fileName}`
+    //     const headers = new Headers();
+    //     headers.append('Content-Type', file.type)
+    //     console.log(`Call Upload File API: ${url}`)
+    //     const upload1 = await fetch(url, { method: 'POST', headers: headers, body: file })
+
+    //     console.log(`uploadFile returns`)
+    //     if (!upload1.ok) {
+    //         console.log("ERROR: status")
+    //         const message = `An error has occured: ${upload1.status}`
+    //         throw new Error(message)
+    //     }
+
+    //     console.log(`No Error - parsing JSON`)
+    //     return await upload1.json();
+    // }
+
+    // Using pre-signed URL upload file to s3
+    const uploadFiles =  async ({files, fileURLs}) => {
+        console.log("Start: uploadFiles")
+        console.log(files)
+        let s3Locations = []
+        for (var i = 0; i < files.length; i++) {
+            console.log(`Index: ${i}`);
+            const file = formData.files[i] 
+            const fileURL = fileURLs[i]
+            console.log(file)
+            console.log(fileURL)
+            const headers = new Headers();
+            headers.append('Content-Type', file.type)
+            const uploadResponse = await fetch(fileURL, { method: 'PUT', headers: headers , body: file})
+            if (!uploadResponse.ok) {
+                console.log("ERROR: status")
+                const message = `An error has occured: ${uploadResponse.status}`
+                throw new Error(message)
+            }
+            s3Locations.push(fileURL.split("?")[0])
+        }
+        return s3Locations
+    }    
+
+    // Create submission record in dynamoDB once file url's are known
+    const uploadSubmissionAPI = async ({ data }) => {
         const url = `${DOMAIN}web/submission`
         const headers = new Headers();
         headers.append('Content-Type', "application/json")
