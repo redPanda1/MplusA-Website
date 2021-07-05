@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Link from '@material-ui/core/Link';
 import IconButton from '@material-ui/core/IconButton';
 import LaunchIcon from '@material-ui/icons/Launch'
-import GetAppIcon from '@material-ui/icons/GetApp';
 import {
   useMediaQuery,
   Grid,
@@ -12,6 +10,7 @@ import {
   TextField,
   Divider,
 } from '@material-ui/core';
+import FileLine from './FileLine'
 
 const useStyles = makeStyles(theme => ({
   inputTitle: {
@@ -28,6 +27,7 @@ const Submission = props => {
   const { company = "" } = submissionData
   const { problem = "" } = submissionData
   const { website = "" } = submissionData
+  const { files = [] } = submissionData
   const { contact = "" } = submissionData
   const { customer = "" } = submissionData
   const { technology = "" } = submissionData
@@ -36,14 +36,6 @@ const Submission = props => {
   const { reason = "" } = submissionData
   const { mentorship = "" } = submissionData
 
-  let fileUrl = ""
-  let fileName = ""
-  if (submissionData.files) {
-      if (submissionData.files.length > 0) {
-          fileUrl = submissionData.files[0]
-          fileName = fileUrl.split('/').pop()
-      }
-  }
   let name = ""
   if (submissionData.givenName) {
       name += submissionData.givenName
@@ -116,7 +108,7 @@ const Submission = props => {
                 fullWidth
               />
             </Grid>
-            <Grid item md={1} xs={1} className={classes.linkButton}>
+            <Grid item md={1} xs={1}>
               <IconButton color="primary" onClick={() => {
                 window.open(website, '_blank');
               }}>
@@ -189,38 +181,15 @@ const Submission = props => {
             fullWidth
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <Typography
-            variant="subtitle1"
-            color="textPrimary"
-            className={classes.inputTitle}
-          >
-            Deck/Video
+        <Grid item xs={12}>
+          <Typography variant="h6" color="textPrimary">
+            Files
           </Typography>
-          <Grid container>
-            <Grid item xs={11} md={11}>
-              <TextField
-                inputProps={{
-                  readOnly: Boolean(true),
-                  disabled: Boolean(true),
-                }}
-                value={fileName}
-                placeholder="file"
-                variant="outlined"
-                size="medium"
-                name="deck/video"
-                type="text"
-                fullWidth
-              />
-            </Grid>
-            <Grid item md={1} xs={1} className={classes.linkButton}>
-              <IconButton color="primary" component={Link} href={fileUrl}>
-                <GetAppIcon />
-              </IconButton>
-            </Grid>
-          </Grid>
         </Grid>
-        
+        <Grid item xs={12}>
+          <Divider />
+        </Grid>
+        {files.map((file) => (<FileLine fileUrl={file}/>))}        
         <Grid item xs={12}>
           <Typography variant="h6" color="textPrimary">
             Business Information
