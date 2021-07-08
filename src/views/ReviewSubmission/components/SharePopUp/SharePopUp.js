@@ -36,7 +36,7 @@ const DialogTitle = withStyles(styles)((props) => {
     <MuiDialogTitle disableTypography className={classes.root} {...other}>
       <Typography variant="h6">{children}</Typography>
       {onClose ? (
-        <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
+        <IconButton aria-label="close" className={classes.closeButton} onClick={() => onClose()}>
           <CloseIcon />
         </IconButton>
       ) : null}
@@ -66,8 +66,8 @@ const SharePopUp = ({ open, handleClose, companyName }) => {
 
 
   useEffect(() => { 
-    setTitle(`Review Submission From: ${companyName}`)
-    setMessage(`Hi,\nI thought that you would be interested in reviewing the submission that has been received from, ${companyName}.\nRegards,`)
+    setTitle(`💣 M+A Action Required: Submission From ${companyName}`)
+    setMessage(`Hi,\nWe believe that the application from ${companyName} falls within your area of expertise.\nKindly review the application within the next 48 hours.  Endri and I will follow up with the entrepreneur either inviting her/him to a 10 minute call on Thursday at 10:45am or politely passing on the opportunity.  We have committed to circle back to entrepreneurs within 72 hours from their submissions.\nThanks,\nGraciela and Endri`)
   }, [companyName] )
 
   const emailChangeHandler = (emailText) => {
@@ -90,7 +90,7 @@ const SharePopUp = ({ open, handleClose, companyName }) => {
   return (
     <div>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle id="change password modal" onClose={handleClose}>
+        <DialogTitle id="share submission pop-up" onClose={handleClose}>
           Share Submission from: {companyName}
         </DialogTitle>
         <DialogContent dividers>
@@ -114,6 +114,7 @@ const SharePopUp = ({ open, handleClose, companyName }) => {
           <TextField
             value={title}
             id="title"
+            name="title"
             label="Message Title"
             type="text"
             onChange={(e) => setTitle(e.target.value)}
@@ -123,6 +124,7 @@ const SharePopUp = ({ open, handleClose, companyName }) => {
           <TextField
             value={message}
             id="message"
+            name="message"
             label="Message"
             type="text"
             multiline

@@ -118,26 +118,28 @@ const Footer = props => {
             <Grid container direction="row" justify="space-between">
               <Typography variant="body2" className={classes.menuGroupTitle} onClick={() => scrollTo('top')}>
                 Home
-                </Typography>
+              </Typography>
               <Typography variant="body2" className={classes.menuGroupTitle} onClick={() => scrollTo('about')}>
                 About
-                </Typography>
+              </Typography>
               <Typography variant="body2" className={classes.menuGroupTitle} onClick={() => scrollTo('services')}>
                 What we Do
-                </Typography>
+              </Typography>
               <Typography variant="body2" className={classes.menuGroupTitle} onClick={() => scrollTo('team')}>
                 Team
-                </Typography>
+              </Typography>
               <Typography variant="body2" className={classes.menuGroupTitle} onClick={() => scrollTo('contact')}>
                 Contact
-                </Typography>
+              </Typography>
+              <Typography variant="body2" className={classes.menuGroupTitle} component={'a'} href={"/admin/login"}>
+                Login
+              </Typography>
             </Grid>
             <Typography variant="body2" className={classes.navLink}>
               Copyright © 2021 Mentors+Angels - All Rights Reserved
             </Typography>
           </Grid>
         </Grid>
-
       </div>
     </div>
   );

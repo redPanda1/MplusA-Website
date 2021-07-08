@@ -19,28 +19,30 @@ const ReviewItem = ({ data, updateReview }) => {
     return (
         <React.Fragment>
             <Grid container direction="row" justify="space-between" alignItems="flex-start" >
-                <Grid item xs={4} md={3}>
+                <Grid item xs={5} md={3}>
                     <Box borderColor="transparent" component="fieldset">
                         <Typography component="legend">{data.name}</Typography>
                         <Rating
+                            name={data.name}
                             value={data.rating}
                             disabled={readOnly}
-                            onChange={(event, rating) => {
-                                updateReview({"categories": {"name": data.name, "rating": rating}})
+                            onChange={(_event, rating) => {
+                                updateReview({ "categories": { "name": data.name, "rating": rating } })
                             }}
                         />
                     </Box>
                 </Grid>
-                <Grid item xs={8} md={9}>
+                <Grid item xs={7} md={9}>
                     <TextField className={classes.answer}
+                        name={data.name}
                         label={data.name}
                         value={data.comment}
                         inputProps={{
                             readOnly: Boolean(readOnly),
                             disabled: Boolean(readOnly),
-                          }}
+                        }}
                         onChange={(e) => {
-                            updateReview({"categories": {"name": data.name, "comment": e.target.value}})
+                            updateReview({ "categories": { "name": data.name, "comment": e.target.value } })
                         }}
                         multiline
                         fullWidth />

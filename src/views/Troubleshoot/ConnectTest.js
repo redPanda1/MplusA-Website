@@ -77,6 +77,7 @@ const ConnectTest = () => {
                 <Grid item xs={8} sm={2} className={classes.statusField}>
                     <TextField variant="outlined"
                         label={"Status"}
+                        name={"status"}
                         value={status}
                         inputProps={{
                             readOnly: Boolean(true),
@@ -88,6 +89,7 @@ const ConnectTest = () => {
                 <Grid item xs={12} sm={8} className={classes.messageField}>
                     <TextField variant="outlined"
                         label={"Message/Error"}
+                        name={"messageError"}
                         value={message}
                         inputProps={{
                             readOnly: Boolean(true),

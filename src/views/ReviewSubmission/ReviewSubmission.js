@@ -4,8 +4,7 @@ import moment from 'moment'
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography, CircularProgress, Snackbar } from '@material-ui/core';
 import { SectionAlternate, CardBase } from 'components/organisms';
-import { Hero, Submission, Reviews } from './components';
-import SharePopUp from './components/SharePopUp';
+import { Hero, Submission, Reviews, Status, RejectPopUp, SharePopUp } from './components';
 import MuiAlert from '@material-ui/lab/Alert';
 
 const DOMAIN = "https://aq2orp2ct9.execute-api.us-east-1.amazonaws.com/"
@@ -79,7 +78,7 @@ const ratingTemplate = {
 
 
 // Call API to get Submission data
-const getSubmission = async (submissionID) => {
+const getSubmissionAPI = async (submissionID) => {
   console.log("Start: getSubmissionAPI")
   const url = `${DOMAIN}web/submission?id=${submissionID}`
   const headers = new Headers();
@@ -97,7 +96,7 @@ const getSubmission = async (submissionID) => {
 }
 
 // Call API to update Submission Data
-const updateSubmission = async (submissionData) => {
+const updateSubmissionAPI = async (submissionData) => {
   console.log("Start: updateSubmissionAPI")
   const url = `${DOMAIN}web/submission?id=${submissionData.id}`
   const headers = new Headers();
@@ -134,6 +133,25 @@ const callShareSubmissionAPI = async ({messageData, id}) => {
     return await getResponse.json();
 }
 
+
+const callSendRejectAPI = async ({id, messageData}) => {
+  const url = `${DOMAIN}email/reject?id=${id}`
+  const headers = new Headers();
+  headers.append('Content-Type', 'application/json')
+  console.log("Start: callSendRejectAPI " + url)
+  const getResponse = await fetch(url, { method: 'POST', headers: headers, body: JSON.stringify(messageData) })
+
+  console.log(`callSendRejectAPI returns`)
+  if (!getResponse.ok) {
+    console.log("ERROR: status")
+    const message = `An error has occured: ${getResponse.status}`
+    throw new Error(message)
+  }
+  console.log(`No Error - parsing JSON`)
+  return await getResponse.json();  
+}
+
+
 const ReviewSubmission = (props = {}) => {
   console.log("starting ReviewSubmission")
   const classes = useStyles();
@@ -142,9 +160,10 @@ const ReviewSubmission = (props = {}) => {
   const [newReview, setNewReview] = useState(ratingTemplate);
   const [userMessage, setUserMessage] = useState();
   const [spinner, setSpinner] = useState(false);
-  const [error, setError] = useState();
   const [reviewError, setReviewError] = useState();
   const [showSharePopUp, setShowSharePopUp] = useState(false);
+  const [showRejectPopUp, setShowRejectPopUp] = useState(false);
+
 
   const { reviews = [] } = submissionData
   const { company = "" } = submissionData
@@ -159,7 +178,7 @@ const ReviewSubmission = (props = {}) => {
     console.log("Start: Use Effect to get Submission")
     setSpinner(true)
 
-    getSubmission(id)
+    getSubmissionAPI(id)
       .then((response) => {
         console.log("Return from call - status 200")
         console.log(response)
@@ -174,9 +193,9 @@ const ReviewSubmission = (props = {}) => {
       })
       .catch((error) => {
         setSpinner(false)
-        setError(error.message)
         console.log(error)
-      })
+        setUserMessage({text: `${error.message}`, type:"error"})
+    })
 
   }, [id]);
 
@@ -224,18 +243,43 @@ const ReviewSubmission = (props = {}) => {
         })
         .catch((error) => {
           setSpinner(false)
-          setError(error.message)
           console.log(error)
+          setUserMessage({text: `${error.message}`, type:"error"})
         })
     }
   }
 
-
-
-
-  // User clicked Send Feedback Button
-  const sendFeedback = () => {
-    console.log("sendFeedback")
+  // User clicked Reject Button
+  const showRejectSubmission = () => {
+    console.log("rejectSubmission")
+    setShowRejectPopUp(true)
+  }
+  const closeRejectPopUp = (messageData) => {
+    setShowRejectPopUp(false)
+    console.log(messageData)
+    if (messageData) {
+      messageData.rejectionReasons = messageData.rejectionReasons.map((item) => item.text)
+      console.log(messageData)
+      callSendRejectAPI({messageData, id})
+        .then((response) => {
+          console.log("Return from Update call - status 200")
+          console.log(response)
+          setSpinner(false)
+          if (!response.success) {
+            const message = `An error has occured: ${response.errorMessage}`
+            throw new Error(message)
+          }
+          console.log("Email sent OK")
+          console.log(response)
+          setSubmissionData(response.data)
+          setUserMessage({text:"Email sent", type:"success"})
+        })
+        .catch((error) => {
+          setSpinner(false)
+          console.log(error)
+          setUserMessage({text: `${error.message}`, type:"error"})
+        })
+    }
   }
 
   // User clicked Submit Review Button
@@ -259,9 +303,13 @@ const ReviewSubmission = (props = {}) => {
       revisedSubmissionData.reviews = [updatedNewReview]
     }
 
+    const currentStatus = parseInt(revisedSubmissionData.status.charAt(0))
+    if (currentStatus < 2) {
+      revisedSubmissionData["status"] = "2-review"
+    }
     console.log(revisedSubmissionData)
 
-    updateSubmission(revisedSubmissionData)
+    updateSubmissionAPI(revisedSubmissionData)
       .then((response) => {
         console.log("Return from Update call - status 200")
         console.log(response)
@@ -278,9 +326,9 @@ const ReviewSubmission = (props = {}) => {
       })
       .catch((error) => {
         setSpinner(false)
-        setError(error.message)
         console.log(error)
-      })
+        setUserMessage({text: `${error.message}`, type:"error"})
+    })
   }
   const handleUserMessgaeClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -290,6 +338,12 @@ const ReviewSubmission = (props = {}) => {
     setUserMessage();
   };
 
+  // User clicked NextSteps Button
+  const showNextSteps = () => {
+    console.log("showNextSteps")
+    // setShowRejectPopUp(true)
+  }
+  
 
   return (
     <div className={classes.root}>
@@ -303,27 +357,26 @@ const ReviewSubmission = (props = {}) => {
           </Grid>
           <Grid item xs={12} md={12}>
             <CardBase withShadow align="left">
-              <Reviews reviewData={reviews} newReview={newReview} updateReview={updateReview} submitReview={submitReview} sendFeedback={sendFeedback} shareSubmission={shareSubmission} />
+              <Reviews reviewData={reviews} newReview={newReview} updateReview={updateReview} submitReview={submitReview} shareSubmission={shareSubmission} />
               {reviewError && <Typography variant="h5" className={classes.textError}>
                 {reviewError}
               </Typography>}
+            </CardBase>
+          </Grid>
+          <Grid item xs={12} md={12}>
+            <CardBase withShadow align="left">
+              <Status submissionData={submissionData} showReject={showRejectSubmission} showNextSteps={showNextSteps}/>
             </CardBase>
           </Grid>
         </Grid>
         {spinner ? (<div className={classes.spinner}>
           <CircularProgress />
         </div>) : null}
-        {error && (
-          <Typography variant="h5">
-            <span className={classes.textError}>
-              {error}
-            </span>
-          </Typography>
-        )}
       </SectionAlternate>
 
+      <RejectPopUp open={showRejectPopUp} handleClose={closeRejectPopUp} submissionData={submissionData} />
       <SharePopUp open={showSharePopUp} handleClose={closeSharePopUp} companyName={submissionData.company} />
-      <Snackbar open={userMessage} autoHideDuration={6000} onClose={handleUserMessgaeClose}>
+      <Snackbar open={!!userMessage} autoHideDuration={6000} onClose={handleUserMessgaeClose}>
         <Alert onClose={handleUserMessgaeClose} severity={userMessage ? userMessage.type : "success"}>
           {userMessage && userMessage.text} 
         </Alert>

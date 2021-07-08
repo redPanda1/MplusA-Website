@@ -59,12 +59,7 @@ const Reviews = props => {
           <ReviewBlock reviewData={newReview} updateReview={updateReview} />
         </Grid>
         <Grid item xs={12}>
-          <Grid container direction="row" justify="space-between" alignItems="center">
-            <Grid item>
-              <Button variant="outlined" color="primary" onClick={sendFeedback}>
-                Send Feedback
-              </Button>
-            </Grid>
+          <Grid container direction="row" justify="flex-end" alignItems="center">
             <Grid item>
               <Button variant="contained" color="secondary" onClick={shareSubmission} className={classes.button}>
                 Share
@@ -72,7 +67,6 @@ const Reviews = props => {
               <Button variant="contained" color="primary" onClick={submitReview} className={classes.button}>
                 Submit Review
               </Button>
-
             </Grid>
           </Grid>
         </Grid>
