@@ -6,8 +6,8 @@ import { Grid, Typography, CircularProgress, Snackbar } from '@material-ui/core'
 import { SectionAlternate, CardBase } from 'components/organisms';
 import { Hero, Submission, Reviews, Status, RejectPopUp, SharePopUp } from './components';
 import MuiAlert from '@material-ui/lab/Alert';
+import {DOMAIN} from 'common/constants'
 
-const DOMAIN = "https://aq2orp2ct9.execute-api.us-east-1.amazonaws.com/"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -64,7 +64,7 @@ const useStyles = makeStyles(theme => ({
   spinner: { paddingTop: theme.spacing(2), display: 'flex', justifyContent: 'center' },
 }));
 
-function Alert(props) {
+const Alert = (props) => {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 

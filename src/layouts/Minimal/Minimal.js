@@ -13,12 +13,12 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Minimal = ({ themeMode, children, className }) => {
+const Minimal = ({ children, className }) => {
   const classes = useStyles();
 
   return (
     <div className={clsx(classes.root, className)}>
-      <Topbar themeMode={themeMode} />
+      <Topbar />
       <Divider />
       <main className={classes.content}>{children}</main>
     </div>
@@ -28,7 +28,6 @@ const Minimal = ({ themeMode, children, className }) => {
 Minimal.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  themeMode: PropTypes.string.isRequired,
 };
 
 export default Minimal;

@@ -5,7 +5,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Toolbar } from '@material-ui/core';
 import { Image } from 'components/atoms';
 import logo from 'assets/images/logo.png'
-import logo_inv from 'assets/images/logo_inv.png'
 
 const useStyles = makeStyles(theme => ({
   toolbar: {
@@ -37,17 +36,17 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Topbar = ({ themeMode, className, ...rest }) => {
+const Topbar = ({ className, ...rest }) => {
   const classes = useStyles();
 
   return (
     <Toolbar className={clsx(classes.toolbar, className)} {...rest}>
       <div className={classes.logoContainer}>
-        <a href="/" title="thefront">
+        <a href="/" title="M+A">
           <Image
             className={classes.logoImage}
-            src={themeMode === 'light' ? logo : logo_inv}
-            alt="thefront"
+            src={logo}
+            alt="M+A"
             lazy={false}
           />
         </a>
@@ -58,7 +57,6 @@ const Topbar = ({ themeMode, className, ...rest }) => {
 
 Topbar.propTypes = {
   className: PropTypes.string,
-  themeMode: PropTypes.string.isRequired,
 };
 
 export default Topbar;

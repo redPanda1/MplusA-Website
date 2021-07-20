@@ -91,8 +91,6 @@ const SharePopUp = ({ open, handleClose, submissionData }) => {
   const [messageEnd, setMessageEnd] = useState("");
   const [messageSignature, setMessageSignature] = useState("");
 
-  const summaryReasons = rejectReasons.map((item) => item.name)
-
   useEffect(() => {
     setMessageTitle(messageTitleText)
     setMessageIntro(`Dear ${submissionData.givenName},`)
@@ -152,7 +150,7 @@ const SharePopUp = ({ open, handleClose, submissionData }) => {
             multiline
           />
 
-          <FormControl className={classes.formControl} fullWidth className={classes.entryField}>
+          <FormControl className={classes.entryField} fullWidth >
             <InputLabel>Reason(s) for Rejection</InputLabel>
             <Select
               multiple

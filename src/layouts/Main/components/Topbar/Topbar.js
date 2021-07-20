@@ -117,7 +117,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Topbar = ({ onSidebarOpen, pages, className, scrollTo, ...rest }) => {
+const Topbar = ({ onSidebarOpen, className, scrollTo, ...rest }) => {
   const classes = useStyles();
 
 
@@ -164,7 +164,6 @@ const Topbar = ({ onSidebarOpen, pages, className, scrollTo, ...rest }) => {
 Topbar.propTypes = {
   className: PropTypes.string,
   onSidebarOpen: PropTypes.func,
-  pages: PropTypes.object.isRequired,
 };
 
 export default Topbar;

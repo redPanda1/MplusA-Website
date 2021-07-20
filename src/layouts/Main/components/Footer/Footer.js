@@ -92,7 +92,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Footer = props => {
-  const { pages, className, scrollTo, ...rest } = props;
+  const { className, scrollTo, ...rest } = props;
 
   const classes = useStyles();
 
@@ -147,7 +147,6 @@ const Footer = props => {
 
 Footer.propTypes = {
   className: PropTypes.string,
-  pages: PropTypes.object.isRequired,
 };
 
 export default Footer;

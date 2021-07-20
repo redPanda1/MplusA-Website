@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { makeStyles, useTheme, withStyles } from '@material-ui/core/styles';
 import {
   useMediaQuery,
@@ -39,7 +38,7 @@ const useStyles = makeStyles(theme => ({
   button: { marginLeft: theme.spacing(2) }
 }));
 
-const Rate = props => {
+const Status = props => {
   const { className, submissionData = {}, showReject, showNextSteps, ...rest } = props;
   const classes = useStyles();
   let { actions = [] } = submissionData
@@ -119,11 +118,4 @@ const Rate = props => {
   );
 };
 
-Rate.propTypes = {
-  /**
-   * External classes
-   */
-  className: PropTypes.string,
-};
-
-export default Rate;
+export default Status;

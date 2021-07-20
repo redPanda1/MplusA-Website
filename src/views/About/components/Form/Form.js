@@ -15,9 +15,7 @@ import BusinessForm from './BusinessForm'
 import ChallengesForm from './ChallengesForm'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Backdrop from '@material-ui/core/Backdrop';
-
-
-const DOMAIN = "https://aq2orp2ct9.execute-api.us-east-1.amazonaws.com/"
+import {DOMAIN} from 'common/constants'
 
 const useStyles = makeStyles(theme => ({
     form: {
@@ -90,7 +88,7 @@ const Form = props => {
 
     const submitData = () => {
         setSpinner(true)
-        let companyName = formData.company.replace(/[&\/\\#,+()$~%.'"@:*?<>{}]/g, '')
+        let companyName = formData.company.replace(/[&\\#,+()$~%.'"@:*?<>{}]/g, '')
         companyName = companyName.replaceAll(" ", "-")
         const path = `uploads/${companyName}`
 
@@ -163,28 +161,6 @@ const Form = props => {
         }
         return urlArray
     }
-
-    // *** DEPRICATED IN FAVOR OF PRE-SIGNED UPLOAD
-    // const uploadFileAPI = async (file, path) => {
-    //     console.log("Start: uploadFileAPI")
-
-    //     const fileName = file.name.replaceAll(" ", "")
-    //     const url = `${DOMAIN}file?path=${path}&name=${fileName}`
-    //     const headers = new Headers();
-    //     headers.append('Content-Type', file.type)
-    //     console.log(`Call Upload File API: ${url}`)
-    //     const upload1 = await fetch(url, { method: 'POST', headers: headers, body: file })
-
-    //     console.log(`uploadFile returns`)
-    //     if (!upload1.ok) {
-    //         console.log("ERROR: status")
-    //         const message = `An error has occured: ${upload1.status}`
-    //         throw new Error(message)
-    //     }
-
-    //     console.log(`No Error - parsing JSON`)
-    //     return await upload1.json();
-    // }
 
     // Using pre-signed URL upload file to s3
     const uploadFiles =  async ({files, fileURLs}) => {

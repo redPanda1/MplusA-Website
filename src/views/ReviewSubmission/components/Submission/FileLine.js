@@ -1,26 +1,11 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import Rating from '@material-ui/lab/Rating';
-import Box from '@material-ui/core/Box';
 import Link from '@material-ui/core/Link';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import IconButton from '@material-ui/core/IconButton';
 
-
-const useStyles = makeStyles(theme => ({
-    inputTitle: {
-        fontWeight: 700,
-        // marginBottom: theme.spacing(1),
-    },
-}))
-
-
-
 const FlieLine = ({ fileUrl = "" }) => {
-    const classes = useStyles();
     let fileName = fileUrl.split('/').pop()
 
     return (

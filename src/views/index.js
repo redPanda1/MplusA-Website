@@ -1,4 +1,9 @@
 export { default as About } from './About';
+export { default as AdminHome } from './AdminHome';
+export { default as CompanyList } from './CompanyList';
+export { default as CompanyData } from './CompanyData';
 export { default as NotFoundCover } from './NotFoundCover';
 export { default as ReviewSubmission } from './ReviewSubmission';
 export { default as Troubleshoot } from './Troubleshoot';
+export { default as SigninSimple } from './SigninSimple';
+export { default as PasswordResetSimple } from './PasswordResetSimple';

@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
 import { Image } from 'components/atoms';
-import { LearnMoreLink } from 'components/atoms';
 import { SectionHeader } from 'components/molecules';
 import { HeroShaped } from 'components/organisms';
 
@@ -53,14 +52,7 @@ const NotFoundCover = () => {
               label="404"
               title="Uh oh."
               subtitle={
-                <span>
-                  There’s nothing here, but if you feel this is an error please{' '}
-                  <LearnMoreLink
-                    title="let us know"
-                    href="#"
-                    typographyProps={{ variant: 'h6' }}
-                  />
-                </span>
+                "There’s nothing here... the page you are looking for can't be found"
               }
               titleProps={{
                 variant: 'h3',
@@ -86,7 +78,7 @@ const NotFoundCover = () => {
         }
         rightSide={
           <Image
-            src="https://assets.maccarianagency.com/the-front/photos/account/cover-3.png"
+            src="https://mentorsplusangels-data.s3.amazonaws.com/images/404Error.jpg"
             className={classes.image}
             lazy={false}
           />

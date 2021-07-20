@@ -5,9 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import logo from 'assets/images/logo.png'
-
-
-const DOMAIN = "https://aq2orp2ct9.execute-api.us-east-1.amazonaws.com/"
+import { DOMAIN } from 'common/constants'
 
 const useStyles = makeStyles(theme => ({
     statusField: {

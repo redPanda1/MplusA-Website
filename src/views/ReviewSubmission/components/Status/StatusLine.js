@@ -1,11 +1,7 @@
 import React from 'react';
 import moment from 'moment'
-import { makeStyles, useTheme } from '@material-ui/core/styles';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
-
-const useStyles = makeStyles(theme => ({
-}))
 
 const getStatus = (status, isSm) => {
     const statusID = status.substring(0,1)
@@ -24,7 +20,6 @@ const getStatus = (status, isSm) => {
 }
 
 const StatusLine = ({ status, isSm }) => {
-    const classes = useStyles();
 
     return (isSm ? (
         <TableRow>

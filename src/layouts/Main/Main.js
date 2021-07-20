@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Divider } from '@material-ui/core';
 import { Topbar, Footer } from './components';
@@ -24,19 +23,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Main = ({ children, themeToggler, themeMode }) => {
+const Main = () => {
   const classes = useStyles();
-  const pages = {
-        company: {
-          groupTitle: 'Company',
-          pages: [
-            {
-              title: 'About',
-              href: '/about',
-            }
-          ],
-        }
-  };
 
   const scrollTo = (ele) => {
     if (ele === "top") {
@@ -53,7 +41,7 @@ const Main = ({ children, themeToggler, themeMode }) => {
 
   return (
       <div>
-      <Topbar pages={pages} scrollTo={scrollTo}/>
+      <Topbar scrollTo={scrollTo}/>
       <main>
         <Divider />
         <Hero />
@@ -78,15 +66,9 @@ const Main = ({ children, themeToggler, themeMode }) => {
         </SectionAlternate>
       </Element>
       </main>
-      <Footer pages={pages} scrollTo={scrollTo} />
+      <Footer scrollTo={scrollTo} />
     </div>
   );
-};
-
-Main.propTypes = {
-  children: PropTypes.node,
-  themeToggler: PropTypes.func.isRequired,
-  themeMode: PropTypes.string.isRequired,
 };
 
 export default Main;
