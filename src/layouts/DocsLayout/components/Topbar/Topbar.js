@@ -83,7 +83,7 @@ const TopBar = ({
         </div>
         <Box flexGrow={1} />
         <DarkModeToggler themeMode={themeMode} onClick={() => themeToggler()} />
-        <Hidden smDown>
+        <Hidden mdDown>
           <List disablePadding className={classes.navigationContainer}>
             <ListItem className={clsx(classes.listItem, 'menu-item--no-dropdown')}>
               <Button

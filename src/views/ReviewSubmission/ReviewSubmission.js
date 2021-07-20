@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography, CircularProgress, Snackbar } from '@material-ui/core';
 import { SectionAlternate, CardBase } from 'components/organisms';
 import { Hero, Submission, Reviews, Status, RejectPopUp, SharePopUp } from './components';
-import MuiAlert from '@material-ui/lab/Alert';
+import MuiAlert from '@material-ui/core/Alert';
 
 const DOMAIN = "https://aq2orp2ct9.execute-api.us-east-1.amazonaws.com/"
 

@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
         }
     },
     messageField: {
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('md')]: {
             marginTop: theme.spacing(1),
         }
     },

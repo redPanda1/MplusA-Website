@@ -18,15 +18,15 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     maxWidth: theme.layout.contentWidth,
     margin: '0 auto',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       flexDirection: 'column-reverse',
     },
   },
   heroLeftSide: {
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       padding: theme.spacing(3, 8),
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       padding: theme.spacing(3, 2),
     },
   },
@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
     maxWidth: '50%',
     flex: '0 0 50%',
     position: 'relative',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       maxWidth: '100%',
       flex: '0 0 100%',
       height: '300px',
@@ -44,7 +44,7 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
     width: '50vw',
     height: '100%',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       width: '100%',
     },
   },
