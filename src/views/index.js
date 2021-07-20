@@ -7,3 +7,4 @@ export { default as ReviewSubmission } from './ReviewSubmission';
 export { default as Troubleshoot } from './Troubleshoot';
 export { default as SigninSimple } from './SigninSimple';
 export { default as PasswordResetSimple } from './PasswordResetSimple';
+export { default as Placeholder } from './Placeholder';

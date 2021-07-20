@@ -141,7 +141,7 @@ const Topbar = ({ onSidebarOpen, pages, className, ...rest }) => {
   const [openedPopoverId, setOpenedPopoverId] = useState(null);
 
   console.log(auth.userData)
-  const {givenName: userName, photoURL: userImage, type: userType} = auth.userData
+  const { givenName: userName, photoURL: userImage, type: userType } = auth.userData
 
   const handleClick = (event, popoverId) => {
     setAnchorEl(event.target);
@@ -160,12 +160,12 @@ const Topbar = ({ onSidebarOpen, pages, className, ...rest }) => {
   }
 
   const company = pages.company;
+  const event = pages.event;
   const admin = pages.admin;
-  let menuGroups = [company]
+  let menuGroups = [company, event]
   if (userType === 'admin') {
     menuGroups.push(admin)
   }
-
 
   const MenuGroup = props => {
     const { item } = props;
@@ -182,16 +182,16 @@ const Topbar = ({ onSidebarOpen, pages, className, ...rest }) => {
         </ListItem>
         {item.pages.map((page, i) => (
           <ListItem disableGutters key={i} className={classes.menuGroupItem}>
-            <Typography
-              variant="body1"
-              className={clsx(classes.navLink, 'submenu-item')}
-              color="textSecondary"
-              onClick={handleClose}
-            >
-              <Link to={page.href}>
+            <Link to={page.href}>
+              <Typography
+                variant="body1"
+                className={clsx(classes.navLink, 'submenu-item')}
+                color="textSecondary"
+                onClick={handleClose}
+              >
                 {page.title}
-              </Link>
-            </Typography>
+              </Typography>
+            </Link>
           </ListItem>
         ))}
       </List>
@@ -203,16 +203,16 @@ const Topbar = ({ onSidebarOpen, pages, className, ...rest }) => {
       <div className={classes.menu}>
         <div className={classes.menuItem}>
           <ListItem disableGutters key={"X"} className={classes.menuGroupItem}>
-            <Typography
-              variant="body1"
-              component={'a'}
-              href={"/"}
-              className={clsx(classes.navLink, 'submenu-item')}
-              color="textSecondary"
-              onClick={handleClose}
-            >
-              {"Settings"}
-            </Typography>
+            <Link to={"/admin/mysettings"}>
+              <Typography
+                variant="body1"
+                className={clsx(classes.navLink, 'submenu-item')}
+                color="textSecondary"
+                onClick={handleClose}
+              >
+                {"Settings"}
+              </Typography>
+            </Link>
           </ListItem>
           <ListItem disableGutters key={"Y"} className={classes.menuGroupItem}>
             <Typography
@@ -240,6 +240,17 @@ const Topbar = ({ onSidebarOpen, pages, className, ...rest }) => {
     );
   };
 
+  const EventPages = () => {
+    const { events } = event.children;
+    return (
+      <div className={classes.menu}>
+        <div className={classes.menuItem}>
+          <MenuGroup item={events} />
+        </div>
+      </div>
+    );
+  };
+
   const AdminPages = () => {
     const { settings } = admin.children;
     return (
@@ -254,6 +265,9 @@ const Topbar = ({ onSidebarOpen, pages, className, ...rest }) => {
   const renderPages = id => {
     if (id === 'company-pages') {
       return <CompanyPages />;
+    }
+    if (id === 'event-pages') {
+      return <EventPages />;
     }
     if (id === 'admin-pages' && userType === 'admin') {
       return <AdminPages />;

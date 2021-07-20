@@ -33,10 +33,21 @@ export const ADMIN_MENU_STRUCTURE = {
             {
               title: 'All Companies',
               href: '/admin/company/list',
-            },
+            }
+          ],
+        },
+      },
+    },
+    event: {
+      title: 'Events',
+      id: 'event-pages',
+      children: {
+        events: {
+          groupTitle: 'Events',
+          pages: [
             {
-              title: 'Companies #123',
-              href: '/admin/company/123',
+              title: 'All Events',
+              href: '/admin/events',
             }
           ],
         },

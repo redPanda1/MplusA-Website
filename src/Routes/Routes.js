@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import WithLayout from '../WithLayout';
 import { Main as MainLayout, Minimal as MinimalLayout, Admin as AdminLayout } from '../layouts';
-import { About as AboutView, NotFoundCover as NotFoundCoverView, ReviewSubmission as ReviewSubmissionView } from '../views'
+import { About as AboutView, NotFoundCover as NotFoundCoverView, Placeholder as PlaceholderView, ReviewSubmission as ReviewSubmissionView } from '../views'
 import {
     Troubleshoot as TroubleshootView,
     PasswordResetSimple as PasswordResetSimpleView,
@@ -91,6 +91,30 @@ const Routes = () => (
             <WithLayout
                 component={CompanyData}
                 layout={AdminLayout} />
+        </PrivateRoute>
+        <PrivateRoute path="/admin/mysettings" exact>
+            <WithLayout
+                component={PlaceholderView}
+                layout={AdminLayout}
+            />
+        </PrivateRoute>
+        <PrivateRoute path="/admin/users" exact>
+            <WithLayout
+                component={PlaceholderView}
+                layout={AdminLayout}
+            />
+        </PrivateRoute>
+        <PrivateRoute path="/admin/settings" exact>
+            <WithLayout
+                component={PlaceholderView}
+                layout={AdminLayout}
+            />
+        </PrivateRoute>
+        <PrivateRoute path="/admin/events" exact>
+            <WithLayout
+                component={PlaceholderView}
+                layout={AdminLayout}
+            />
         </PrivateRoute>
 
         <Redirect to="/not-found-cover" />
