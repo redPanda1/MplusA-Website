@@ -2,17 +2,21 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import WithLayout from '../WithLayout';
 import { Main as MainLayout, Minimal as MinimalLayout, Admin as AdminLayout } from '../layouts';
-import { About as AboutView, NotFoundCover as NotFoundCoverView, Placeholder as PlaceholderView, ReviewSubmission as ReviewSubmissionView } from '../views'
 import {
+    About as AboutView, 
+    NotFoundCover as NotFoundCoverView, 
+    Placeholder as PlaceholderView, 
+    ReviewSubmission as ReviewSubmissionView,    
     Troubleshoot as TroubleshootView,
     PasswordResetSimple as PasswordResetSimpleView,
+    Test as TestView,
     SigninSimple as SigninSimpleView,
     AdminHome as AdminHomeView,
+    CompanyList as CompanyListView,
+    CompanyData as CompanyDataView
 } from '../views'
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
-import CompanyList from 'views/CompanyList';
-import CompanyData from 'views/CompanyData';
 
 const Routes = () => (
     <Switch>
@@ -83,13 +87,13 @@ const Routes = () => (
         />
         <PrivateRoute path="/admin/company/list" exact>
             <WithLayout
-                component={CompanyList}
+                component={CompanyListView}
                 layout={AdminLayout}
             />
         </PrivateRoute>
         <PrivateRoute path="/admin/company/:id" >
             <WithLayout
-                component={CompanyData}
+                component={CompanyDataView}
                 layout={AdminLayout} />
         </PrivateRoute>
         <PrivateRoute path="/admin/mysettings" exact>
@@ -112,7 +116,13 @@ const Routes = () => (
         </PrivateRoute>
         <PrivateRoute path="/admin/events" exact>
             <WithLayout
-                component={PlaceholderView}
+                component={TestView}
+                layout={AdminLayout}
+            />
+        </PrivateRoute>
+        <PrivateRoute path="/admin/test" exact>
+            <WithLayout
+                component={TestView}
                 layout={AdminLayout}
             />
         </PrivateRoute>
