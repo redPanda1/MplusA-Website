@@ -114,8 +114,8 @@ const Footer = props => {
               </ListItem>
             </List>
           </Grid>
-          <Grid container item xs={12} md={10} direction="column" alignItems="flex-start" justify="space-around">
-            <Grid container direction="row" justify="space-between">
+          <Grid container item xs={12} md={10} direction="column" alignItems="flex-start" justifyContent="space-around">
+            <Grid container direction="row" justifyContent="space-between">
               <Typography variant="body2" className={classes.menuGroupTitle} onClick={() => scrollTo('top')}>
                 Home
               </Typography>

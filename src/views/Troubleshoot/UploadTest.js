@@ -77,7 +77,7 @@ const ConnectTest = () => {
 
     return (
         <div>
-            <Grid container direction="row" justify="space-between" alignItems="center" className={classes.testLine}>
+            <Grid container direction="row" justifyContent="space-between" alignItems="center" className={classes.testLine}>
                 <Grid item xs={4} sm={2} className={classes.button}>
                     <Button variant="contained" color="primary" onClick={callUploadTest}
                         fullWidth >

@@ -43,14 +43,14 @@ const Story = props => {
     <div className={className} {...rest}>
       <Grid
         container
-        justify="space-between"
+        justifyContent="space-between"
         spacing={isMd ? 4 : 2}
         direction={isMd ? 'row' : 'column-reverse'}
       >
         <Grid
           item
           // alignItems="center"
-          // justify="flex-start"
+          // justifyContent="flex-start"
           xs={12}
           md={6}
           data-aos='fade-right'
@@ -72,7 +72,7 @@ const Story = props => {
         </Grid>
         <Grid
           item
-          // justify={isMd ? 'flex-end' : 'flex-start'}
+          // justifyContent={isMd ? 'flex-end' : 'flex-start'}
           // alignItems="center"
           xs={12}
           md={6}

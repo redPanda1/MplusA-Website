@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-const ReviewBlock = ({ reviewData = {}, updateReview }) => {
+const ReviewBlock = ({ reviewData = {}, index, updateReview }) => {
     const classes = useStyles();
     const readOnly = !updateReview
 
@@ -40,7 +40,7 @@ const ReviewBlock = ({ reviewData = {}, updateReview }) => {
                 </Grid>
                 <Grid item xs={12} md={9}>
                     <Grid container direction="column">
-                        {reviewData.categories.map((item) => <ReviewItem key={item.name} data={item} updateReview={updateReview} />)}
+                        {reviewData.categories.map((item, idx) => <ReviewItem key={`${index}-${idx}-${item.name}`} name={`${index}-${idx}-${item.name}`} data={item} updateReview={updateReview} />)}
 
                     </Grid>
                     <Grid container direction="row" alignItems="flex-end" className={classes.overallRating}>

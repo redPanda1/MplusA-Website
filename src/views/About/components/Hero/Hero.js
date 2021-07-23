@@ -64,7 +64,7 @@ const Hero = props => {
         }}
       />
       <Section className={classes.section}>
-      <Grid container direction="row" justify="flex-start" alignItems="center" 
+      <Grid container direction="row" justifyContent="flex-start" alignItems="center" 
         data-aos="fade-up"
         data-aos-delay="300"
         data-aos-duration="800"

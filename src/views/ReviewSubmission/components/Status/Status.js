@@ -64,7 +64,7 @@ const Status = props => {
 
   return (
     <div className={className} {...rest}>
-      <Grid container spacing={isMd ? 2 : 1} width="100%" justify="space-between">
+      <Grid container spacing={isMd ? 2 : 1} width="100%" justifyContent="space-between">
         <Grid item xs={6}>
           <Typography variant="h5" color="textPrimary">
             Status
@@ -100,7 +100,7 @@ const Status = props => {
 
 
         <Grid item xs={12}>
-          <Grid container direction="row" justify="flex-end" alignItems="center" className={classes.buttonRow}>
+          <Grid container direction="row" justifyContent="flex-end" alignItems="center" className={classes.buttonRow}>
             <Grid item>
               <Button variant="contained" color="secondary" onClick={showReject} className={classes.button}>
                 Send Reject

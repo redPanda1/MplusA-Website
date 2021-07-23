@@ -12,21 +12,22 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-const ReviewItem = ({ data, updateReview }) => {
+const ReviewItem = ({ data, updateReview, name }) => {
     const classes = useStyles();
     const readOnly = !updateReview
 
     return (
         <React.Fragment>
-            <Grid container direction="row" justify="space-between" alignItems="flex-start" >
+            <Grid container direction="row" justifyContent="space-between" alignItems="flex-start" >
                 <Grid item xs={5} md={3}>
                     <Box borderColor="transparent" component="fieldset">
                         <Typography component="legend">{data.name}</Typography>
                         <Rating
-                            name={data.name}
+                            name={name}
                             value={data.rating}
                             disabled={readOnly}
                             onChange={(_event, rating) => {
+                                console.log("Clicked")
                                 updateReview({ "categories": { "name": data.name, "rating": rating } })
                             }}
                         />

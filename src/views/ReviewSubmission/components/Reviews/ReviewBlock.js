@@ -25,7 +25,7 @@ const ReviewBlock = ({ reviewData = {}, updateReview }) => {
 
     return (
         <React.Fragment>
-            <Grid container direction="row" justify="space-between" alignItems="flex-start" className={classes.rating}>
+            <Grid container direction="row" justifyContent="space-between" alignItems="flex-start" className={classes.rating}>
                 <Grid item xs={12} md={3} className={classes.nameField}>
                     {readOnly ? (<Typography variant="h5" color="textPrimary">
                         {reviewData.name}

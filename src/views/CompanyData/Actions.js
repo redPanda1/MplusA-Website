@@ -57,7 +57,7 @@ const Actions = ({ className, actions = [], showReject, showNextSteps }) => {
 
     return (
         <React.Fragment>
-            <Grid container spacing={isMd ? 2 : 1} width="100%" justify="space-between">
+            <Grid container spacing={isMd ? 2 : 1} width="100%" justifyContent="space-between">
                 <TableContainer>
                     <Table>
                         <TableHead>
@@ -78,7 +78,7 @@ const Actions = ({ className, actions = [], showReject, showNextSteps }) => {
 
 
                 <Grid item xs={12}>
-                    <Grid container direction="row" justify="flex-end" alignItems="center" className={classes.buttonRow}>
+                    <Grid container direction="row" justifyContent="flex-end" alignItems="center" className={classes.buttonRow}>
                         <Grid item>
                             <Button variant="contained" color="secondary" onClick={showReject} className={classes.button}>
                                 Send Reject

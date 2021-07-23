@@ -10,8 +10,8 @@ const Flies= ({ files = [] }) => {
     return (
         <React.Fragment>
             <Grid container>
-            {files.map((fileUrl) => (        
-                            <Grid item xs={12}>
+            {files.map((fileUrl, idx) => (        
+                            <Grid item key={idx} xs={12}>
                             <Grid container>
                                 <Grid item xs={11} md={11}>
                                     <TextField

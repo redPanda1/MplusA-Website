@@ -24,9 +24,9 @@ const Reviews = ({ reviews=[], newReview={}, updateReview, submitReview, shareAp
                         (<Typography variant="h6" color="textPrimary">
                             Be the first to review
                         </Typography>) :
-                        (reviews.map((review) => (
-                            <div key={review.name} className={classes.reviewLine}>
-                                <ReviewBlock reviewData={review} />
+                        (reviews.map((review, idx) => (
+                            <div key={`${idx}-${review.name}`} className={classes.reviewLine}>
+                                <ReviewBlock reviewData={review} index={idx}/>
                             </div>)))
                     }
                 </Grid>
@@ -35,7 +35,7 @@ const Reviews = ({ reviews=[], newReview={}, updateReview, submitReview, shareAp
                     <ReviewBlock reviewData={newReview} updateReview={updateReview} />
                 </Grid>
                 <Grid item xs={12}>
-                    <Grid container direction="row" justify="flex-end" alignItems="center">
+                    <Grid container direction="row" justifyContent="flex-end" alignItems="center">
                         <Grid item>
                             <Button variant="contained" color="secondary" onClick={shareApplication} className={classes.button}>
                                 Share

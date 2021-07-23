@@ -18,7 +18,7 @@ const ReviewItem = ({ data, updateReview }) => {
 
     return (
         <React.Fragment>
-            <Grid container direction="row" justify="space-between" alignItems="flex-start" >
+            <Grid container direction="row" justifyContent="space-between" alignItems="flex-start" >
                 <Grid item xs={5} md={3}>
                     <Box borderColor="transparent" component="fieldset">
                         <Typography component="legend">{data.name}</Typography>
