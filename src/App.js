@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
-import Routes from 'routes/Routes';
+import Routes from './Routes';
 import { useAuthProvider } from 'hooks/useAuth'
 import AuthContext from 'context/AuthContext';
 import { ThemeProvider } from '@material-ui/core/styles';
