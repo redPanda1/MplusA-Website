@@ -288,7 +288,7 @@ const ReviewSubmission = (props = {}) => {
     const noName = newReview.name.length === 0
     const noOverallRating = !("overall" in newReview)
     if (noName || noOverallRating) {
-      setReviewError("Incomplete Review: As a minimum please enter your name and an overall evaluation")
+      setReviewError("Incomplete Review: As a minimum please enter your name and an overall evaluation (thumb up or thumb down)")
       return
     }
     setReviewError()
