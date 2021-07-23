@@ -16,7 +16,7 @@ import {
     CompanyData as CompanyDataView
 } from './views'
 import PrivateRoute from './routes/PrivateRoute';
-import PublicRoute from './routes/PublicRoute';
+import PublicRoute from './routes/PrivateRoute';
 
 const Routes = () => (
     <Switch>
