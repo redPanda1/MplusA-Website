@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom'
+import React, { useState, useEffect, useContext } from 'react';
+import { useHistory, useParams } from 'react-router-dom'
 import Paper from '@material-ui/core/Paper'
 import Container from '@material-ui/core/Container';
 import { makeStyles, withStyles } from '@material-ui/styles';
@@ -9,130 +9,181 @@ import CompanyDetails from './CompanyDetails';
 import MuiAccordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
+import CircularProgress from '@material-ui/core/CircularProgress'
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Application from './Application';
-import Files from'./Files'
+import Files from './Files'
 import Actions from './Actions'
+import useCompany from 'hooks/useCompany';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+import DataContext from 'context/DataContext'
+import useStatus from 'hooks/useStatus';
+
+
+const Alert = (props) => {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const Accordion = withStyles({
-    root: {
-        border: '1px solid rgba(0, 0, 0, .125)',
-        '&:before': {
-            display: 'none',
-        },
+  root: {
+    border: '1px solid rgba(0, 0, 0, .125)',
+    '&:before': {
+      display: 'none',
     },
-    expanded: {},
+  },
+  expanded: {},
 })(MuiAccordion);
 
 const useStyles = makeStyles((theme) => ({
-    container: {
-        padding: theme.spacing(2),
-        backgroundColor: "#F7F9FF",
-        height: '100vh',
-    },
-    paper: {
-        padding: theme.spacing(2),
-        marginBottom: theme.spacing(2),
-        display: 'flex',
-        overflow: 'auto',
-        flexDirection: 'column',
-    },
+  container: {
+    padding: theme.spacing(2),
+    backgroundColor: "#F7F9FF",
+    height: '100vh',
+  },
+  paper: {
+    padding: theme.spacing(2),
+    marginBottom: theme.spacing(2),
+    display: 'flex',
+    overflow: 'auto',
+    flexDirection: 'column',
+  },
+  cancelButton: {
+    marginRight: theme.spacing(2)
+  }
 }));
 
 
-const ratingTemplate = {
-    name: "", comment: "", categories: [{ name: "Team", rating: 0, comment: "" },
-    { name: "Market", rating: 0, comment: "" },
-    { name: "Product", rating: 0, comment: "" },
-    { name: "Traction", rating: 0, comment: "" },
-    { name: "Risk", rating: 0, comment: "" }]
-  }
-  
 
 
 
 const CompanyData = () => {
-    const classes = useStyles()
-    const location = useLocation();
-    console.log(location)
-    const companyData = location.state.companyData || {}
-    const [newReview, setNewReview] = useState(ratingTemplate);
+  const classes = useStyles()
+  const history = useHistory()
+  const { id } = useParams()
+  const status = useStatus()
+  const { isLoading, userMessage, resetUserMessage } = status
+  const [{ getCompany, updateCompanyDetails, refreshCompany }] = useCompany()
+  const [companyData, setCompanyData] = useState({})
+  const [readOnly, setReadOnly] = useState(true)
+
+  console.log(companyData.application)
+
+
+  useEffect(() => {
+    console.log("<<<<<USE EFFECT START>>>>>>>")
+    refreshCompany(id)
+  }, []);
+
+  useEffect(() => {
+    console.log("<<<<<USE EFFECT UPDATE>>>>>>>")
+    console.log("userMessage")
+    console.log(userMessage)
+    console.log("isLoading: " + isLoading)
+    if (getCompany(id)) {
+      setCompanyData(getCompany(id))
+    }
+  }, [getCompany(id)]);
+
+  const getRecord = () => {
+    refreshCompany(id)
+  }
 
 
 
-  // Data changed as a result of user input
-  const updateReview = (data) => {
-    if (data.categories) {
-      const newRatings = newReview.categories.map((item) => {
-        if (item.name === data.categories.name) {
-          return { ...item, ...data.categories }
-        } else {
-          return item
-        }
-      })
-      let newData = { ...newReview }
-      newData.categories = newRatings
-      setNewReview(newData)
+  const handleSaveUpdate = () => {
+    console.log("Click")
+    console.log(companyData.details)
+    // Must be a save...
+    if (!readOnly) {
+      updateCompanyDetails({ id, details: companyData.details })
+    }
+    setReadOnly(!readOnly)
+  }
+
+  const updateDetails = (data) => {
+    if (data.hasOwnProperty('contact')) {
+      const newContact = { ...companyData.details.contact, ...data.contact }
+      setCompanyData({ ...companyData, details: { ...companyData.details, contact: { ...newContact } } })
     } else {
-      setNewReview({ ...newReview, ...data })
+      setCompanyData({ ...companyData, details: { ...companyData.details, ...data } })
     }
   }
-  // User clicked Submit Review Button
-  const submitReview = () => {
-    console.log("submitReview")
+  const handleUserMessgaeClose = (event, reason) => {
+    if (reason === 'clickaway') return
+    resetUserMessage()
+  }
+  const handleCancel = () => {
+    history.push('/admin/company/list')
   }
 
-  // User clicked Share Button
-  const shareApplication = () => {
-    console.log("shareApplication")
-  }
 
+  return (
+    <Container className={classes.container}>
+      <Paper className={classes.paper}>
+        <Grid container direction="row" justifyContent="space-between" alignItems="center">
+          <Grid item>
+            <Typography variant="h4">{companyData.details ? companyData.details.name : ""}</Typography>
+          </Grid>
+          <Grid item>
+            {!readOnly && (<Button variant="contained" color={"default"} className={classes.cancelButton} onClick={handleCancel}>
+              Cancel
+            </Button>)}
+            <Button variant="contained" onClick={handleSaveUpdate} color={readOnly ? "default" : "primary"}>
+              {readOnly ? "Change" : "Save"}
+            </Button>
+          </Grid>
+        </Grid>
+        <CompanyDetails companyDetails={companyData.details} updateDetails={updateDetails} readOnly={readOnly} />
+      </Paper>
 
+      <Accordion >
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6">Application</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Application applicationData={companyData.application} />
+        </AccordionDetails>
+      </Accordion>
 
-    return (
-        <Container className={classes.container}>
-            <Paper className={classes.paper}>
-                <Typography variant="h4">{companyData.name}</Typography>
-                <CompanyDetails companyData={companyData} />
-            </Paper>
-
-            <Accordion >
-                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography variant="h6">Application</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <Application companyData={companyData} />
-                </AccordionDetails>
-            </Accordion>
-
-            <Accordion >
-                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography variant="h6">Files ({companyData.files.length})</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <Files files={companyData.files}/>
-                </AccordionDetails>
-            </Accordion>
-            <Accordion >
-                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography variant="h6">Reviews ({companyData.reviews.length})</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <Reviews reviews={companyData.reviews} newReview={newReview} updateReview={updateReview} submitReview={submitReview} shareApplication={shareApplication} />
-                </AccordionDetails>
-            </Accordion>
-            <Accordion >
-                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography variant="h6">Actions: {companyData.status}</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <Actions actions={companyData.actions}/>
-                </AccordionDetails>
-            </Accordion>
-
-
-        </Container>
-    )
+      <Accordion >
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6">Files ({companyData.files ? companyData.files.length : []})</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Files files={companyData.files} />
+        </AccordionDetails>
+      </Accordion>
+      <Accordion >
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6">Reviews ({companyData.reviews ? companyData.reviews.length : 0})</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Reviews reviews={companyData.reviews} />
+        </AccordionDetails>
+      </Accordion>
+      <Accordion >
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6">Actions: {companyData.status}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Actions actions={companyData.actions} />
+        </AccordionDetails>
+      </Accordion>
+      {!!userMessage && (
+        <Snackbar open={!!userMessage} autoHideDuration={6000} onClose={handleUserMessgaeClose}>
+          <Alert onClose={handleUserMessgaeClose} severity={userMessage ? userMessage.type : "success"}>
+            {userMessage && userMessage.text}
+          </Alert>
+        </Snackbar>
+      )}
+      {isLoading ? (<div className={classes.isLoading}>
+        <CircularProgress />
+      </div>) : null}
+    </Container>
+  )
 }
 
 export default CompanyData

@@ -24,9 +24,6 @@ const Main = ({ children }) => {
   });
 
   const pages = ADMIN_MENU_STRUCTURE
-
-  console.log(pages)
-
   const [openSidebar, setOpenSidebar] = useState(false);
 
   const handleSidebarOpen = () => {

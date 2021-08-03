@@ -1,6 +1,6 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/styles';
-import { Typography, Grid, TextField } from '@material-ui/core';
+import React from 'react'
+import { makeStyles } from '@material-ui/styles'
+import { Typography, Grid, TextField } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
     divider: {
@@ -16,13 +16,8 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const Application = ({ companyData }) => {
+const Application = ({ applicationData = {} }) => {
     const classes = useStyles()
-    // const theme = useTheme(); 
-    // const isSm = useMediaQuery(theme.breakpoints.up('sm'), {
-    //     defaultMatches: true,
-    //   });
-
 
     return (
         <React.Fragment>
@@ -43,7 +38,7 @@ const Application = ({ companyData }) => {
                         placeholder="business problem"
                         variant="outlined"
                         name="problem"
-                        value={companyData.application.problem}
+                        value={applicationData.problem}
                         fullWidth
                         multiline
                     />
@@ -64,7 +59,7 @@ const Application = ({ companyData }) => {
                         placeholder="company's solution"
                         variant="outlined"
                         name="solution"
-                        value={companyData.application.solution}
+                        value={applicationData.solution}
                         fullWidth
                         multiline
                     />
@@ -85,7 +80,7 @@ const Application = ({ companyData }) => {
                         placeholder="target customer"
                         variant="outlined"
                         name="customer"
-                        value={companyData.application.customer}
+                        value={applicationData.customer}
                         fullWidth
                         multiline
                     />
@@ -106,7 +101,7 @@ const Application = ({ companyData }) => {
                         placeholder="use of technology"
                         variant="outlined"
                         name="technology"
-                        value={companyData.application.technology}
+                        value={applicationData.technology}
                         fullWidth
                         multiline
                     />
@@ -127,7 +122,7 @@ const Application = ({ companyData }) => {
                         placeholder="progress"
                         variant="outlined"
                         name="progress"
-                        value={companyData.application.progress}
+                        value={applicationData.progress}
                         fullWidth
                         multiline
                     />
@@ -148,7 +143,7 @@ const Application = ({ companyData }) => {
                         placeholder="reason for contact"
                         variant="outlined"
                         name="reason"
-                        value={companyData.application.reason}
+                        value={applicationData.reason}
                         fullWidth
                         multiline
                     />
@@ -169,7 +164,7 @@ const Application = ({ companyData }) => {
                         placeholder="mentorship"
                         variant="outlined"
                         name="mentorship"
-                        value={companyData.application.mentorship}
+                        value={applicationData.mentorship}
                         fullWidth
                         multiline
                     />

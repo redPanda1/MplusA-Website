@@ -6,7 +6,7 @@ const loginAPI = async ({userName, password, refreshToken}) => {
                                `${DOMAIN}auth/login?userName=${userName}&password=${password}`
     console.log(`Calling: ${url}`)
     
-    const getResponse = await apiFetch({url})
+    const getResponse = await apiFetch({url, auth:false})
     console.log(getResponse)
     return getResponse
 }
@@ -14,7 +14,7 @@ const changePasswordAPI = async ({session, userID, password}) => {
     const url = `${DOMAIN}auth/password/change?userID=${userID}&newPassword=${password}&session=${session}`
     console.log(`Calling: ${url}`)
     
-    const getResponse = await apiFetch({url})
+    const getResponse = await apiFetch({url, auth:true})
     console.log(getResponse)
     return getResponse
       

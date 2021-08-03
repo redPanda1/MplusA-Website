@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import Paper from '@material-ui/core/Paper'
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/styles';
-import { Typography } from '@material-ui/core';
+import { Typography, Button } from '@material-ui/core';
 import Rating from '@material-ui/lab/Rating';
+import useCompany from 'hooks/useCompany';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -23,6 +24,24 @@ const useStyles = makeStyles((theme) => ({
 const AdminHome = () => {
     const classes = useStyles()
     const [value, setValue] = React.useState(2);
+    const [{getCompanyList, addCompany, test}] = useCompany()
+
+    // console.log("companyList")
+    // console.log(getCompanyList())
+
+    const newCo = () => {
+        console.log("Clicked")
+        const id = getCompanyList().length + 1
+        addCompany({id, name:"PialaSoft LLC", owner:"Simon", details:{}})
+        // console.log(getCompanyList())
+    }
+    const testClick = () => {
+        console.log("Clicked")
+        test()
+        // addCompany({name:"PialaSoft LLC", owner:"Simon"})
+        // console.log(getCompanyList())
+    }
+
 
     return (
         <Container className={classes.container}>
@@ -37,6 +56,13 @@ const AdminHome = () => {
                         setValue(newValue);
                     }}
                 />
+                <Button onClick={newCo}>
+                    Click Me!
+                </Button>
+                <Button onClick={testClick}>
+                    Click MeToo!
+                </Button>
+
             </Paper>
         </Container>
     )

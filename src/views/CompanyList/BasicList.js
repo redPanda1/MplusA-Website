@@ -68,9 +68,10 @@ const BasicList = ({ companyList = [], sortData }) => {
     const history = useHistory();
     const [isAsc, setIsAsc] = useState(false)
     const [orderBy, setOrderBy] = useState()
+
     const selectRow = (id, idx) => {
         console.log(companyList[idx])
-        history.push({pathname: `admin/company/${id}`, state: {companyData: companyList[idx]}})
+        history.push({pathname: `/admin/company/${id}`})
     }
 
     const handleRequestSort = (property) => {
@@ -78,6 +79,31 @@ const BasicList = ({ companyList = [], sortData }) => {
         setIsAsc(newOrderAsc)
         setOrderBy(property)
         sortData({orderBy:property, isAsc:newOrderAsc})
+    }
+
+    const getContactName = (item) => {
+      let contactName = "missing"
+      if (item.details && item.details.contact) {
+        if (item.details.contact.givenName) {
+          contactName = item.details.contact.givenName
+        }
+        if (item.details.contact.familyName) {
+          contactName += " "
+          contactName += item.details.contact.familyName
+        }
+      }
+      return contactName.trim()
+    }
+
+    // Needed as Reviews can be a number or an array
+    const getNumReviews = (item) => {
+      if (typeof item.reviews === 'number') {
+        return item.reviews
+      } else if (typeof item.reviews === 'object') {
+        return item.reviews.length
+      } else {
+        return 0
+      }
     }
 
     return (
@@ -90,18 +116,18 @@ const BasicList = ({ companyList = [], sortData }) => {
                     onRequestSort={handleRequestSort} />
                 <TableBody>
                     {companyList.map((item, idx) => (
-                        <TableRow hover key={item.id} onClick={() => { selectRow(item.id, idx) }} >
+                        <TableRow hover key={idx} onClick={() => { selectRow(item.id, idx) }} >
                             <TableCell>
-                                {item.details.logoUrl ? (<Avatar src={item.details.logoUrl} alt={item.name} variant="rounded" />)
+                                {(item.details && item.details.logoUrl) ? (<Avatar src={item.details.logoUrl} alt={item.name} variant="rounded" />)
                                     : (<Avatar variant="rounded">
                                         <ImageIcon />
                                     </Avatar>)}
                             </TableCell>
-                            <TableCell>{item.name}</TableCell>
-                            <TableCell>{item.details.givenName} {item.details.familyName}</TableCell>
-                            <TableCell>{item.details.sector}</TableCell>
-                            <TableCell>{item.details.model}</TableCell>
-                            <TableCell>{item.reviews.length}</TableCell>
+                            <TableCell>{item.details && item.details.name}</TableCell>
+                            <TableCell>{getContactName(item)}</TableCell>
+                            <TableCell>{item.details && item.details.sector}</TableCell>
+                            <TableCell>{item.details && item.details.model}</TableCell>
+                            <TableCell>{getNumReviews(item)}</TableCell>
                             <TableCell>{item.status}</TableCell>
                         </TableRow>
                     ))}

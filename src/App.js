@@ -4,6 +4,7 @@ import { createBrowserHistory } from 'history';
 import Routes from './route/Routes';
 import { useAuthProvider } from 'hooks/useAuth'
 import AuthContext from 'context/AuthContext';
+import { DataProvider } from './context/DataContext'
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import getTheme from 'theme';
@@ -38,9 +39,11 @@ const App = () => {
     <ThemeProvider theme={getTheme()}>
       <CssBaseline />
       <AuthProvider auth={auth}>
-        <Router history={browserHistory}>
-          <Routes />
-        </Router>
+        <DataProvider>
+          <Router history={browserHistory}>
+            <Routes />
+          </Router>
+        </DataProvider>
       </AuthProvider>
     </ThemeProvider>
   );

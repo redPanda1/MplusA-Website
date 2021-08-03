@@ -1,9 +1,13 @@
-import { loginAPI } from 'requests/auth'
+import {DOMAIN} from 'common/constants'
 
 // Format Headers 
-const jsonHeader = (auth) => {
+const jsonHeader = ({auth, mimeType}) => {
     const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
+    if (mimeType) {
+        headers.append('Content-Type', mimeType);
+    } else{
+        headers.append('Content-Type', 'application/json');
+    }
 
     // Get token from local storage if needed
     if (auth) {
@@ -14,9 +18,10 @@ const jsonHeader = (auth) => {
 }
 
 // Wrapper for Fetch - includes handling 401 returns
-const apiFetch = async ({ url, method = "GET", auth = false }) => {
-    console.log(`Calling ${url}`)
-    const response = await fetch(url, { method, headers: jsonHeader(auth) })
+const apiFetch = async ({ url, method = "GET", auth = true, body, mimeType }) => {
+    console.log(`Calling: ${url}`)
+    const response = await fetch(url, { method, headers: jsonHeader({auth, mimeType}), body })
+    console.log(`Response Status: ${response.status}`)
     if (response.status === 204) {
         return { noChange: true }
     } else if (response.status === 401) {
@@ -27,7 +32,7 @@ const apiFetch = async ({ url, method = "GET", auth = false }) => {
         const message = `An error has occured: ${response.status}`
         throw new Error(message)
     }
-
+    console.log("Parsing JSON")
     const jsonResponse = await response.json()
     console.log(jsonResponse)
     return evaluateResponse(jsonResponse)
@@ -40,14 +45,23 @@ const retryLogin = async ({ url, method, auth }) => {
     if (!refreshToken) {
         throw new Error("NotAuthorizedException")
     }
-    const authResponse = await loginAPI({ refreshToken })
+    const loginUrl = `${DOMAIN}auth/login?refreshToken=${refreshToken}` 
+    console.log(`Calling: ${loginUrl}`)
+    const authResponse = await fetch(loginUrl, { method, headers: jsonHeader(false) })
+    console.log(`Response Status: ${authResponse.status}`)
 
-    // Worked => save data 
-    console.log(authResponse)
-    if (!authResponse.success || !authResponse.data.idToken) {
+    if (authResponse.status !== 200) {
         throw new Error("NotAuthorizedException")
     }
-    const idToken = authResponse.data.idToken
+    
+    // Worked => save data 
+    const jsonAuthResponse = await authResponse.json()
+    console.log(jsonAuthResponse)
+    // Check for failure
+    if (!jsonAuthResponse.success || !jsonAuthResponse.data.idToken) {
+        throw new Error("NotAuthorizedException")
+    }
+    const idToken = jsonAuthResponse.data.idToken
     localStorage.setItem('idToken', idToken);
 
     // Now recall original API with new token
@@ -76,6 +90,8 @@ const retryRequest = async ({ url, method, idToken }) => {
 
 // Common error checking
 const evaluateResponse = (response) => {
+    console.log("Evaluating Response")
+
     if (!response.success) {
         if (response.errorType) {
             throw new Error(response.errorType)

@@ -4,7 +4,7 @@ import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/styles';
 import { Typography, Grid } from '@material-ui/core';
 import BasicList from './BasicList'
-import {getCompanyListAPI} from 'requests/company'
+import useCompany from 'hooks/useCompany';
 
 
 
@@ -25,26 +25,20 @@ const useStyles = makeStyles((theme) => ({
 
 const CompanyList = () => {
     const classes = useStyles()
-    const [companyData, setCompanyData] = useState([])
+    const [{getCompanyList, refreshCompanyData}] = useCompany()
 
     const sortCompanyList = () => {
 
     }
 
+    const companyData = getCompanyList()
+    console.log(companyData)
+
+
     useEffect(() => {
-        getCompanyListAPI()
-        .then((response) => {
-            console.log("Success")
-            console.log(response.data)
-            setCompanyData(response.data)})
-        .catch((error) => {
-            console.log("error")
-            console.log(error.name)
-            console.log(error.message)})
-
-    }, [])
-
-
+        refreshCompanyData()
+      }, []);
+    
     return (
         <Container className={classes.container}>
             <Paper className={classes.paper}>

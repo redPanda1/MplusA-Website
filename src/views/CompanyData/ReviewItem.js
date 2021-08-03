@@ -19,7 +19,7 @@ const ReviewItem = ({ data, updateReview, name }) => {
     return (
         <React.Fragment>
             <Grid container direction="row" justifyContent="space-between" alignItems="flex-start" >
-                <Grid item xs={5} md={3}>
+                <Grid item xs={12} md={3}>
                     <Box borderColor="transparent" component="fieldset">
                         <Typography component="legend">{data.name}</Typography>
                         <Rating
@@ -33,7 +33,7 @@ const ReviewItem = ({ data, updateReview, name }) => {
                         />
                     </Box>
                 </Grid>
-                <Grid item xs={7} md={9}>
+                <Grid item xs={12} md={9}>
                     <TextField className={classes.answer}
                         name={data.name}
                         label={data.name}

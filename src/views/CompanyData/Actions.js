@@ -49,8 +49,6 @@ const Actions = ({ className, actions = [], showReject, showNextSteps }) => {
         return a.status > b.status ? 1 : 0
     })
 
-    console.log(actions)
-
     const isSm = useMediaQuery(theme.breakpoints.up('sm'), {
         defaultMatches: true,
     });
