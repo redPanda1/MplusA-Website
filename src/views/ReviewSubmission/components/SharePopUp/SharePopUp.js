@@ -67,7 +67,7 @@ const SharePopUp = ({ open, handleClose, companyName }) => {
 
   useEffect(() => { 
     setTitle(`💣 M+A Action Required: Submission From ${companyName}`)
-    setMessage(`Hi,\nWe believe that the application from ${companyName} falls within your area of expertise.\nKindly review the application within the next 48 hours.  Endri and I will follow up with the entrepreneur either inviting her/him to a 10 minute call on Thursday at 10:45am or politely passing on the opportunity.  We have committed to circle back to entrepreneurs within 72 hours from their submissions.\nThanks,\nGraciela and Endri`)
+    setMessage(`Hi,\nKindly review the application within the next 48 hours.  We will follow up with the entrepreneur either inviting her/him to a 10 minute call on Thursday at 10:45am or politely passing on the opportunity. \nThanks,\nThe M&A Team`)
   }, [companyName] )
 
   const emailChangeHandler = (emailText) => {
