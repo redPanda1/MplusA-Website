@@ -33,12 +33,6 @@ export default ({ userData = [], showDialog, closeDialog, resetUserPassword, loc
         lockUser(user.id)
     }
 
-    // const closeModal = ()=>{
-    //     console.log("close")
-    //     setShowDialog(false)
-    //   }
-    
-
     return (
         <React.Fragment>
             <Table size="medium">
