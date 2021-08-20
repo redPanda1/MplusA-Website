@@ -8,4 +8,5 @@ export { default as Troubleshoot } from './Troubleshoot';
 export { default as SigninSimple } from './SigninSimple';
 export { default as PasswordResetSimple } from './PasswordResetSimple';
 export { default as Placeholder } from './Placeholder';
-export { default as Test } from './Test';
+export { default as Test } from './Test'
+export { default as UserList } from './UserList'

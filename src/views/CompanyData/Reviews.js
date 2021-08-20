@@ -22,14 +22,14 @@ const ratingTemplate = {
   
 
 
-const Reviews = ({ reviews=[] }) => {
+const Reviews = ({ reviews = [] }) => {
     const classes = useStyles()
     const [newReview, setNewReview] = useState(ratingTemplate);
     const [showSharePopUp, setShowSharePopUp] = useState(false);
     const [showRatePopUp, setShowRatePopUp] = useState(false);
     const [userRating, setUserRating] = useState();
 
-    console.log(reviews[0])
+    console.log(reviews)
 
       // Data changed as a result of user input
   const updateReview = (data) => {
@@ -71,7 +71,7 @@ const Reviews = ({ reviews=[] }) => {
         <React.Fragment>
             <Grid container>
                 <Grid item xs={12}>
-                    {reviews.length === 0 ?
+                    {(typeof reviews != 'object' || reviews.length === 0) ?
                         (<Typography variant="h6" color="textPrimary">
                             Be the first to review
                         </Typography>) :

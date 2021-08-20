@@ -19,8 +19,18 @@ const changePasswordAPI = async ({session, userID, password}) => {
     return getResponse
       
 }
+const getUserListAPI = async () => {
+    const url = `${DOMAIN}auth/user/list` 
+    const response = await apiFetch({url})
+    return response
+}
 
+const lockUserAPI = async (id) => {
+    const url = `${DOMAIN}auth/user/lock?id=${id}` 
+    const response = await apiFetch({url})
+    return response
+}
 
-export { loginAPI, changePasswordAPI }
+export { loginAPI, changePasswordAPI, getUserListAPI, lockUserAPI }
 
 

@@ -13,7 +13,8 @@ import {
     SigninSimple as SigninSimpleView,
     AdminHome as AdminHomeView,
     CompanyList as CompanyListView,
-    CompanyData as CompanyDataView
+    CompanyData as CompanyDataView,
+    UserList as UserListView
 } from '../views'
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
@@ -104,7 +105,7 @@ const Routes = () => (
         </PrivateRoute>
         <PrivateRoute path="/admin/users" exact>
             <WithLayout
-                component={PlaceholderView}
+                component={UserListView}
                 layout={AdminLayout}
             />
         </PrivateRoute>
