@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom'
 import Paper from '@material-ui/core/Paper'
 import Container from '@material-ui/core/Container';
@@ -19,8 +19,9 @@ import Actions from './Actions'
 import useCompany from 'hooks/useCompany';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
-import DataContext from 'context/DataContext'
 import useStatus from 'hooks/useStatus';
+import Footer from 'common/Footer'
+
 
 
 const Alert = (props) => {
@@ -63,9 +64,9 @@ const CompanyData = () => {
   const classes = useStyles()
   const history = useHistory()
   const { id } = useParams()
-  const status = useStatus()
-  const { isLoading, userMessage, resetUserMessage } = status
-  const [{ getCompany, updateCompanyDetails, refreshCompany }] = useCompany()
+  // const status = useStatus()
+  // const { isLoading, userMessage, resetUserMessage } = status
+  const [{ getCompany, updateCompanyDetails, getCompanyDetails, isLoading, userMessage, dismissMessage }] = useCompany()
   const [companyData, setCompanyData] = useState({})
   const [readOnly, setReadOnly] = useState(true)
 
@@ -74,7 +75,7 @@ const CompanyData = () => {
 
   useEffect(() => {
     console.log("<<<<<USE EFFECT START>>>>>>>")
-    refreshCompany(id)
+    getCompanyDetails(id)
   }, []);
 
   useEffect(() => {
@@ -85,13 +86,7 @@ const CompanyData = () => {
     if (getCompany(id)) {
       setCompanyData(getCompany(id))
     }
-  }, [getCompany(id)]);
-
-  const getRecord = () => {
-    refreshCompany(id)
-  }
-
-
+  }, [getCompany(id)])
 
   const handleSaveUpdate = () => {
     console.log("Click")
@@ -110,10 +105,6 @@ const CompanyData = () => {
     } else {
       setCompanyData({ ...companyData, details: { ...companyData.details, ...data } })
     }
-  }
-  const handleUserMessgaeClose = (event, reason) => {
-    if (reason === 'clickaway') return
-    resetUserMessage()
   }
   const handleCancel = () => {
     history.push('/admin/company/list')
@@ -172,16 +163,7 @@ const CompanyData = () => {
           <Actions actions={companyData.actions} />
         </AccordionDetails>
       </Accordion>
-      {!!userMessage && (
-        <Snackbar open={!!userMessage} autoHideDuration={6000} onClose={handleUserMessgaeClose}>
-          <Alert onClose={handleUserMessgaeClose} severity={userMessage ? userMessage.type : "success"}>
-            {userMessage && userMessage.text}
-          </Alert>
-        </Snackbar>
-      )}
-      {isLoading ? (<div className={classes.isLoading}>
-        <CircularProgress />
-      </div>) : null}
+      <Footer userMessage={userMessage} isLoading={isLoading} close={dismissMessage}/>
     </Container>
   )
 }

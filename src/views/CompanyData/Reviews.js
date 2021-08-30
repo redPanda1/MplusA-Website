@@ -19,8 +19,6 @@ const ratingTemplate = {
     { name: "Risk", rating: 0, comment: "" }]
   }
   
-  
-
 
 const Reviews = ({ reviews = [] }) => {
     const classes = useStyles()

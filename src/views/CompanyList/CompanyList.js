@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/styles';
 import { Typography, Grid } from '@material-ui/core';
 import BasicList from './BasicList'
 import useCompany from 'hooks/useCompany';
-
+import Footer from 'common/Footer'
 
 
 
@@ -25,19 +25,18 @@ const useStyles = makeStyles((theme) => ({
 
 const CompanyList = () => {
     const classes = useStyles()
-    const [{getCompanyList, refreshCompanyData}] = useCompany()
+    const [{getCompanyData, companyData, isLoading, userMessage, dismissMessage}] = useCompany()
 
     const sortCompanyList = () => {
 
     }
 
-    const companyData = getCompanyList()
     console.log(companyData)
 
-
     useEffect(() => {
-        refreshCompanyData()
-      }, []);
+        console.log("Calling UseEffect...")
+        getCompanyData()
+      });
     
     return (
         <Container className={classes.container}>
@@ -54,6 +53,7 @@ const CompanyList = () => {
                     </Grid>
                 </Grid>
             </Paper>
+            <Footer userMessage={userMessage} isLoading={isLoading} close={dismissMessage}/>
         </Container>
     )
 }

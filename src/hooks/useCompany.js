@@ -1,9 +1,7 @@
-import { useState, useContext } from 'react'
+import { useContext } from 'react'
 import DataContext from '../context/DataContext'
 import { getCompanyListAPI, getCompanyAPI, updateCompanyAPI, uploadLogoAPI } from 'requests/company'
 import useAuth from './useAuth'
-
-
 
 const useCompany = () => {
     const context = useContext(DataContext)
@@ -11,34 +9,65 @@ const useCompany = () => {
         throw new Error('useCompany must be used within a DataProvider')
     }
     const { data = {}, dispatch } = context
-    console.log("useCompany - context")
-    console.log(context)
+    const { companyData, isLoading, userMessage } = data
     const auth = useAuth()
 
-    const refreshCompanyData = async () => {
-        if (data.company && data.company.length > 0) {
-            return
-        }
+    console.log(companyData)
 
-        // dispatch({type:"POPULATE_COMPANIES_START"})
+    const getCompanyData = async () => {
+        // Check if data already loading
+        if (isLoading) return
+
+        // Check if we already have data
+        if (companyData && companyData.length > 0) return
+
+        dispatch({ type: "GET_COMPANY_DATA_START" })
         try {
             const getCompanies = await getCompanyListAPI()
             console.log("Success")
             console.log(getCompanies.data)
-            await dispatch({ type: "POPULATE_COMPANIES_SUCCESS", data: getCompanies.data })
-            return true
+            dispatch({ type: "GET_COMPANY_DATA_SUCCESS", data: getCompanies.data })
         } catch (error) {
             console.log("Error")
             console.log(error)
             if (error.message === "NotAuthorizedException") {
                 auth.logout()
             } else {
-                // await dispatch({type:"ERROR", data: {type:"error", text: error.message}})
+                dispatch({ type: "ERROR", data: { type: "error", text: error.message } })
             }
-            return false
         }
     }
 
+    const getCompany = (id) => {
+        return data.companyData.find((item) => item.id === `${id}`)
+    }
+
+    // Refresh Company Data from Database
+    const getCompanyDetails = async (id) => {
+        // Check if data already loading
+        if (isLoading) return
+
+        dispatch({ type: "GET_COMPANY_START" })
+        try {
+            const response = await getCompanyAPI(id)
+            console.log("Success")
+            console.log(response.data)
+            dispatch({ type: "GET_COMPANY_SUCCESS", data: { id, companyRecord: response.data } })
+        } catch (error) {
+            console.log("Error")
+            console.log(error)
+            if (error.message === "NotAuthorizedException") {
+                auth.logout()
+            } else {
+                dispatch({ type: "ERROR", data: { type: "error", text: error.message } })
+            }
+        }
+    }
+
+
+
+
+    // >>>>OLD
     const updateCompanyDetails = async ({ id, details }) => {
         dispatch({ type: "COMPANY_UPDATE_START" })
 
@@ -81,42 +110,6 @@ const useCompany = () => {
         return data.company
     }
 
-    const getCompany = (id) => {
-        const companyRecord = data.company.find((item) => item.id === `${id}`)
-        if (companyRecord) {
-            // dispatch({type:"NO_ERROR"})
-            return companyRecord
-        } else {
-            console.log("Company MISSING")
-            // dispatch({type:"ERROR", data:{type:"error", text:"Company not found"}})
-            return undefined
-        }
-    }
-
-    // Refresh Company Data from Database
-    const refreshCompany = async (id) => {
-        dispatch({ type: "GET_COMPANY_START" })
-        // setIsLoading(true)
-        try {
-            const response = await getCompanyAPI(id)
-            console.log("Success")
-            console.log(response.data)
-            dispatch({ type: "GET_COMPANY_SUCCESS", data: { id, companyRecord: response.data } })
-            // setIsLoading(false)
-        } catch (error) {
-            // setIsLoading(false)
-            console.log("Error")
-            console.log(error)
-            if (error.message === "NotAuthorizedException") {
-                auth.logout()
-            } else {
-                dispatch({ type: "ERROR", data: { type: "error", text: error.message } })
-                // setUserMessage({type:"error", text: error.message})
-            }
-        }
-
-
-    }
 
 
 
@@ -130,7 +123,12 @@ const useCompany = () => {
 
     }
 
-    return [{ getCompany, getCompanyList, refreshCompany, refreshCompanyData, updateCompanyDetails, addCompany, test }]
+    const dismissMessage = (event, reason) => {
+        if (reason === 'clickaway') return
+        dispatch({ type: "NO_ERROR" })
+    }
+
+    return [{ companyData, getCompany, getCompanyDetails, getCompanyData, updateCompanyDetails, addCompany, test, userMessage, isLoading, dismissMessage }]
 }
 
 export { useCompany as default }

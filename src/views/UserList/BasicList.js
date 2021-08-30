@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Table from '@material-ui/core/Table';
 import Avatar from '@material-ui/core/Avatar';
@@ -15,7 +15,7 @@ import moment from 'moment'
 
 
 
-export default ({ userData = [], showDialog, closeDialog, resetUserPassword, lockUser }) => {
+const BasicList = ({ userData = [], showDialog, closeDialog, resetUserPassword, lockUser }) => {
     const history = useHistory();
     const selectRow = (id) => {
         history.push(`/person/${id}`)
@@ -61,12 +61,12 @@ export default ({ userData = [], showDialog, closeDialog, resetUserPassword, loc
                             <TableCell>{item.lastLogin ? moment.utc(item.lastLogin).local().format("MMM Do, YYYY - h:mm a") : ""}</TableCell>
 
                             <TableCell>
-                                <IconButton color="inherit" color="default" onClick={(e) => resetPassword(e, item)}>
+                                <IconButton color="inherit" onClick={(e) => resetPassword(e, item)}>
                                     <ResetIcon />
                                 </IconButton>
                             </TableCell>
                             <TableCell>
-                                <IconButton color="inherit" color={item.active ? "primary" : "secondary"} onClick={(e) => lockUnlockUser(e, item)}>
+                                <IconButton color={item.active ? "primary" : "secondary"} onClick={(e) => lockUnlockUser(e, item)}>
                                     {item.active ? (<LockIcon />) : (<LockOpenIcon/>)} 
                                 </IconButton>
                             </TableCell>
@@ -79,3 +79,5 @@ export default ({ userData = [], showDialog, closeDialog, resetUserPassword, loc
         </React.Fragment>
     );
 }
+
+export {BasicList as default}

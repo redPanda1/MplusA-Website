@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Paper from '@material-ui/core/Paper'
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/styles';
 import { Typography, Grid } from '@material-ui/core';
-import { getUserListAPI, lockUserAPI } from 'requests/auth'
 import BasicList from './BasicList'
 import Footer from 'common/Footer'
+import useUser from 'hooks/useUser'
   
 
 const useStyles = makeStyles((theme) => ({
@@ -24,57 +24,63 @@ const useStyles = makeStyles((theme) => ({
 
 const UserList = () => {
     const classes = useStyles()
-    const [userList, setUserList] = useState([])
-    const [userMessage, setUserMessage] = useState();
-    const [spinner, setSpinner] = useState();
+    // const [userList, setUserList] = useState([])
+    // const [userMessage, setUserMessage] = useState();
+    // const [spinner, setSpinner] = useState();
+    const [{ userData, isLoading, userMessage, getUserData, dismissMessage }] = useUser()
+
   
 
+    // Do once on page load
     useEffect(() => {
-        getUserList()
-    }, [])
+        console.log("Calling UseEffect...")
+        getUserData()
+    })
 
-    const getUserList = async () => {
-        try {
-            const getUsers = await getUserListAPI()
-            console.log("Success")
-            console.log(getUsers.data)
-            setUserList(getUsers.data)
-        } catch (error) {
-            console.log("Error")
-            console.log(error)
-        }
-    }
+
+
+
+
+    // useEffect(() => {
+    //     getUserList()
+    // }, [])
+
+    // const getUserList = async () => {
+    //     try {
+    //         const getUsers = await getUserListAPI()
+    //         console.log("Success")
+    //         console.log(getUsers.data)
+    //         setUserList(getUsers.data)
+    //     } catch (error) {
+    //         console.log("Error")
+    //         console.log(error)
+    //     }
+    // }
 
     const lockUser = async (id) => {
-        try {
-            setSpinner(true)
-            const lockUser = await lockUserAPI(id)
-            console.log("Success")
-            console.log(lockUser.data)
+        // try {
+        //     setSpinner(true)
+        //     const lockUser = await lockUserAPI(id)
+        //     console.log("Success")
+        //     console.log(lockUser.data)
 
-            // update data
-            const newUserList = userList.map((user) => {
-                if (user.id === id) {
-                    return { ...user, ...lockUser.data }
-                } else {
-                    return user
-                }
-            })
-            setUserList(newUserList)
-            setUserMessage({ type: "success", text: "User updated" })
-            setSpinner(false)
+        //     // update data
+        //     const newUserList = userList.map((user) => {
+        //         if (user.id === id) {
+        //             return { ...user, ...lockUser.data }
+        //         } else {
+        //             return user
+        //         }
+        //     })
+        //     setUserList(newUserList)
+        //     setUserMessage({ type: "success", text: "User updated" })
+        //     setSpinner(false)
 
-        } catch (error) {
-            console.log("Error")
-            console.log(error)
-        }
+        // } catch (error) {
+        //     console.log("Error")
+        //     console.log(error)
+        // }
     }
-
-    const dismissMessage = () => {
-        setUserMessage()
-    }
-
-
 
     return (
         <Container className={classes.container}>
@@ -86,11 +92,11 @@ const UserList = () => {
                 </Grid>
                 <Grid container>
                     <Grid item md={12}>
-                        <BasicList userData={userList} lockUser={lockUser} />
+                        <BasicList userData={userData} lockUser={lockUser} />
                     </Grid>
                 </Grid>
             </Paper>
-            <Footer userMessage={userMessage} isLoading={spinner} close={dismissMessage}/>
+            <Footer userMessage={userMessage} isLoading={isLoading} close={dismissMessage}/>
 
         </Container>
     )

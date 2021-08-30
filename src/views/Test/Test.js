@@ -1,9 +1,7 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper'
 import Container from '@material-ui/core/Container';
-import { Image } from 'components/atoms';
 import { makeStyles } from '@material-ui/styles';
-import placeholderIcon from 'assets/images/construction.png'
 import { ViewState } from '@devexpress/dx-react-scheduler';
 import {
     Scheduler,
@@ -12,7 +10,6 @@ import {
     DateNavigator,
     Appointments,
     TodayButton,  
-    CurrentTimeIndicator,
     AppointmentTooltip,
     Resources
 } from '@devexpress/dx-react-scheduler-material-ui';
