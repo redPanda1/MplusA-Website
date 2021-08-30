@@ -1,8 +1,7 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { Typography, Grid, TextField, IconButton, Divider, Box, MenuItem, Input } from '@material-ui/core';
+import { Typography, Grid, TextField, IconButton, Divider, Box, MenuItem } from '@material-ui/core';
 import LaunchIcon from '@material-ui/icons/Launch'
-import { CardBase } from 'components/organisms';
 import { Image } from 'components/atoms';
 import { MODEL_OPTIONS, SECTOR_OPTIONS } from 'common/constants';
 
