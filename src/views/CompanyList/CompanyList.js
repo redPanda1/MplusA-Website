@@ -31,8 +31,6 @@ const CompanyList = () => {
 
     }
 
-    console.log(companyData)
-
     useEffect(() => {
         console.log("Calling UseEffect...")
         getCompanyData()

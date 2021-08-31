@@ -61,9 +61,6 @@ const TableHeader = (props) => {
 }
 
 const BasicList = ({ companyList = [], sortData }) => {
-
-    console.log(companyList)
-
     const classes = useStyles()
     const history = useHistory();
     const [isAsc, setIsAsc] = useState(false)

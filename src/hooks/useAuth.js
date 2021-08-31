@@ -1,5 +1,5 @@
 import {useState, useContext} from 'react'
-import AuthContext from 'context/AuthContext';
+import AuthContext from 'context/AuthContext'
 
 const useAuth = () => useContext(AuthContext)
 
@@ -10,11 +10,12 @@ const useAuthProvider = () => {
     console.log("useAuth")
     console.log(userAuthenticated)
 
-    const logout = () => {
+    const logout = (dispatch) => {
         // Remove Data from local storage
         localStorage.removeItem('userData');
         localStorage.removeItem('idToken');
         localStorage.removeItem('refreshToken');
+        dispatch({ type: "LOGOUT" })
         setUserAuthenticated(false)
     }
     const login = (data) => {

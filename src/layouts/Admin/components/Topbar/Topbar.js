@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom'
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
@@ -19,6 +19,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { Image } from 'components/atoms';
 import logo from 'assets/images/logo_inv.png'
 import useAuth from 'hooks/useAuth'
+import DataContext from 'context/DataContext'
 
 
 const useStyles = makeStyles(theme => ({
@@ -136,11 +137,11 @@ const useStyles = makeStyles(theme => ({
 const Topbar = ({ onSidebarOpen, pages, className, ...rest }) => {
   const classes = useStyles();
   const auth = useAuth()
-
   const [anchorEl, setAnchorEl] = useState(null);
   const [openedPopoverId, setOpenedPopoverId] = useState(null);
+  const context = useContext(DataContext)
+  const { dispatch } = context
 
-  console.log(auth.userData)
   const { givenName: userName, photoURL: userImage, type: userType } = auth.userData
 
   const handleClick = (event, popoverId) => {
@@ -156,7 +157,7 @@ const Topbar = ({ onSidebarOpen, pages, className, ...rest }) => {
   const logoutUser = () => {
     console.log("Logout")
     console.log(auth.userAuthenticated)
-    auth.logout()
+    auth.logout(dispatch)
   }
 
   const company = pages.company;

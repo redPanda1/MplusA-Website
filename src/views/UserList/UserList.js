@@ -24,12 +24,9 @@ const useStyles = makeStyles((theme) => ({
 
 const UserList = () => {
     const classes = useStyles()
-    // const [userList, setUserList] = useState([])
-    // const [userMessage, setUserMessage] = useState();
-    // const [spinner, setSpinner] = useState();
-    const [{ userData, isLoading, userMessage, getUserData, dismissMessage }] = useUser()
+    const [{ userData, isLoading, userMessage, getUserData, lockUser, resetUserPassword, dismissMessage }] = useUser()
 
-  
+    console.log(userData)
 
     // Do once on page load
     useEffect(() => {
@@ -37,49 +34,13 @@ const UserList = () => {
         getUserData()
     })
 
-
-
-
-
-    // useEffect(() => {
-    //     getUserList()
-    // }, [])
-
-    // const getUserList = async () => {
-    //     try {
-    //         const getUsers = await getUserListAPI()
-    //         console.log("Success")
-    //         console.log(getUsers.data)
-    //         setUserList(getUsers.data)
-    //     } catch (error) {
-    //         console.log("Error")
-    //         console.log(error)
-    //     }
-    // }
-
-    const lockUser = async (id) => {
-        // try {
-        //     setSpinner(true)
-        //     const lockUser = await lockUserAPI(id)
-        //     console.log("Success")
-        //     console.log(lockUser.data)
-
-        //     // update data
-        //     const newUserList = userList.map((user) => {
-        //         if (user.id === id) {
-        //             return { ...user, ...lockUser.data }
-        //         } else {
-        //             return user
-        //         }
-        //     })
-        //     setUserList(newUserList)
-        //     setUserMessage({ type: "success", text: "User updated" })
-        //     setSpinner(false)
-
-        // } catch (error) {
-        //     console.log("Error")
-        //     console.log(error)
-        // }
+    const handleResetPassword = (email) => {
+        console.log(email)
+        resetUserPassword({userName:email})
+    }
+    const handleLockUser = (id) => {
+        console.log(id)
+        lockUser({id})
     }
 
     return (
@@ -92,7 +53,7 @@ const UserList = () => {
                 </Grid>
                 <Grid container>
                     <Grid item md={12}>
-                        <BasicList userData={userData} lockUser={lockUser} />
+                        <BasicList userData={userData} resetUserPassword={handleResetPassword} lockUser={handleLockUser} />
                     </Grid>
                 </Grid>
             </Paper>

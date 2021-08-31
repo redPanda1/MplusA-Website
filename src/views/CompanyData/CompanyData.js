@@ -9,7 +9,6 @@ import CompanyDetails from './CompanyDetails';
 import MuiAccordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
-import CircularProgress from '@material-ui/core/CircularProgress'
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -17,16 +16,9 @@ import Application from './Application';
 import Files from './Files'
 import Actions from './Actions'
 import useCompany from 'hooks/useCompany';
-import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
-import useStatus from 'hooks/useStatus';
 import Footer from 'common/Footer'
 
-
-
-const Alert = (props) => {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
 
 const Accordion = withStyles({
   root: {
@@ -64,8 +56,6 @@ const CompanyData = () => {
   const classes = useStyles()
   const history = useHistory()
   const { id } = useParams()
-  // const status = useStatus()
-  // const { isLoading, userMessage, resetUserMessage } = status
   const [{ getCompany, updateCompanyDetails, getCompanyDetails, isLoading, userMessage, dismissMessage }] = useCompany()
   const [companyData, setCompanyData] = useState({})
   const [readOnly, setReadOnly] = useState(true)
@@ -80,9 +70,6 @@ const CompanyData = () => {
 
   useEffect(() => {
     console.log("<<<<<USE EFFECT UPDATE>>>>>>>")
-    console.log("userMessage")
-    console.log(userMessage)
-    console.log("isLoading: " + isLoading)
     if (getCompany(id)) {
       setCompanyData(getCompany(id))
     }

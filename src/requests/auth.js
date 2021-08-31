@@ -25,12 +25,19 @@ const getUserListAPI = async () => {
     return response
 }
 
-const lockUserAPI = async (id) => {
+const lockUserAPI = async ({id}) => {
     const url = `${DOMAIN}auth/user/lock?id=${id}` 
     const response = await apiFetch({url})
     return response
 }
 
-export { loginAPI, changePasswordAPI, getUserListAPI, lockUserAPI }
+const resetUserPasswordAPI = async ({userName}) => {
+    const url = `${DOMAIN}auth/password/reset?userName=${userName}` 
+    const response = await apiFetch({url, auth:true, method:"POST"})
+    return response
+}
+
+
+export { loginAPI, changePasswordAPI, getUserListAPI, lockUserAPI, resetUserPasswordAPI }
 
 

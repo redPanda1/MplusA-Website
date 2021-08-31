@@ -12,9 +12,6 @@ import LockIcon from '@material-ui/icons/LockOutlined';
 import ResetIcon from '@material-ui/icons/RefreshOutlined'
 import moment from 'moment'
 
-
-
-
 const BasicList = ({ userData = [], showDialog, closeDialog, resetUserPassword, lockUser }) => {
     const history = useHistory();
     const selectRow = (id) => {
@@ -23,13 +20,11 @@ const BasicList = ({ userData = [], showDialog, closeDialog, resetUserPassword, 
 
     const resetPassword = (e, user) => {
         e.stopPropagation()
-        console.log(user.id)
-        resetUserPassword({email:user.email})
+        resetUserPassword(user.email)
     }
 
     const lockUnlockUser = (e, user) => {
         e.stopPropagation()
-        console.log(user.id)
         lockUser(user.id)
     }
 
@@ -67,7 +62,7 @@ const BasicList = ({ userData = [], showDialog, closeDialog, resetUserPassword, 
                             </TableCell>
                             <TableCell>
                                 <IconButton color={item.active ? "primary" : "secondary"} onClick={(e) => lockUnlockUser(e, item)}>
-                                    {item.active ? (<LockIcon />) : (<LockOpenIcon/>)} 
+                                    {item.active ? (<LockOpenIcon />) : (<LockIcon />)} 
                                 </IconButton>
                             </TableCell>
                         </TableRow>
