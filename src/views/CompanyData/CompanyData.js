@@ -60,7 +60,7 @@ const CompanyData = () => {
   const [companyData, setCompanyData] = useState({})
   const [readOnly, setReadOnly] = useState(true)
 
-  console.log(companyData.application)
+  console.log(companyData)
 
 
   useEffect(() => {
@@ -96,7 +96,6 @@ const CompanyData = () => {
   const handleCancel = () => {
     history.push('/admin/company/list')
   }
-
 
   return (
     <Container className={classes.container}>
@@ -139,7 +138,7 @@ const CompanyData = () => {
           <Typography variant="h6">Reviews ({companyData.reviews ? companyData.reviews.length : 0})</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Reviews reviews={companyData.reviews} />
+          <Reviews companyData={companyData} />
         </AccordionDetails>
       </Accordion>
       <Accordion >

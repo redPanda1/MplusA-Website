@@ -6,13 +6,15 @@ import Button from '@material-ui/core/Button'
 import ReviewBlock from './ReviewBlock';
 import SharePopUp from './SharePopUp';
 import RatePopUp from './RatePopUp';
+import useAuth from 'hooks/useAuth'
+
 
 
 const useStyles = makeStyles((theme) => ({
 }))
 
 const ratingTemplate = {
-    name: "", comment: "", categories: [{ name: "Team", rating: 0, comment: "" },
+    name: "", userID: "", comment: "", categories: [{ name: "Team", rating: 0, comment: "" },
     { name: "Market", rating: 0, comment: "" },
     { name: "Product", rating: 0, comment: "" },
     { name: "Traction", rating: 0, comment: "" },
@@ -20,16 +22,19 @@ const ratingTemplate = {
   }
   
 
-const Reviews = ({ reviews = [] }) => {
+const Reviews = ({ companyData = {} }) => {
     const classes = useStyles()
+    const {reviews = []} = companyData
     const [newReview, setNewReview] = useState(ratingTemplate);
     const [showSharePopUp, setShowSharePopUp] = useState(false);
     const [showRatePopUp, setShowRatePopUp] = useState(false);
     const [userRating, setUserRating] = useState();
+    const auth = useAuth();
+    const { givenName: userName, id: userID } = auth.userData
 
     console.log(reviews)
 
-      // Data changed as a result of user input
+  // Data changed as a result of user input
   const updateReview = (data) => {
     if (data.categories) {
       const newRatings = newReview.categories.map((item) => {
@@ -63,6 +68,14 @@ const Reviews = ({ reviews = [] }) => {
   }
   const closeRatePopUp = (rating) => {
     setShowRatePopUp(false)
+    if (rating) {
+      console.log(">>> update rating")
+      console.log(rating)
+    } else {
+      console.log(">>> forget it")
+    }
+
+
   }
 
     return (
@@ -79,10 +92,6 @@ const Reviews = ({ reviews = [] }) => {
                             </div>)))
                     }
                 </Grid>
-
-                <Grid item xs={12}>
-                    <ReviewBlock reviewData={newReview} updateReview={updateReview} />
-                </Grid>
                 <Grid item xs={12}>
                     <Grid container direction="row" justifyContent="flex-end" alignItems="center">
                         <Grid item>
@@ -98,8 +107,8 @@ const Reviews = ({ reviews = [] }) => {
 
 
             </Grid>
-            <SharePopUp open={showSharePopUp} handleClose={closeSharePopUp} companyName={"Helol"} />
-            <RatePopUp open={showRatePopUp} handleClose={closeRatePopUp} rating={reviews[0]}/>
+            <SharePopUp open={showSharePopUp} handleClose={closeSharePopUp} companyName={companyData.name} />
+            <RatePopUp open={showRatePopUp} handleClose={closeRatePopUp} rating={newReview}/>
 
 
         </React.Fragment>)

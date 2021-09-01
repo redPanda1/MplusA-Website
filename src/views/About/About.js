@@ -8,8 +8,8 @@ import {
   Story,
   Team,
 } from './components';
-import { Element } from "react-scroll";
-import { team } from './data';
+import { Element } from "react-scroll"
+import { team } from 'common/team'
 
 const useStyles = makeStyles(theme => ({
   root: {

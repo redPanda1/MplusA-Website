@@ -69,6 +69,18 @@ const useCompany = () => {
         }
     }
 
+    const updateCompanyReviews = async ({ id, reviews }) => {
+        dispatch({ type: "COMPANY_UPDATE_START" })
+        try {
+            const response = await updateCompanyAPI({ id, data: { reviews: reviews } })
+            dispatch({ type: "COMPANY_UPDATE_SUCCESS", data: { id, companyRecord: response.data } })
+        } catch (error) {
+            processError(error)
+        }
+    }
+
+
+
     const processError = (error) => {
         console.log("Error")
         console.log(error)
@@ -84,7 +96,8 @@ const useCompany = () => {
         dispatch({ type: "NO_ERROR" })
     }
 
-    return [{ companyData, getCompany, getCompanyDetails, getCompanyData, updateCompanyDetails, userMessage, isLoading, dismissMessage }]
+    return [{ companyData, getCompany, getCompanyDetails, getCompanyData, updateCompanyDetails, updateCompanyReviews, userMessage, isLoading, dismissMessage }]
+
 }
 
 export { useCompany as default }
