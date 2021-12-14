@@ -6,6 +6,7 @@ import {
   Hero,
   Form,
   Story,
+    Portfolio,
   Team,
 } from './components';
 import { Element } from "react-scroll"
