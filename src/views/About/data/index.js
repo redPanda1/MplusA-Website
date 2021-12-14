@@ -150,7 +150,7 @@ export const portfolio = [
   },
   {
     Company: 'Community Gaming',
-    logo:'communitygaming.jpeg',
+    logo:'communitygaming.jpg',
     snippet: 'removes friction for tournament organizers to host tournaments and for gamers to compete and automatically get paid when they win.',
     website: 'https://www.communitygaming.io/'
   },
