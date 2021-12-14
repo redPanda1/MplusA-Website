@@ -103,217 +103,217 @@ export const portfolio = [
     {
         Company: 'Allstar',
         logo:'Allstar.png',
-        snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
+        snippet: 'enables esport\'s gamers to create and share their very best gaming moments all without friction. ',
         website: 'https://allstar.gg/'
     },
   {
     Company: 'AdStash',
     logo:'AdStash.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
-    website: 'https://allstar.gg/'
+    snippet: 'helps businesses of all sizes easily generate new streams of income by utilizing programmatic advertising and monetizing their digital screens.',
+    website: 'https://www.adstash.com/'
   },
   {
     Company: 'Alo.ai',
     logo:'Alo_ai.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
-    website: 'https://allstar.gg/'
+    snippet: 'uses natural language processing for realtime transcription and translation between 99 languages.',
+    website: 'https://www.alo.ai/'
   },
   {
     Company: 'Beast',
     logo:'blank.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
+    snippet: '',
     website: 'https://allstar.gg/'
   },
   {
     Company: 'Beckon',
     logo:'blank.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
+    snippet: '',
     website: 'https://allstar.gg/'
   },
   {
     Company: 'Capillary Bio',
     logo:'CapillaryBiomedicalLogo_TM_400x160.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
-    website: 'https://allstar.gg/'
+    snippet: 'has been awarded an SBIR grant from the National Institute of Diabetes and Digestive and Kidney Diseases.',
+    website: 'https://www.capillarybio.com/'
   },
   {
     Company: 'ClassTag',
     logo:'classtag-logo.svg',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
-    website: 'https://allstar.gg/'
+    snippet: 'A Free Parent-Teacher Communication App that Just Works ... ClassTag connects teachers and families with one easy-to-use app for all their communication needs.',
+    website: 'https://home.classtag.com/'
   },
   {
     Company: 'CloudFrame',
     logo:'CloudFrame.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
-    website: 'https://allstar.gg/'
+    snippet: 'provides automated solutions that reduce mainframe costs and accelerate application modernization and Cloud migrations.',
+    website: 'https://cloudframe.com/'
   },
   {
     Company: 'Community Gaming',
     logo:'communitygaming.jpeg',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
-    website: 'https://allstar.gg/'
+    snippet: 'removes friction for tournament organizers to host tournaments and for gamers to compete and automatically get paid when they win.',
+    website: 'https://www.communitygaming.io/'
   },
   {
     Company: 'EdgeHog Technology',
     logo:'Edgehog LOGO.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
-    website: 'https://allstar.gg/'
+    snippet: '',
+    website: 'https://www.edgehogtech.com/'
   },
   {
     Company: 'Epicured',
     logo:'Epicured.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
-    website: 'https://allstar.gg/'
+    snippet: 'is a subscription meal delivery service that specializes in Low FODMAP & gluten-free prepared foods.',
+    website: 'https://www.epicured.com/'
   },
   {
     Company: 'Front Range Bio',
     logo:'Front Range Biosciences.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
-    website: 'https://allstar.gg/'
+    snippet: 'partners with farmers, combining progressive R&D with modern ag to grow crops with successful yields.',
+    website: 'https://www.frontrangebio.com/'
   },
   {
     Company: 'Fuego',
     logo:'blank.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
+    snippet: '',
     website: 'https://allstar.gg/'
   },
   {
     Company: 'FutureStay',
     logo:'futurestay.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
-    website: 'https://allstar.gg/'
+    snippet: 'is the leading vacation rental property management software.',
+    website: 'https://www.futurestay.com'
   },
   {
     Company: 'HIPPATrek',
     logo:'HipaaTrek.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
-    website: 'https://allstar.gg/'
+    snippet: '',
+    website: ''
   },
   {
     Company: 'Magellan',
     logo:'blank.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
+    snippet: '',
     website: 'https://allstar.gg/'
   },
   {
     Company: 'Mathison',
     logo:'Mathison.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
-    website: 'https://allstar.gg/'
+    snippet: 'bridges the gap between the most underrepresented job seekers and employers committed to diversity and inclusion.',
+    website: 'https://www.mathison.io/'
   },
   {
     Company: 'Medcura',
     logo:'MedCura.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
+    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
     website: 'https://allstar.gg/'
   },
   {
     Company: 'Metabob',
     logo:'metabob_logo-p-500.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
+    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
     website: 'https://allstar.gg/'
   },
   {
     Company: 'New Labs',
     logo:'NewLab.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
+    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     website: 'https://allstar.gg/'
   },
   {
     Company: 'New View Surgical',
     logo:'new-view-logo.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
+    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     website: 'https://allstar.gg/'
   },
   {
     Company: 'Ora Graphene Audio',
     logo:'Ora-Graphene.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
+    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     website: 'https://allstar.gg/'
   },
   {
     Company: 'Overwolf',
     logo:'Overwolf.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
+    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     website: 'https://allstar.gg/'
   },
   {
     Company: 'Polls',
     logo:'blank.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
+    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     website: 'https://allstar.gg/'
   },
   {
     Company: 'Roar For Good',
     logo:'roar.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
+    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     website: 'https://allstar.gg/'
   },
   {
     Company: 'Sandstone Diagnostics',
     logo:'sand-stone.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
+    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     website: 'https://allstar.gg/'
   },
   {
     Company: 'ShowX',
     logo:'ShowX.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
+    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     website: 'https://allstar.gg/'
   },
   {
     Company: 'SixPlus Dining',
     logo:'sixplus.svg',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
+    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     website: 'https://allstar.gg/'
   },
   {
     Company: 'SIA',
     logo:'blank.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
+    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     website: 'https://allstar.gg/'
   },
   {
     Company: 'SplitGate',
     logo:'Splitgate.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
+    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     website: 'https://allstar.gg/'
   },
   {
     Company: 'ThriveFantasy',
     logo:'Thrive.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
+    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     website: 'https://allstar.gg/'
   },
   {
     Company: 'Tire Agent',
     logo:'TireAgent.svg',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
+    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     website: 'https://allstar.gg/'
   },
   {
     Company: 'uPage.us',
     logo:'upage.us.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
+    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     website: 'https://allstar.gg/'
   },
   {
     Company: 'US Integrity',
     logo:'usintegrity-logo.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
+    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     website: 'https://allstar.gg/'
   },
   {
     Company: 'Vita Inclinata Tech',
     logo:'Vita-Logo.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
+    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     website: 'https://allstar.gg/'
   },
   {
     Company: 'Winzo',
     logo:'WinZo.png',
-    snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
+    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     website: 'https://allstar.gg/'
   },
 

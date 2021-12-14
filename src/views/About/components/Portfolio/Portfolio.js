@@ -26,6 +26,9 @@ const useStyles = makeStyles(theme => ({
     boxShadow: "none",
     borderRadius: "13px",
   },
+  cardContent: {
+    height:"100px",
+  },
   listItem: {
     padding: 0,
     [theme.breakpoints.down('sm')]: {
@@ -47,7 +50,7 @@ const Portfolio = props => {
     <div className={className} {...rest}>
       <SectionHeader
         title="Portfolio"
-        subtitle="M+A has invested into 100+ companies since 2019. This activity has created 1,000+ jobs. From the portfolio companies, XX have gone public and YY have been acquired (see the exit listings below)."
+        subtitle="M+A has invested into ZZ companies since 2020. This activity has created JJ jobs. From the portfolio companies, XX have gone public and YY have been acquired (see the exit listings below)."
       />
       <Grid container spacing={isMd ? 2 : 1}>
         {data.map((item, index) => {
@@ -69,9 +72,9 @@ const Portfolio = props => {
                       alt={item.company}
                   />
                   </div>
-                  <CardContent>
+                  <CardContent className={classes.cardContent}>
                     <Typography variant="body2" color="text.secondary">
-                      <strong>{item.Company}</strong>: {item.snippet}
+                      <strong>{item.Company}</strong> {item.snippet}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
