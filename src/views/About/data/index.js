@@ -228,7 +228,7 @@ export const portfolio = [
   },
   {
     Company: 'Ora Graphene Audio',
-    logo:'ora-graphene.png',
+    logo:'Ora-Graphene.png',
     snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
     website: 'https://allstar.gg/'
   },
@@ -258,7 +258,7 @@ export const portfolio = [
   },
   {
     Company: 'ShowX',
-    logo:'showx.png',
+    logo:'ShowX.png',
     snippet: 'Endiatx makes tiny robot pills which give gastroenterologists the ability to actively explore the human stomach over a video call. ',
     website: 'https://allstar.gg/'
   },
