@@ -6,12 +6,11 @@ import {
   Services,
   Hero,
   Form,
-    Portfolio,
   Story,
   Team,
 } from 'views/About/components';
 import { animateScroll, Element, scroller } from "react-scroll";
-import { team, portfolio } from 'views/About/data';
+import { team } from 'views/About/data';
 import { Section, SectionAlternate } from 'components/organisms';
 
 
@@ -42,38 +41,33 @@ const Main = () => {
 
   return (
       <div>
-          <Topbar scrollTo={scrollTo}/>
-          <main>
-              <Divider />
-              <Hero />
-              <Element name={"about"}>
-                  <Section>
-                      <Story />
-                  </Section>
-              </Element>
-              <Element name={"services"}>
-                  <SectionAlternate className={classes.sectionNoPaddingTop}>
-                      <Services />
-                  </SectionAlternate>
-              </Element>
-              <Element name={"team"}>
-                  <Section>
-                      <Team data={team} />
-                  </Section>
-              </Element>
-              <Element name={"portfolio"}>
-                  <Section>
-                      <Portfolio data={portfolio} />
-                  </Section>
-              </Element>
-              <Element name={"contact"}>
-                  <SectionAlternate>
-                      <Form />
-                  </SectionAlternate>
-              </Element>
-          </main>
-          <Footer scrollTo={scrollTo} />
-      </div>
+      <Topbar scrollTo={scrollTo}/>
+      <main>
+        <Divider />
+        <Hero />
+      <Element name={"about"}>
+        <Section>
+          <Story />
+        </Section>
+      </Element>
+      <Element name={"services"}>
+        <SectionAlternate className={classes.sectionNoPaddingTop}>
+          <Services />
+        </SectionAlternate>
+      </Element>
+      <Element name={"team"}>
+        <Section>
+          <Team data={team} />
+        </Section>
+      </Element>
+      <Element name={"contact"}>
+        <SectionAlternate>
+          <Form />
+        </SectionAlternate>
+      </Element>
+      </main>
+      <Footer scrollTo={scrollTo} />
+    </div>
   );
 };
 

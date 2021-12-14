@@ -147,13 +147,6 @@ const Topbar = ({ onSidebarOpen, className, scrollTo, ...rest }) => {
                   Team
             </Typography>
           </ListItem>
-        <ListItem>
-          <Typography variant="body1" color="textSecondary"
-                      className={clsx(classes.listItemText, 'menu-item')}
-                      onClick={()=>scrollTo("portfolio")}>
-            Portfolio
-          </Typography>
-        </ListItem>
           <ListItem className={clsx(classes.listItem, 'menu-item--no-dropdown')}>
             <Button
               color="secondary"
