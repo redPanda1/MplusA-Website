@@ -120,15 +120,15 @@ export const portfolio = [
   },
   {
     Company: 'Beast',
-    logo:'blank.png',
-    snippet: '',
-    website: 'https://allstar.gg/'
+    logo:'BeastTag_512x.png',
+    snippet: 'Grooming and personal care products for Beasts of all kinds',
+    website: 'https://www.getbeast.com/'
   },
   {
     Company: 'Beckon',
-    logo:'blank.png',
-    snippet: '',
-    website: 'https://allstar.gg/'
+    logo:'Beckon.png',
+    snippet: 'is the first and only premium ice cream made from lactose-free dairy',
+    website: 'https://beckonicecream.com/'
   },
   {
     Company: 'Capillary Bio',
@@ -139,7 +139,7 @@ export const portfolio = [
   {
     Company: 'ClassTag',
     logo:'classtag-logo.svg',
-    snippet: 'A Free Parent-Teacher Communication App that Just Works ... ClassTag connects teachers and families with one easy-to-use app for all their communication needs.',
+    snippet: 'connects teachers and families with one easy-to-use app for all their communication needs.',
     website: 'https://home.classtag.com/'
   },
   {
@@ -157,7 +157,7 @@ export const portfolio = [
   {
     Company: 'EdgeHog Technology',
     logo:'Edgehog LOGO.png',
-    snippet: '',
+    snippet: 'Edgehog’s nano-textured anti-reflection glass technology increases annual solar panels output by 6-12%.',
     website: 'https://www.edgehogtech.com/'
   },
   {
@@ -174,9 +174,9 @@ export const portfolio = [
   },
   {
     Company: 'Fuego',
-    logo:'blank.png',
-    snippet: '',
-    website: 'https://allstar.gg/'
+    logo:'fuego.png',
+    snippet: 'offers the best dance sneaker in the world.',
+    website: 'https://fuegoshoes.com/'
   },
   {
     Company: 'FutureStay',
@@ -192,9 +192,9 @@ export const portfolio = [
   },
   {
     Company: 'Magellan',
-    logo:'blank.png',
-    snippet: '',
-    website: 'https://allstar.gg/'
+    logo:'magellan-ai-logo.svg',
+    snippet: 'Empowers publishers, agencies and brands to succeed in the rapidly changing world of podcast advertising.',
+    website: 'https://www.magellan.ai/'
   },
   {
     Company: 'Mathison',
@@ -223,8 +223,8 @@ export const portfolio = [
   {
     Company: 'New View Surgical',
     logo:'new-view-logo.png',
-    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-    website: 'https://allstar.gg/'
+    snippet: 'embarked on a mission to improve the outcomes and efficiency of laparoscopic surgical procedures through the introduction of VisionPort technology.',
+    website: 'http://newviewsurg.com/'
   },
   {
     Company: 'Ora Graphene Audio',
@@ -253,14 +253,14 @@ export const portfolio = [
   {
     Company: 'Sandstone Diagnostics',
     logo:'sand-stone.png',
-    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-    website: 'https://allstar.gg/'
+    snippet: 'is a diagnostic and device biotech company whose zero delay centrifuge technology provides lab-quality plasma and serum collection in minutes at the point-of-care.',
+    website: 'https://sandstonedx.com/'
   },
   {
     Company: 'ShowX',
     logo:'ShowX.png',
-    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-    website: 'https://allstar.gg/'
+    snippet: 'is a one-stop-shop digital platform for musicians to manage their concert bookings, data-base and connect directly with their fans.',
+    website: 'https://www.showx.com/'
   },
   {
     Company: 'SixPlus Dining',
@@ -283,14 +283,14 @@ export const portfolio = [
   {
     Company: 'ThriveFantasy',
     logo:'Thrive.png',
-    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+    snippet: 'is a daily fantasy sports and esports for player props.',
     website: 'https://allstar.gg/'
   },
   {
     Company: 'Tire Agent',
     logo:'TireAgent.svg',
-    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-    website: 'https://allstar.gg/'
+    snippet: 'is the Internet\'s largest selection of tires, rims and wheels shipped anywhere in the continental U.S. for free',
+    website: 'https://www.tireagent.com/'
   },
   {
     Company: 'uPage.us',
@@ -301,8 +301,8 @@ export const portfolio = [
   {
     Company: 'US Integrity',
     logo:'usintegrity-logo.png',
-    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-    website: 'https://allstar.gg/'
+    snippet: 'offers customized sports-integrity solutions for NCAA conferences, universities, professional leagues, and individual teams',
+    website: 'https://www.usintegrity.com/'
   },
   {
     Company: 'Vita Inclinata Tech',

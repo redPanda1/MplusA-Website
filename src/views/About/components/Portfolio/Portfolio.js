@@ -27,7 +27,8 @@ const useStyles = makeStyles(theme => ({
     borderRadius: "13px",
   },
   cardContent: {
-    height:"100px",
+    height:"115px",
+    paddingTop:"0px"
   },
   listItem: {
     padding: 0,
@@ -55,7 +56,7 @@ const Portfolio = props => {
       <Grid container spacing={isMd ? 2 : 1}>
         {data.map((item, index) => {
           return (
-            <Grid item xs={6} sm={6} md={4} key={index}
+            <Grid item xs={6} sm={6} md={3} key={index}
               data-aos-delay="500"
               data-aos-once="false"
               data-aos-easing="ease-in-sine"
