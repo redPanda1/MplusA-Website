@@ -51,7 +51,7 @@ const Portfolio = props => {
     <div className={className} {...rest}>
       <SectionHeader
         title="Portfolio"
-        subtitle="M+A has invested into ZZ companies since 2020. This activity has created JJ jobs. From the portfolio companies, XX have gone public and YY have been acquired (see the exit listings below)."
+        subtitle="M+A has invested into 42 early-stage companies.  Our team invests in, and mentors audacious founders who are building early-stage technology companies and who have been historically overlooked."
       />
       <Grid container spacing={isMd ? 2 : 1}>
         {data.map((item, index) => {
@@ -61,25 +61,27 @@ const Portfolio = props => {
               data-aos-once="false"
               data-aos-easing="ease-in-sine"
               data-aos="fade-up">
-              <Card sx={{ maxWidth: 345 }} className={classes.cardComponent}>
-                <CardActionArea>
-                  <div className={classes.imageContainer}>
-                  <CardMedia
-                      component="img"
-                      width="100%"
-                      height="100%"
-                      className={classes.cardMediaComponent}
-                      image = {require(`assets/images/portfolio/${item.logo}`).default}
-                      alt={item.company}
-                  />
-                  </div>
-                  <CardContent className={classes.cardContent}>
-                    <Typography variant="body2" color="text.secondary">
-                      <strong>{item.Company}</strong> {item.snippet}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
+              <a target="_blanl" href={item.website}>
+                <Card sx={{ maxWidth: 345 }} className={classes.cardComponent}>
+                  <CardActionArea>
+                    <div className={classes.imageContainer}>
+                    <CardMedia
+                        component="img"
+                        width="100%"
+                        height="100%"
+                        className={classes.cardMediaComponent}
+                        image = {require(`assets/images/portfolio/${item.logo}`).default}
+                        alt={item.company}
+                    />
+                    </div>
+                    <CardContent className={classes.cardContent}>
+                      <Typography variant="body2" color="text.secondary">
+                        <strong>{item.Company}</strong> {item.snippet}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              </a>
 
 
             </Grid>

@@ -115,7 +115,7 @@ export const portfolio = [
   {
     Company: 'Alo.ai',
     logo:'Alo_ai.png',
-    snippet: 'uses natural language processing for realtime transcription and translation between 99 languages.',
+    snippet: 'Communications app for live event organizers uses natural language processing for realtime transcription and translation between 99 languages.',
     website: 'https://www.alo.ai/'
   },
   {
@@ -133,8 +133,26 @@ export const portfolio = [
   {
     Company: 'Capillary Bio',
     logo:'CapillaryBiomedicalLogo_TM_400x160.png',
-    snippet: 'has been awarded an SBIR grant from the National Institute of Diabetes and Digestive and Kidney Diseases.',
+    snippet: 'Developing technologies to simplify diabetes management.',
     website: 'https://www.capillarybio.com/'
+  },
+  {
+    Company: 'Carta',
+    logo:'cartalogo.svg',
+    snippet: 'helps companies and investors manage their cap tables, valuations, investments, and equity plans.',
+    website: 'https://www.carta.com'
+  },
+  {
+    Company: 'Chowly',
+    logo:'chowly.png',
+    snippet: 'streamlines and digitizes the ordering process, eliminating the need for manual order entry.',
+    website: 'https://www.chowly.com'
+  },
+  {
+    Company: 'CityBlock Health',
+    logo:'cityblock.png',
+    snippet: 'provides physical, mental, and social services to care for your whole self and support your daily life.',
+    website: 'https://www.cityblock.com/'
   },
   {
     Company: 'ClassTag',
@@ -175,7 +193,7 @@ export const portfolio = [
   {
     Company: 'Fuego',
     logo:'fuego.png',
-    snippet: 'offers the best dance sneaker in the world.',
+    snippet: 'created a new category of dance footwear.',
     website: 'https://fuegoshoes.com/'
   },
   {
@@ -185,10 +203,22 @@ export const portfolio = [
     website: 'https://www.futurestay.com'
   },
   {
+    Company: 'Goalsetter Inc',
+    logo:'goalsetter.png',
+    snippet: 'Education-based banking for the whole family.',
+    website: 'https://www.goalsetter.co/'
+  },
+  {
+    Company: 'Him for Her',
+    logo:'HFH-Logo-Gold.png',
+    snippet: 'bridges the gap between board opportunities and talented women ready for board service.',
+    website: 'https://www.himforher.org'
+  },
+  {
     Company: 'HIPPATrek',
-    logo:'HipaaTrek.png',
-    snippet: '',
-    website: ''
+    logo:'HIPAAtrek-New-Logo.jpeg',
+    snippet: 'Industry leading software to facilitate HIPPA compliance for healthcare facilities.',
+    website: 'https://hipaatrek.com/'
   },
   {
     Company: 'Magellan',
@@ -203,22 +233,28 @@ export const portfolio = [
     website: 'https://www.mathison.io/'
   },
   {
+    Company: 'Marstone Inc',
+    logo:'marstone_logo.png',
+    snippet: 'is an enterprise-ready digital wealth management and robo-advice platform.',
+    website: 'https://allstar.gg/'
+  },
+  {
     Company: 'Medcura',
     logo:'MedCura.png',
-    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
-    website: 'https://allstar.gg/'
+    snippet: 'developed a range of products that improve bleeding management while creating antibacterial barriers and improved healing environments.',
+    website: 'https://www.medcurainc.com/'
   },
   {
     Company: 'Metabob',
     logo:'metabob_logo-p-500.png',
-    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
-    website: 'https://allstar.gg/'
+    snippet: 'All-in-One Tool for Python Debugging.',
+    website: 'https://metabob.com/'
   },
   {
     Company: 'New Labs',
     logo:'NewLab.png',
-    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-    website: 'https://allstar.gg/'
+    snippet: 'home to hundreds of entrepreneurs, engineers, and inventors, solving the world’s biggest challenges with leaders and experts across industries and cities.',
+    website: 'https://newlab.com/'
   },
   {
     Company: 'New View Surgical',
@@ -227,33 +263,45 @@ export const portfolio = [
     website: 'http://newviewsurg.com/'
   },
   {
+    Company: 'NYSHEX',
+    logo:'nyshex.png',
+    snippet: 'ensures your cargo moves as planned with two-way committed contracts',
+    website: 'https://nyshex.com/'
+  },
+  {
     Company: 'Ora Graphene Audio',
     logo:'Ora-Graphene.png',
-    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-    website: 'https://allstar.gg/'
+    snippet: 'Patented graphene materials designed and optimized for use in acoustic transducers.',
+    website: 'https://www.oragraphene.com/'
   },
   {
     Company: 'Overwolf',
     logo:'Overwolf.png',
-    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-    website: 'https://allstar.gg/'
+    snippet: 'A leading platform for creators to develop, share and monetize apps and mods inside video games.',
+    website: 'https://www.overwolf.com'
+  },
+  {
+    Company: 'Paragon Data Labs',
+    logo:'Paragon_DL_Final_1.png',
+    snippet: 'eliminates manual workflows and streamlines compliance processes under one cutting-edge platform.',
+    website: 'https://www.paragondatalabs.com/'
   },
   {
     Company: 'Polls',
-    logo:'blank.png',
-    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-    website: 'https://allstar.gg/'
+    logo:'appIcon.svg',
+    snippet: 'Allows group polling in text message strings without the need for a separate app or download.',
+    website: 'https://pollsforimessage.com/'
   },
   {
     Company: 'Roar For Good',
     logo:'roar.png',
-    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-    website: 'https://allstar.gg/'
+    snippet: 'A woman-certified technology company dedicated to cultivating safer workplaces in hotels and hospitals.',
+    website: 'https://www.roarforgood.com/'
   },
   {
     Company: 'Sandstone Diagnostics',
     logo:'sand-stone.png',
-    snippet: 'is a diagnostic and device biotech company whose zero delay centrifuge technology provides lab-quality plasma and serum collection in minutes at the point-of-care.',
+    snippet: 'tools and tech enables point-of-care clinical diagnostics and care by bringing the sample prep to the patient.',
     website: 'https://sandstonedx.com/'
   },
   {
@@ -263,22 +311,16 @@ export const portfolio = [
     website: 'https://www.showx.com/'
   },
   {
-    Company: 'SixPlus Dining',
-    logo:'sixplus.svg',
-    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-    website: 'https://allstar.gg/'
-  },
-  {
     Company: 'SIA',
-    logo:'blank.png',
-    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-    website: 'https://allstar.gg/'
+    logo:'sia.png',
+    snippet: 'develops next-generation solutions for reconstructive and aesthetic surgery that improve the surgeon and patient experience.',
+    website: 'https://sia.health/'
   },
   {
     Company: 'SplitGate',
     logo:'Splitgate.png',
-    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-    website: 'https://allstar.gg/'
+    snippet: 'A free-to-play FPS video game with player-controlled portals, playable on multiple platforms: "Halo meets Portal".',
+    website: 'https://www.splitgate.com'
   },
   {
     Company: 'ThriveFantasy',
@@ -293,28 +335,22 @@ export const portfolio = [
     website: 'https://www.tireagent.com/'
   },
   {
-    Company: 'uPage.us',
-    logo:'upage.us.png',
-    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-    website: 'https://allstar.gg/'
-  },
-  {
     Company: 'US Integrity',
     logo:'usintegrity-logo.png',
     snippet: 'offers customized sports-integrity solutions for NCAA conferences, universities, professional leagues, and individual teams',
     website: 'https://www.usintegrity.com/'
   },
   {
-    Company: 'Vita Inclinata Tech',
-    logo:'Vita-Logo.png',
-    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-    website: 'https://allstar.gg/'
+    Company: 'Wagmo',
+    logo:'wagmo.png',
+    snippet: 'provides the best pet insurance and pet wellness plans that won\'t break the bank.',
+    website: 'https://wagmo.io'
   },
   {
     Company: 'Winzo',
     logo:'WinZo.png',
-    snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-    website: 'https://allstar.gg/'
+    snippet: 'Leading social gaming app in India where users play skill games in multiple formats and languages to win cash and other prizes.',
+    website: 'https://www.winzogames.com'
   },
 
 
