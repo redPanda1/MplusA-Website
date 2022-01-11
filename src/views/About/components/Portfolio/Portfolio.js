@@ -51,7 +51,7 @@ const Portfolio = props => {
     <div className={className} {...rest}>
       <SectionHeader
         title="Portfolio"
-        subtitle="M+A has invested into 42 early-stage companies.  Our team invests in, and mentors audacious founders who are building early-stage technology companies and who have been historically overlooked."
+        subtitle="M+A team members have invested into 42 early-stage companies. We preferentially invest in, and mentor audacious founders who are building early-stage technology companies and who have been historically overlooked."
       />
       <Grid container spacing={isMd ? 2 : 1}>
         {data.map((item, index) => {

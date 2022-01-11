@@ -103,7 +103,7 @@ export const portfolio = [
     {
         Company: 'Allstar',
         logo:'Allstar.png',
-        snippet: 'enables esport\'s gamers to create and share their very best gaming moments all without friction. ',
+        snippet: 'is a cloud platform that makes it fun and easy for any gamer to create and share high quality, snackable gaming content.',
         website: 'https://allstar.gg/'
     },
   {
@@ -216,7 +216,7 @@ export const portfolio = [
   },
   {
     Company: 'HIPPATrek',
-    logo:'HIPAAtrek-New-Logo.jpeg',
+    logo:'HIPAAtrek-New-Logo.jpg',
     snippet: 'Industry leading software to facilitate HIPPA compliance for healthcare facilities.',
     website: 'https://hipaatrek.com/'
   },
@@ -325,7 +325,7 @@ export const portfolio = [
   {
     Company: 'ThriveFantasy',
     logo:'Thrive.png',
-    snippet: 'is a daily fantasy sports and esports for player props.',
+    snippet: 'is a daily fantasy sports and esports platform offering simple and engaging contests and player props.',
     website: 'https://allstar.gg/'
   },
   {
