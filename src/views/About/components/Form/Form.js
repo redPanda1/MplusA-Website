@@ -256,13 +256,13 @@ const Form = props => {
     const subTitle = (<Typography>
         <p>We want to work with the most dynamic, far-sighted and passionate under-represented founders.</p>
         <p>We hold office-hours style meetings with candidate companies to assess their needs, as well as provide advice.</p>
-        <p>If you think that you may qualify, please get in touch and we will get back to you within 72 hours:</p>
+        <p>If you think that you may qualify, please get in touch and, should you be a good fit, we will get back to you within 72 hours:</p>
     </Typography>)
 
     return (
         <div className={className} {...rest}>
             <SectionHeader
-                title="Got an idea or need some help?"
+                title="Are you building a start-up and need some help?"
                 subtitle={subTitle}
                 subtitleProps={{
                     variant: 'body1',
