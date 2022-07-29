@@ -1,7 +1,9 @@
 import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { makeStyles, colors } from '@material-ui/core';
+import { colors } from '@mui/material';
+
+import makeStyles from '@mui/styles/makeStyles';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,8 +26,8 @@ const useStyles = makeStyles(theme => ({
   },
   modeToggler: {
     position: 'absolute',
-    top: `-${theme.spacing(1/2)}px`,
-    left: `-${theme.spacing(1/2)}px`,
+    top: theme.spacing(-1/2),
+    left: theme.spacing(-1/2),
     width: theme.spacing(3),
     height: theme.spacing(3),
     borderRadius: '50%',
@@ -38,7 +40,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   modeTogglerDark: {
-    transform: `translateX(${theme.spacing(3)}px)`,
+    transform: `translateX(${theme.spacing(3)})`,
     backgroundColor: colors.indigo[900],
   },
   modeTogglerIcon: {

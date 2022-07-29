@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
-import { makeStyles } from '@material-ui/styles';
-import { Typography, Grid, TextField, IconButton, Divider, Box, MenuItem } from '@material-ui/core';
+import { makeStyles } from '@mui/styles';
+import { Typography, Grid, TextField, IconButton, Divider, Box, MenuItem } from '@mui/material';
 import LaunchIcon from '@material-ui/icons/Launch'
 import { Image } from 'components/atoms';
 import { MODEL_OPTIONS, SECTOR_OPTIONS } from 'common/constants';
@@ -117,9 +117,12 @@ const CompanyDetails = ({ companyDetails = {}, readOnly, updateDetails }) => {
                                     />
                                 </Grid>
                                 <Grid item md={1} xs={1}>
-                                    <IconButton color="primary" onClick={() => {
-                                        window.open(website, '_blank');
-                                    }}>
+                                    <IconButton
+                                        color="primary"
+                                        onClick={() => {
+                                            window.open(website, '_blank');
+                                        }}
+                                        size="large">
                                         <LaunchIcon />
                                     </IconButton>
                                 </Grid>
@@ -236,8 +239,7 @@ const CompanyDetails = ({ companyDetails = {}, readOnly, updateDetails }) => {
 
 
         </React.Fragment>
-
-    )
+    );
 }
 
 export default CompanyDetails

@@ -1,13 +1,14 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Divider } from '@material-ui/core';
+import makeStyles from '@mui/styles/makeStyles';
+import { Divider } from '@mui/material';
 import { Topbar, Footer } from './components';
 import {
   Services,
   Hero,
   Form,
-    Portfolio,
+  Portfolio,
   Story,
+  News,
   Team,
 } from 'views/About/components';
 import { animateScroll, Element, scroller } from "react-scroll";
@@ -36,44 +37,49 @@ const Main = () => {
         delay: 100,
         smooth: true,
         offset: 50
-      })  
+      })
     }
   }
 
   return (
-      <div>
-          <Topbar scrollTo={scrollTo}/>
-          <main>
-              <Divider />
-              <Hero />
-              <Element name={"about"}>
-                  <Section>
-                      <Story />
-                  </Section>
-              </Element>
-              <Element name={"services"}>
-                  <SectionAlternate className={classes.sectionNoPaddingTop}>
-                      <Services />
-                  </SectionAlternate>
-              </Element>
-              <Element name={"team"}>
-                  <Section>
-                      <Team data={team} />
-                  </Section>
-              </Element>
-              <Element name={"portfolio"}>
-                  <Section>
-                      <Portfolio data={portfolio} />
-                  </Section>
-              </Element>
-              <Element name={"contact"}>
-                  <SectionAlternate>
-                      <Form />
-                  </SectionAlternate>
-              </Element>
-          </main>
-          <Footer scrollTo={scrollTo} />
-      </div>
+    <div>
+      <Topbar scrollTo={scrollTo} />
+      <main>
+        <Divider />
+        <Hero />
+        <Element name={"about"}>
+          <Section>
+            <Story />
+          </Section>
+        </Element>
+        <Element name={"services"}>
+          <SectionAlternate className={classes.sectionNoPaddingTop}>
+            <Services />
+          </SectionAlternate>
+        </Element>
+        <Element name={"team"}>
+          <Section>
+            <Team data={team} />
+          </Section>
+        </Element>
+        {/* <Element name={"news"}>
+          <SectionAlternate className={classes.sectionNoPaddingTop}>
+            <News />
+          </SectionAlternate>
+        </Element> */}
+        <Element name={"portfolio"}>
+          <Section>
+            <Portfolio data={portfolio} />
+          </Section>
+        </Element>
+        <Element name={"contact"}>
+          <SectionAlternate>
+            <Form />
+          </SectionAlternate>
+        </Element>
+      </main>
+      <Footer scrollTo={scrollTo} />
+    </div>
   );
 };
 

@@ -1,5 +1,7 @@
 import React from 'react';
-import { makeStyles, useTheme, withStyles } from '@material-ui/core/styles';
+import { useTheme } from '@mui/material/styles';
+import makeStyles from '@mui/styles/makeStyles';
+import withStyles from '@mui/styles/withStyles';
 import {
     useMediaQuery,
     Grid,
@@ -9,8 +11,8 @@ import {
     TableBody,
     TableRow,
     TableContainer
-} from '@material-ui/core';
-import MuiTableHead from '@material-ui/core/TableHead'
+} from '@mui/material';
+import MuiTableHead from '@mui/material/TableHead'
 import ActionsLine from './ActionsLine'
 
 const TableHead = withStyles(theme => ({

@@ -1,9 +1,9 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import TextField from '@material-ui/core/TextField';
+import makeStyles from '@mui/styles/makeStyles';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import TextField from '@mui/material/TextField';
 import ReviewItem from './ReviewItem';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
@@ -45,11 +45,11 @@ const ReviewBlock = ({ reviewData = {}, updateReview }) => {
                     </Grid>
                     <Grid container direction="row" alignItems="flex-end" className={classes.overallRating}>
                         <Grid item xs={5} md={3}>
-                            <IconButton disabled={readOnly} onClick={() => { overallRating(true) }}>
+                            <IconButton disabled={readOnly} onClick={() => { overallRating(true) }} size="large">
                                 <ThumbUpIcon style={
                                     ('overall' in reviewData) && reviewData.overall ? { fill: "green" } : {}} />
                             </IconButton>
-                            <IconButton disabled={readOnly} onClick={() => { overallRating(false) }}>
+                            <IconButton disabled={readOnly} onClick={() => { overallRating(false) }} size="large">
                                 <ThumbDownIcon style={
                                     ('overall' in reviewData) && !reviewData.overall ? { fill: "red" } : {}} />
                             </IconButton>

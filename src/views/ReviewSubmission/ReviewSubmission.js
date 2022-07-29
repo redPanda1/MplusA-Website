@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import moment from 'moment'
-import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Typography, CircularProgress, Snackbar } from '@material-ui/core';
+import makeStyles from '@mui/styles/makeStyles';
+import { Grid, Typography, CircularProgress, Snackbar } from '@mui/material';
 import { SectionAlternate, CardBase } from 'components/organisms';
 import { Hero, Submission, Reviews, Status, RejectPopUp, SharePopUp } from './components';
-import MuiAlert from '@material-ui/lab/Alert';
+import MuiAlert from '@mui/material/Alert';
 import {DOMAIN} from 'common/constants'
 
 

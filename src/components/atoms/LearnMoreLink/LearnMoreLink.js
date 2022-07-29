@@ -1,8 +1,8 @@
 import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import { Typography, IconButton } from '@material-ui/core';
+import makeStyles from '@mui/styles/makeStyles';
+import { Typography, IconButton } from '@mui/material';
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 
 const useStyles = makeStyles(theme => ({
@@ -58,7 +58,7 @@ const LearnMoreLink = props => {
         className={clsx('learn-more-link__icon-button', classes.icon)}
         color={color || 'primary'}
         {...iconProps}
-      >
+        size="large">
         <ArrowRightAltIcon className="learn-more-link__arrow" />
       </IconButton>
     </>

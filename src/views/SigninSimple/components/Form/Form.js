@@ -1,6 +1,6 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Typography, Grid, Button, TextField, CircularProgress } from '@material-ui/core';
+import makeStyles from '@mui/styles/makeStyles';
+import { Typography, Grid, Button, TextField, CircularProgress } from '@mui/material';
 import {Link} from 'react-router-dom'
 import validate from 'validate.js';
 

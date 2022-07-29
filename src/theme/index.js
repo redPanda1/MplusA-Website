@@ -1,8 +1,8 @@
-import { createTheme, responsiveFontSizes } from '@material-ui/core';
+import { createTheme, responsiveFontSizes, adaptV4Theme } from '@mui/material';
 import { light } from './palette';
 
 const getTheme = () => responsiveFontSizes(
-  createTheme({
+  createTheme(adaptV4Theme({
     palette: light,
     layout: {
       contentWidth: 1236,
@@ -17,7 +17,7 @@ const getTheme = () => responsiveFontSizes(
       appBar: 1200,
       drawer: 1100,
     },
-  }),
+  })),
 );
 
 export default getTheme;

@@ -1,8 +1,8 @@
 import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { useTheme } from '@material-ui/core/styles';
-import { useMediaQuery, Grid, Typography } from '@material-ui/core';
+import { useTheme } from '@mui/material/styles';
+import { useMediaQuery, Grid, Typography } from '@mui/material';
 
 /**
  * Component to display the description with CTA's

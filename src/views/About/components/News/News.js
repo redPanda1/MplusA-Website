@@ -39,7 +39,7 @@ const data = [
       'Provide advice and on-going business guidance to portfolio companies. We leverage our vertical industry expertise and business contacts to help with strategy, team and execution.',
   }
 ];
-const Services = ({ className, ...rest }) => {
+const News = ({ className, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up('md'), {
@@ -50,7 +50,7 @@ const Services = ({ className, ...rest }) => {
     <div className={className} {...rest}>
       <Section narrow className={classes.noPaddingBottom}>
         <SectionHeader
-          title={"What We Do"}
+          title={"News"}
           align="center"
           titleProps={{
             color: 'textPrimary',
@@ -60,37 +60,18 @@ const Services = ({ className, ...rest }) => {
       </Section>
       <Section className={classes.noPaddingTop}>
         <Grid container spacing={isMd ? 4 : 2}>
-          {data.map((item, index) => (
-            <Grid key={index} item xs={12} sm={4} 
-            data-aos-delay="600"
-            data-aos-once="false"
-            data-aos-easing="ease-in-sine"
-            data-aos="fade-up">
-            <DescriptionListIcon
-                title={item.title}
-                subtitle={item.subtitle}
-                icon={
-                  <IconAlternate
-                    fontIconClass={item.icon}
-                    size="medium"
-                    color={colors.indigo}
-                  />
-                }
-                align="left"
-              />
-            </Grid>
-          ))}
+            <Grid item>Hello</Grid>
         </Grid>
       </Section>
     </div>
   );
 };
 
-Services.propTypes = {
+News.propTypes = {
   /**
    * External classes
    */
   className: PropTypes.string,
 };
 
-export default Services;
+export default News;

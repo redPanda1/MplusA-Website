@@ -1,12 +1,12 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import Table from '@material-ui/core/Table';
-import Avatar from '@material-ui/core/Avatar';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import IconButton from '@material-ui/core/IconButton';
+import Table from '@mui/material/Table';
+import Avatar from '@mui/material/Avatar';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import IconButton from '@mui/material/IconButton';
 import LockOpenIcon from '@material-ui/icons/LockOpenOutlined';
 import LockIcon from '@material-ui/icons/LockOutlined';
 import ResetIcon from '@material-ui/icons/RefreshOutlined'
@@ -56,12 +56,15 @@ const BasicList = ({ userData = [], showDialog, closeDialog, resetUserPassword, 
                             <TableCell>{item.lastLogin ? moment.utc(item.lastLogin).local().format("MMM Do, YYYY - h:mm a") : ""}</TableCell>
 
                             <TableCell>
-                                <IconButton color="inherit" onClick={(e) => resetPassword(e, item)}>
+                                <IconButton color="inherit" onClick={(e) => resetPassword(e, item)} size="large">
                                     <ResetIcon />
                                 </IconButton>
                             </TableCell>
                             <TableCell>
-                                <IconButton color={item.active ? "primary" : "secondary"} onClick={(e) => lockUnlockUser(e, item)}>
+                                <IconButton
+                                    color={item.active ? "primary" : "secondary"}
+                                    onClick={(e) => lockUnlockUser(e, item)}
+                                    size="large">
                                     {item.active ? (<LockOpenIcon />) : (<LockIcon />)} 
                                 </IconButton>
                             </TableCell>

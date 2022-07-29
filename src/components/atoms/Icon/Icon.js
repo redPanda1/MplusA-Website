@@ -1,8 +1,8 @@
 import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import NoSsr from '@material-ui/core/NoSsr';
+import makeStyles from '@mui/styles/makeStyles';
+import NoSsr from '@mui/material/NoSsr';
 
 const useStyles = makeStyles(() => ({
   extraSmall: {

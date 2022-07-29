@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@mui/styles/makeStyles';
 import { Image } from 'components/atoms';
 import { Section } from 'components/organisms';
 import heroPhoto from 'assets/images/NY.jpg'
 import logo from 'assets/images/logo_inv.png'
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography } from '@mui/material';
 
 
 
@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   image: {
     minHeight: 300,
     objectFit: 'cover',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       width: 'auto',
     },
   },
