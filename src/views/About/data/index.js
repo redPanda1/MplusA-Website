@@ -48,12 +48,12 @@ export const team = [
     authorName: 'Kristen Dickey',
   },
   {
-    title: 'Financials & Investments Nerd',
+    title: 'Kitchen Gadget Guru',
     authorPhoto: {
-      src: 'https://mentorsplusangels-data.s3.amazonaws.com/images/SamirBW.jpg'
+      src: 'https://mentorsplusangels-data.s3.amazonaws.com/images/Jane.jpg'
     },
-    linkedin: 'https://www.linkedin.com/in/samir-chokshi',
-    authorName: 'Samir Chokshi',
+    linkedin: 'https://www.linkedin.com/in/jane-och-05414a87/',
+    authorName: 'Jane Och',
   },
   {
     title: 'Our Go-To Tech Guy',

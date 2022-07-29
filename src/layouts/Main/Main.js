@@ -62,11 +62,11 @@ const Main = () => {
             <Team data={team} />
           </Section>
         </Element>
-        <Element name={"news"}>
+        {/* <Element name={"news"}>
           <SectionAlternate className={classes.sectionNoPaddingTop}>
             <News />
           </SectionAlternate>
-        </Element>
+        </Element> */}
         <Element name={"portfolio"}>
           <Section>
             <Portfolio data={portfolio} />
