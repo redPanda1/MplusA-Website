@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Paper } from '@material-ui/core';
+import { Paper } from '@mui/material';
 import AOS from 'aos';
 
 export const useDarkMode = () => {

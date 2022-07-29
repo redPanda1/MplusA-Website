@@ -1,8 +1,8 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/styles';
-import Snackbar from '@material-ui/core/Snackbar';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import MuiAlert from '@material-ui/lab/Alert';
+import { makeStyles } from '@mui/styles';
+import Snackbar from '@mui/material/Snackbar';
+import CircularProgress from '@mui/material/CircularProgress';
+import MuiAlert from '@mui/material/Alert';
 
 
 

@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
+import { useTheme } from '@mui/material/styles';
+import makeStyles from '@mui/styles/makeStyles';
+import IconButton from '@mui/material/IconButton';
 import LaunchIcon from '@material-ui/icons/Launch'
 import {
   useMediaQuery,
@@ -9,7 +10,7 @@ import {
   Typography,
   TextField,
   Divider,
-} from '@material-ui/core';
+} from '@mui/material';
 import FileLine from './FileLine'
 
 const useStyles = makeStyles(theme => ({
@@ -109,9 +110,12 @@ const Submission = props => {
               />
             </Grid>
             <Grid item md={1} xs={1}>
-              <IconButton color="primary" onClick={() => {
-                window.open(website, '_blank');
-              }}>
+              <IconButton
+                color="primary"
+                onClick={() => {
+                  window.open(website, '_blank');
+                }}
+                size="large">
                 <LaunchIcon />
               </IconButton>
             </Grid>

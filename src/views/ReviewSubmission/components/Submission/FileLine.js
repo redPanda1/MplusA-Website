@@ -1,9 +1,9 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
+import Link from '@mui/material/Link';
 import GetAppIcon from '@material-ui/icons/GetApp';
-import IconButton from '@material-ui/core/IconButton';
+import IconButton from '@mui/material/IconButton';
 
 const FlieLine = ({ fileUrl = "" }) => {
     let fileName = fileUrl.split('/').pop()
@@ -28,7 +28,7 @@ const FlieLine = ({ fileUrl = "" }) => {
                         />
                     </Grid>
                     <Grid item md={1} xs={1}>
-                        <IconButton color="primary" component={Link} href={fileUrl}>
+                        <IconButton color="primary" component={Link} href={fileUrl} size="large">
                             <GetAppIcon />
                         </IconButton>
                     </Grid>

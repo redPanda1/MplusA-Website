@@ -1,8 +1,8 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper'
-import Container from '@material-ui/core/Container';
+import Paper from '@mui/material/Paper'
+import Container from '@mui/material/Container';
 import { Image } from 'components/atoms';
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles } from '@mui/styles';
 import placeholderIcon from 'assets/images/construction.png'
 
 

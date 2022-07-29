@@ -3,14 +3,14 @@
 import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@mui/styles/makeStyles';
 import {
   List,
   ListItem,
   Typography,
   ListItemIcon,
   Divider
-} from '@material-ui/core';
+} from '@mui/material';
 import CloseIcon from '@material-ui/icons/Close';
 
 const useStyles = makeStyles(theme => ({

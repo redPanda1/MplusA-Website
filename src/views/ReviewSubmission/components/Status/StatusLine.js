@@ -1,7 +1,7 @@
 import React from 'react'
 import moment from 'moment'
-import TableRow from '@material-ui/core/TableRow'
-import TableCell from '@material-ui/core/TableCell'
+import TableRow from '@mui/material/TableRow'
+import TableCell from '@mui/material/TableCell'
 
 const getStatus = (status, isSm) => {
     const statusID = status.substring(0,1)

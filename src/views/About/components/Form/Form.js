@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
+import { useTheme } from '@mui/material/styles';
+import makeStyles from '@mui/styles/makeStyles';
+import Stepper from '@mui/material/Stepper';
+import Step from '@mui/material/Step';
+import StepLabel from '@mui/material/StepLabel';
 import {
     useMediaQuery,
     Typography,
     Button,
-} from '@material-ui/core';
+} from '@mui/material';
 import { SectionHeader } from 'components/molecules';
 import BasicsForm from './BasicsForm'
 import BusinessForm from './BusinessForm'
 import ChallengesForm from './ChallengesForm'
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+import Backdrop from '@mui/material/Backdrop';
 import {DOMAIN} from 'common/constants'
 
 const useStyles = makeStyles(theme => ({

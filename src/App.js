@@ -5,8 +5,8 @@ import Routes from './route/Routes';
 import { useAuthProvider } from 'hooks/useAuth'
 import AuthContext from 'context/AuthContext';
 import { DataProvider } from './context/DataContext'
-import { ThemeProvider } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 import getTheme from 'theme';
 
 
@@ -36,16 +36,18 @@ const App = () => {
   // }, [auth])
 
   return (
-    <ThemeProvider theme={getTheme()}>
-      <CssBaseline />
-      <AuthProvider auth={auth}>
-        <DataProvider>
-          <Router history={browserHistory}>
-            <Routes />
-          </Router>
-        </DataProvider>
-      </AuthProvider>
-    </ThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={getTheme()}>
+        <CssBaseline />
+        <AuthProvider auth={auth}>
+          <DataProvider>
+            <Router history={browserHistory}>
+              <Routes />
+            </Router>
+          </DataProvider>
+        </AuthProvider>
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 }
 

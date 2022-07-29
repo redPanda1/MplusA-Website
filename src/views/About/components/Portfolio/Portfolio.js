@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { useTheme } from '@mui/material/styles';
+import makeStyles from '@mui/styles/makeStyles';
 import {
   useMediaQuery,
   Grid
-} from '@material-ui/core';
+} from '@mui/material';
 
-import { CardActionArea, Card, CardContent, CardMedia, Typography } from '@material-ui/core';
+import { CardActionArea, Card, CardContent, CardMedia, Typography } from '@mui/material';
 
 
 import { SectionHeader } from 'components/molecules';
@@ -32,7 +33,7 @@ const useStyles = makeStyles(theme => ({
   },
   listItem: {
     padding: 0,
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       flexDirection: 'column',
     },
   }

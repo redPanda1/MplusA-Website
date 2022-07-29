@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import Paper from '@material-ui/core/Paper'
-import Container from '@material-ui/core/Container';
-import { makeStyles } from '@material-ui/styles';
-import { Typography, Grid } from '@material-ui/core';
+import Paper from '@mui/material/Paper'
+import Container from '@mui/material/Container';
+import { makeStyles } from '@mui/styles';
+import { Typography, Grid } from '@mui/material';
 import BasicList from './BasicList'
 import Footer from 'common/Footer'
 import useUser from 'hooks/useUser'

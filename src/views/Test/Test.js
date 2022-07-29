@@ -1,7 +1,7 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper'
-import Container from '@material-ui/core/Container';
-import { makeStyles } from '@material-ui/styles';
+import Paper from '@mui/material/Paper'
+import Container from '@mui/material/Container';
+import { makeStyles } from '@mui/styles';
 import { ViewState } from '@devexpress/dx-react-scheduler';
 import {
     Scheduler,

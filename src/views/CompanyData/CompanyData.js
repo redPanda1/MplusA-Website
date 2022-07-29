@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom'
-import Paper from '@material-ui/core/Paper'
-import Container from '@material-ui/core/Container';
-import { makeStyles, withStyles } from '@material-ui/styles';
-import { Typography } from '@material-ui/core';
+import Paper from '@mui/material/Paper'
+import Container from '@mui/material/Container';
+import { makeStyles, withStyles } from '@mui/styles';
+import { Typography } from '@mui/material';
 import Reviews from './Reviews';
 import CompanyDetails from './CompanyDetails';
-import MuiAccordion from '@material-ui/core/Accordion';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
+import MuiAccordion from '@mui/material/Accordion';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Application from './Application';
 import Files from './Files'
 import Actions from './Actions'
 import useCompany from 'hooks/useCompany';
-import MuiAlert from '@material-ui/lab/Alert';
+import MuiAlert from '@mui/material/Alert';
 import Footer from 'common/Footer'
 
 
@@ -105,7 +105,10 @@ const CompanyData = () => {
             <Typography variant="h4">{companyData.details ? companyData.details.name : ""}</Typography>
           </Grid>
           <Grid item>
-            {!readOnly && (<Button variant="contained" color={"default"} className={classes.cancelButton} onClick={handleCancel}>
+            {!readOnly && (<Button
+              variant="contained"
+              className={classes.cancelButton}
+              onClick={handleCancel}>
               Cancel
             </Button>)}
             <Button variant="contained" onClick={handleSaveUpdate} color={readOnly ? "default" : "primary"}>
@@ -151,7 +154,7 @@ const CompanyData = () => {
       </Accordion>
       <Footer userMessage={userMessage} isLoading={isLoading} close={dismissMessage}/>
     </Container>
-  )
+  );
 }
 
 export default CompanyData

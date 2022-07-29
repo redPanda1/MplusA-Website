@@ -1,8 +1,8 @@
 import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Typography, colors, IconButton } from '@material-ui/core';
+import makeStyles from '@mui/styles/makeStyles';
+import { Grid, Typography, colors, IconButton } from '@mui/material';
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 import { IconAlternate } from 'components/molecules';
 import { CardBase } from 'components/organisms';
@@ -92,7 +92,7 @@ const CardCategoryLink = props => {
         href={href}
         className={clsx('card-category-link__item', classes.categoryIconButton)}
       >
-        <IconButton className="card-category-link__icon-button">
+        <IconButton className="card-category-link__icon-button" size="large">
           <ArrowRightAltIcon
             className="card-category-link__icon"
             style={{ color: color[500] }}

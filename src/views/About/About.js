@@ -1,12 +1,13 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@mui/styles/makeStyles';
 import { Section, SectionAlternate } from 'components/organisms';
 import {
   Services,
   Hero,
   Form,
   Story,
-    Portfolio,
+  Portfolio,
+  News,
   Team,
 } from './components';
 import { Element } from "react-scroll"
@@ -41,6 +42,11 @@ const About = () => {
       <Element name={"team"}>
         <Section>
           <Team data={team} />
+        </Section>
+      </Element>
+      <Element name={"news"}>
+        <Section>
+          <News />
         </Section>
       </Element>
       <Element name={"contact"}>

@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom'
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@mui/styles/makeStyles';
 import {
   Toolbar,
   Hidden,
@@ -13,7 +13,7 @@ import {
   Typography,
   IconButton,
   Avatar
-} from '@material-ui/core';
+} from '@mui/material';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Image } from 'components/atoms';
@@ -289,7 +289,7 @@ const Topbar = ({ onSidebarOpen, pages, className, ...rest }) => {
           </Link>
         </div>
         <div className={classes.flexGrow} />
-        <Hidden smDown>
+        <Hidden mdDown>
           <List disablePadding className={classes.navigationContainer}>
             {menuGroups.map((page, i) => (
               <div key={page.id}>
@@ -337,7 +337,10 @@ const Topbar = ({ onSidebarOpen, pages, className, ...rest }) => {
               </div>
             ))}
             <ListItem className={clsx(classes.listItem, 'menu-item--no-dropdown')}>
-              <IconButton className={classes.iconButton} onClick={e => handleClick(e, "XYZ")}>
+              <IconButton
+                className={classes.iconButton}
+                onClick={e => handleClick(e, "XYZ")}
+                size="large">
                 <Avatar src={userImage} />
               </IconButton>
             </ListItem>
@@ -376,7 +379,7 @@ const Topbar = ({ onSidebarOpen, pages, className, ...rest }) => {
             onClick={onSidebarOpen}
             aria-label="Menu"
             style={{ color: "white" }}
-          >
+            size="large">
             <MenuIcon />
           </IconButton>
         </Hidden>

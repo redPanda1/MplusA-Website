@@ -1,8 +1,8 @@
 import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Typography, colors } from '@material-ui/core';
+import makeStyles from '@mui/styles/makeStyles';
+import { Grid, Typography, colors } from '@mui/material';
 import { CardBase } from 'components/organisms';
 
 const useStyles = makeStyles(theme => ({
@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
     height: '100%',
     width: '100%',
     '&:hover': {
-      borderRight: `${theme.spacing(1)}px solid ${colors.red[500]}`,
+      borderRight: `${theme.spacing(1)} solid ${colors.red[500]}`,
     },
   },
   dot: {
