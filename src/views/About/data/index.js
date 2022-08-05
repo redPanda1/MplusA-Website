@@ -356,3 +356,22 @@ export const portfolio = [
 
 ];
 
+export const articles = [
+  {
+    url: 'https://us02web.zoom.us/rec/play/IvKG09LSzklabJ_34KvT-tkbYykb46-l31PNmqf0sldnVuEvJhVlelEH9oT9Ta787KON_VCzqnyQuL-x.iZAen2UkC-I1fyFv',
+    cover: {
+      src: 'https://mentorsplusangels-data.s3.amazonaws.com/images/1863.jpg'
+    },
+    title: 'M+A Presents to 1863 Companies',
+    subtitle:
+      'A group of M+A members presented to over 50 founders who were part of the 1863 Ventures program on "How to Make A Great Pitch Deck". You can watch a recording of the presentation here.',
+    author: {
+      photo: {
+        src: 'https://mentorsplusangels-data.s3.amazonaws.com/images/CindyBW.jpg'
+      },
+      name: 'Cindy Cook',
+    },
+    date: 'July 2022'
+  }
+];
+

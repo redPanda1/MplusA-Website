@@ -52,7 +52,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   listItemText: {
-    cursor:'pointer',
+    cursor: 'pointer',
     flex: '0 0 auto',
     marginRight: theme.spacing(2),
     whiteSpace: 'nowrap',
@@ -123,47 +123,54 @@ const Topbar = ({ onSidebarOpen, className, scrollTo, ...rest }) => {
 
   return (
     <div className={classes.topBar}>
-    <Toolbar disableGutters className={classes.toolbar} {...rest}>
-      <div className={classes.flexGrow} />
-      <List disablePadding className={classes.navigationContainer}>
+      <Toolbar disableGutters className={classes.toolbar} {...rest}>
+        <div className={classes.flexGrow} />
+        <List disablePadding className={classes.navigationContainer}>
           <ListItem>
-            <Typography variant="body1" color="textSecondary" 
-                className={clsx(classes.listItemText, 'menu-item')}
-                onClick={()=>scrollTo("about")}>
-                  About
+            <Typography variant="body1" color="textSecondary"
+              className={clsx(classes.listItemText, 'menu-item')}
+              onClick={() => scrollTo("about")}>
+              About
             </Typography>
           </ListItem>
           <ListItem>
-          <Typography variant="body1" color="textSecondary" 
-                className={clsx(classes.listItemText, 'menu-item')}
-                onClick={()=>scrollTo("services")}>
-                  What We do
+            <Typography variant="body1" color="textSecondary"
+              className={clsx(classes.listItemText, 'menu-item')}
+              onClick={() => scrollTo("services")}>
+              What We do
             </Typography>
           </ListItem>
           <ListItem>
-          <Typography variant="body1" color="textSecondary" 
-                className={clsx(classes.listItemText, 'menu-item')}
-                onClick={()=>scrollTo("team")}>
-                  Team
+            <Typography variant="body1" color="textSecondary"
+              className={clsx(classes.listItemText, 'menu-item')}
+              onClick={() => scrollTo("team")}>
+              Team
             </Typography>
           </ListItem>
-        <ListItem>
-          <Typography variant="body1" color="textSecondary"
-                      className={clsx(classes.listItemText, 'menu-item')}
-                      onClick={()=>scrollTo("portfolio")}>
-            Portfolio
-          </Typography>
-        </ListItem>
+          <ListItem>
+            <Typography variant="body1" color="textSecondary"
+              className={clsx(classes.listItemText, 'menu-item')}
+              onClick={() => scrollTo("news")}>
+              News
+            </Typography>
+          </ListItem>
+          <ListItem>
+            <Typography variant="body1" color="textSecondary"
+              className={clsx(classes.listItemText, 'menu-item')}
+              onClick={() => scrollTo("portfolio")}>
+              Portfolio
+            </Typography>
+          </ListItem>
           <ListItem className={clsx(classes.listItem, 'menu-item--no-dropdown')}>
             <Button
               color="secondary"
               variant="outlined"
-              onClick={()=>scrollTo("contact")}>
+              onClick={() => scrollTo("contact")}>
               Apply
             </Button>
           </ListItem>
         </List>
-    </Toolbar>
+      </Toolbar>
     </div>
   );
 };

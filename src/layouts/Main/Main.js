@@ -12,9 +12,8 @@ import {
   Team,
 } from 'views/About/components';
 import { animateScroll, Element, scroller } from "react-scroll";
-import { team, portfolio } from 'views/About/data';
+import { team, portfolio, articles } from 'views/About/data';
 import { Section, SectionAlternate } from 'components/organisms';
-
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -62,11 +61,11 @@ const Main = () => {
             <Team data={team} />
           </Section>
         </Element>
-        {/* <Element name={"news"}>
+        <Element name={"news"}>
           <SectionAlternate className={classes.sectionNoPaddingTop}>
-            <News />
+            <News data={articles} />
           </SectionAlternate>
-        </Element> */}
+        </Element>
         <Element name={"portfolio"}>
           <Section>
             <Portfolio data={portfolio} />

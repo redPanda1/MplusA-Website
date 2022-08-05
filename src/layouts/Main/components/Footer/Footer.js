@@ -128,6 +128,9 @@ const Footer = props => {
               <Typography variant="body2" className={classes.menuGroupTitle} onClick={() => scrollTo('team')}>
                 Team
               </Typography>
+              <Typography variant="body2" className={classes.menuGroupTitle} onClick={() => scrollTo('news')}>
+                News
+              </Typography>
               <Typography variant="body2" className={classes.menuGroupTitle} onClick={() => scrollTo('portfolio')}>
                 Portfolio
               </Typography>

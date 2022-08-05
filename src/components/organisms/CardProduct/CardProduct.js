@@ -2,7 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import makeStyles from '@mui/styles/makeStyles';
-import { Card, CardContent, CardMedia } from '@mui/material';
+import { Card, CardContent, CardMedia, CardActionArea } from '@mui/material';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -78,6 +78,7 @@ const CardProduct = props => {
     mediaContent,
     align,
     className,
+    url,
     ...rest
   } = props;
 
@@ -97,20 +98,22 @@ const CardProduct = props => {
       )}
       {...rest}
     >
-      <CardMedia
-        className={clsx('card-product__media', classes.media, mediaClassName)}
-      >
-        {mediaContent}
-      </CardMedia>
-      <CardContent
-        className={clsx(
-          'card-product__content',
-          classes.content,
-          classes[align],
-        )}
-      >
-        {cardContent}
-      </CardContent>
+      <CardActionArea href={url}>
+        <CardMedia
+          className={clsx('card-product__media', classes.media, mediaClassName)}
+        >
+          {mediaContent}
+        </CardMedia>
+        <CardContent
+          className={clsx(
+            'card-product__content',
+            classes.content,
+            classes[align],
+          )}
+        >
+          {cardContent}
+        </CardContent>
+      </CardActionArea>
     </Card>
   );
 };
